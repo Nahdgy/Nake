@@ -5,16 +5,25 @@ using UnityEngine;
 public class PlayerCam : MonoBehaviour
 {
     [SerializeField]
-    private float _mouseSensibilityX, _mouseSensibilityY;
+    private float _mouseSensibilityX, _mouseSensibilityY, _distRange;
     private float _cameraRotationX, _cameraRotationY;
     [SerializeField]
-    private Transform _oriantationCam;
+    private Transform _oriantationCam, _objInView, _basePostion;
+    [SerializeField]
+    private GameObject _obj, _pickUpUI;
+    [SerializeField]
+    private PlayerMov _player;
+
+    [SerializeField]
+    private LayerMask _layerMask;
+
     public bool _canSee = true;
 
 
     private void Update()
     {
         GetMouseInput();
+        ObjectTargeted();
     }
     private void Start()
     {
@@ -35,4 +44,34 @@ public class PlayerCam : MonoBehaviour
             _oriantationCam.rotation = Quaternion.Euler(0, _cameraRotationY, 0);
         }
     }
+    private void ObjectTargeted()
+    {
+        RaycastHit _hit;
+        if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask))
+        {
+            if (_hit.transform.CompareTag("Object"))
+            {
+                _pickUpUI.SetActive(true);
+                if (Input.GetButton("Pick"))
+                {
+                    _canSee = false;
+                    _player._canMove = false;
+                    _obj.transform.position = _objInView.transform.position;
+
+                }
+                if (Input.GetButtonDown("Back"))
+                {
+                    _canSee = true;
+                    _player._canMove = true;
+                    _obj.transform.position = _basePostion.transform.position;
+                }
+            }
+            else
+            {
+                _pickUpUI.SetActive(false);
+            }
+        }
+    }
 }
+
+    
