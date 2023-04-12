@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjManip : MonoBehaviour
+public class ObjManip : MonoBehaviour,Iinteractable
 {
     
     private float _horizontalInput, _verticalInput;
-    [SerializeField]
-    private bool _canManip = false;
+    
+    public bool _canManip = false;
     [SerializeField] 
-    private Transform _obj;
+    private Transform _obj, _basePosition;
     [SerializeField]
     private float _multiplySpeed;
 
@@ -33,5 +33,20 @@ public class ObjManip : MonoBehaviour
             Debug.Log("IsMoving");
             _obj.rotation = Quaternion.Euler(_verticalInput * _multiplySpeed + _obj.rotation.eulerAngles.x, _horizontalInput * _multiplySpeed + _obj.rotation.eulerAngles.y, 0f);
         }
+    }
+    public void ReturnBase()
+    {
+        _obj.position = _basePosition.position;
+        _obj.rotation = Quaternion.Euler(_basePosition.rotation.x,_basePosition.rotation.y,_basePosition.rotation.z);
+    }
+
+    public void Pick()
+    {
+        _canManip = true;
+    }
+
+    public void Back()
+    {
+        _canManip = false;
     }
 }
