@@ -28,6 +28,7 @@ public class PlayerCam : MonoBehaviour
     {
         GetMouseInput();
         ObjectTargeted();
+        //faire des box trigger pour activer le raycast et éviter le trop plein de calcul et utiliser un traceur pour calibrer le raycast
     }
     private void Start()
     {
@@ -82,6 +83,7 @@ public class PlayerCam : MonoBehaviour
                 }
                 if (_hit.transform.CompareTag("Default"))
                 {
+                    Debug.Log("A desactivé");
                     _actionUI.SetActive(false);
                 }
 
