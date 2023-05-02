@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Object
   - Light
+  - Default
+  - Door
   layers:
   - Default
   - TransparentFX
