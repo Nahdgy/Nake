@@ -52,4 +52,6 @@ public class ObjManip : MonoBehaviour, Iinteractable
     }
     public void SwitchLight()
     {}
+    public void OpenDoor()
+    {}
 }

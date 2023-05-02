@@ -92,9 +92,18 @@ public class PlayerCam : MonoBehaviour
                     if (Input.GetButtonDown("Action"))
                     {
                         interactObj.SwitchLight();
-                        _actionUI.SetActive(false);       
+                        _actionUI.SetActive(false);
                     }
+                }
+                if (_hit.transform.CompareTag("Door"))
+                {
+                    _actionUI.SetActive(true);
 
+                    if (Input.GetButtonDown("Action"))
+                    {
+                        interactObj.OpenDoor();
+                        _actionUI.SetActive(false);
+                    }
                 }
             }
         }

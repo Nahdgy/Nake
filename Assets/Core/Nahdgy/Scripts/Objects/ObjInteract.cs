@@ -10,6 +10,8 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     private GameObject _door;
     [SerializeField]
     private Light _light;
+    [SerializeField]
+    private float _timerDoor, _rotationDoor, _baseAngle, _endAngle;
 
 
     private void Update()
@@ -32,6 +34,26 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         {
             _light.intensity = 0f;
         }
+    }
+    public void OpenDoor()
+    {
+        StartCoroutine(ClosingDoor());
+        
+    }
+    private IEnumerator ClosingDoor()
+    {  
+        float _lerpDuration = 5f;
+        float _timer = 0f;
+       
+        while (_timer < _lerpDuration)
+        { 
+            _timer += Time.deltaTime;
+            _rotationDoor = Mathf.Lerp(_baseAngle, _endAngle, _timer/_lerpDuration);
+            _door.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0); 
+           yield return null;      
+        }
+        yield return new WaitForSeconds(_timerDoor);
+        _door.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     public void Pick()
     { }
