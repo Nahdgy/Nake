@@ -61,7 +61,7 @@ public class PlayerCam : MonoBehaviour
                 {
                     _actionUI.SetActive(true);
 
-                    if (Input.GetButton("Action"))
+                    if (Input.GetButtonDown("Action"))
                     {
                         _actionUI.SetActive(false);
                         _lessUI.SetActive(true);
@@ -80,7 +80,7 @@ public class PlayerCam : MonoBehaviour
                         interactObj.Back();
                     }
                 }
-                if (_hit.transform.CompareTag("Untagged"))
+                if (_hit.transform.CompareTag("Default"))
                 {
                     _actionUI.SetActive(false);
                 }
@@ -89,10 +89,10 @@ public class PlayerCam : MonoBehaviour
                 {
                     _actionUI.SetActive(true);
 
-                    if (Input.GetButton("Action"))
+                    if (Input.GetButtonDown("Action"))
                     {
-                        _actionUI.SetActive(false);
                         interactObj.SwitchLight();
+                        _actionUI.SetActive(false);       
                     }
 
                 }

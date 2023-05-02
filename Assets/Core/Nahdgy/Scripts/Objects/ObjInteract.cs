@@ -4,31 +4,40 @@ using UnityEngine;
 
 public class ObjInteract : MonoBehaviour, Iinteractable
 {
-    public bool _canSwitch = false;
+    public bool _canSwitch;
     //Intaractable GameObjects
     [SerializeField]
-    private GameObject _light, _door;
+    private GameObject _door;
+    [SerializeField]
+    private Light _light;
 
-    public void Pick()
-    {}
-    public void Back()
-    {}
-    public void ReturnBase()
-    {}
+
+    private void Update()
+    {
+        TurnLight();
+    }
     public void SwitchLight()
     {
-        _canSwitch = true;
+        _canSwitch = !_canSwitch;
+        Debug.Log("yesess");
+    }
+    private void TurnLight()
+    {
 
-        if(_canSwitch == true)
+        if (_canSwitch == true)
         {
-            _light.SetActive(true);
-            _canSwitch = false;
+            _light.intensity = 100f;           
         }
-        if (_canSwitch  == false)
+        if (_canSwitch == false)
         {
-            _light.SetActive(false);
-            _canSwitch = true;
-
+            _light.intensity = 0f;
         }
     }
+    public void Pick()
+    { }
+    public void Back()
+    { }
+    public void ReturnBase()
+    { }
 }
+

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Object
   - Light
+  - Default
   layers:
   - Default
   - TransparentFX
