@@ -7,7 +7,10 @@ public class SanityBar : MonoBehaviour
 {
     public Slider slider;
     public Gradient gradient;
-    public Image fill;
+    public Image[] fill;
+    public int health;
+    public int maxHealth;
+    
 
 
     // Start is called before the first frame update
@@ -19,7 +22,20 @@ public class SanityBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       // health = characterInteraction.Health;
+      //  maxHealth = characterInteraction.maxHealth;
+
+        for (int i = 0; i < fill.Length; i++)
+        {
+            if (i < maxHealth)
+            {
+                fill[i].enabled = true;
+            }
+            else
+            {
+                fill[i].enabled = false;
+            }
+        }
     }
 
     void MaxHealth(int health)
@@ -34,6 +50,6 @@ public class SanityBar : MonoBehaviour
     {
         slider.value = health;
 
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        //fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }

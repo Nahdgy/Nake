@@ -706,6 +706,8 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   fill: {fileID: 1847379618}
+  health: 0
+  maxHealth: 0
 --- !u!1 &1107750783
 GameObject:
   m_ObjectHideFlags: 0
