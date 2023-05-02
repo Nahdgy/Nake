@@ -19,6 +19,8 @@ public class PlayerMov : MonoBehaviour
 
     private Vector3 _moveDirection, _velocity = Vector3.zero;
 
+    [SerializeField]
+    Animator _anim;
 
     [SerializeField]
     private Rigidbody _rb;
@@ -41,6 +43,13 @@ public class PlayerMov : MonoBehaviour
         ControllerInputs();
         LimitVelocity();
         GroundCheck();
+        WalkAnimation();
+       
+    }
+    private void WalkAnimation()
+    {
+        float _palyerVelocity = Mathf.Abs(_rb.velocity.x);
+        _anim.SetFloat("Speed", _palyerVelocity);
     }
     void ControllerInputs()
     {
@@ -73,6 +82,5 @@ public class PlayerMov : MonoBehaviour
             _rb.velocity = new Vector3(_limitVel.x, _rb.velocity.y, _limitVel.z);
         }
     }
-   
 
 }
