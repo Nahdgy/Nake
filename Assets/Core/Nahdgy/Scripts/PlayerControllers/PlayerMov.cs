@@ -16,6 +16,9 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]
     private LayerMask _whatIsGround;
 
+    public int maxHealth = 100;
+    public int Health;
+    public SanityBar sanityBar;
 
     private Vector3 _moveDirection, _velocity = Vector3.zero;
 
@@ -32,6 +35,9 @@ public class PlayerMov : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
+
+        Health = maxHealth;
+        sanityBar.SetMaxHealth(maxHealth);
     }
     private void FixedUpdate()
     {
