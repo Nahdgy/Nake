@@ -8,6 +8,11 @@ TagManager:
   - Light
   - Default
   - Door
+  - A
+  - B
+  - C
+  - D
+  - E
   layers:
   - Default
   - TransparentFX
