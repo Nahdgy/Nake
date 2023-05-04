@@ -35,6 +35,10 @@ public class PlayerCam : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
     void GetMouseInput()
     {
         if (_canSee == true)

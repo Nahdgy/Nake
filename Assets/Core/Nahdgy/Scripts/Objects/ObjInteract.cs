@@ -14,14 +14,9 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     private float _timerDoor, _rotationDoor, _baseAngle, _endAngle;
 
 
-    private void Update()
-    {
-        
-    }
     public void SwitchLight()
     {
         TurnLight();
-
         _canSwitch = !_canSwitch;
         Debug.Log("yesess");
     }
