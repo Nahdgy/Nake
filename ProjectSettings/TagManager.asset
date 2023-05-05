@@ -8,7 +8,6 @@ TagManager:
   - Light
   - Default
   - Door
-  - pills
   layers:
   - Default
   - TransparentFX
