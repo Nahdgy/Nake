@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCam : MonoBehaviour
 {
@@ -8,7 +9,11 @@ public class PlayerCam : MonoBehaviour
     private float _mouseSensibilityX, _mouseSensibilityY, _distRange;
     private float _cameraRotationX, _cameraRotationY;
     [SerializeField]
+    private int _layer;
+    [SerializeField]
     private Transform _oriantationCam, _objInView;
+    [SerializeField]
+    private string _sceneName;
 
     //UI GameObjects
     [SerializeField]
@@ -22,22 +27,37 @@ public class PlayerCam : MonoBehaviour
     private LayerMask _layerMask;
 
     public bool _canSee = true;
+    private bool _canRay = false;
 
 
     private void Update()
     {
         GetMouseInput();
-        ObjectTargeted();
+       ObjectTargeted();
         //faire des box trigger pour activer le raycast et éviter le trop plein de calcul et utiliser un traceur pour calibrer le raycast
     }
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
     }
     private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.layer == _layer)
+        { 
+            _canRay = true;
+            _actionUI.SetActive(true); 
+        }  
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == _layer)
+        {
+            _canRay = false;
+            _actionUI.SetActive(false);
+        }
+
     }
     void GetMouseInput()
     {
@@ -56,15 +76,26 @@ public class PlayerCam : MonoBehaviour
     private void ObjectTargeted()
     {
         RaycastHit _hit;
-        if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask))
+        if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask) && _canRay == true)
         {
+            if (_hit.transform.CompareTag("OUIJA"))
+            {
+                Debug.Log("hit layer");
+                _actionUI.SetActive(true);
+                _sceneName = _hit.collider.gameObject.tag;
+
+                if (Input.GetButtonDown("Action"))
+                {
+                    SceneManager.LoadScene(_sceneName);
+                }
+            }
+
             _obj = _hit.collider.gameObject;
             if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
             {
 
                 if (_hit.transform.CompareTag("Object"))
                 {
-                    _actionUI.SetActive(true);
 
                     if (Input.GetButtonDown("Action"))
                     {
@@ -111,6 +142,7 @@ public class PlayerCam : MonoBehaviour
                         _actionUI.SetActive(false);
                     }
                 }
+               
             }
         }
     }

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Core/Nahdgy/Scenes/TestScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Core/Nahdgy/Scenes/OUIJA.unity
+    guid: c9a0d726e7aa07645a13021a5f922cd7
   m_configObjects: {}
