@@ -14,18 +14,20 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     private float _timerDoor, _rotationDoor, _baseAngle, _endAngle;
 
 
-    private void Update()
-    {
-        TurnLight();
-    }
     public void SwitchLight()
     {
+        TurnLight();
         _canSwitch = !_canSwitch;
         Debug.Log("yesess");
     }
     private void TurnLight()
     {
-
+        if (_light == null)
+        {
+            Debug.Log("Lumière non assigné"); 
+            return;
+        }
+           
         if (_canSwitch == true)
         {
             _light.intensity = 100f;           
@@ -53,7 +55,15 @@ public class ObjInteract : MonoBehaviour, Iinteractable
            yield return null;      
         }
         yield return new WaitForSeconds(_timerDoor);
-        _door.transform.rotation = Quaternion.Euler(0, 0, 0);
+        _timer = 0f;
+        while (_timer < _lerpDuration)
+        {
+            _timer += Time.deltaTime;
+            _rotationDoor = Mathf.Lerp(_endAngle, 0f, _timer / _lerpDuration);
+            _door.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0);
+            yield return null;
+        }
+    
     }
     public void Pick()
     { }

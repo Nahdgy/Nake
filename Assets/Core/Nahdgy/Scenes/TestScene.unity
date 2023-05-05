@@ -580,9 +580,9 @@ GameObject:
   - component: {fileID: 326382180}
   - component: {fileID: 326382179}
   - component: {fileID: 326382178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Default
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canSwitch: 0
   _door: {fileID: 439843846}
-  _light: {fileID: 1919233987}
+  _light: {fileID: 0}
   _timerDoor: 5
   _rotationDoor: 0
   _baseAngle: 0
@@ -1533,9 +1533,9 @@ GameObject:
   - component: {fileID: 826376599}
   - component: {fileID: 826376598}
   - component: {fileID: 826376597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Default
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1944,7 +1944,7 @@ GameObject:
   - component: {fileID: 1281651992}
   m_Layer: 3
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Default
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
