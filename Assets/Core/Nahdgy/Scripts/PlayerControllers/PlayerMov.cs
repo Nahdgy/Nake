@@ -16,15 +16,20 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]
     private LayerMask _whatIsGround;
 
-
     private Vector3 _moveDirection, _velocity = Vector3.zero;
 
+    [SerializeField]
+    Animator _anim;
 
     [SerializeField]
     private Rigidbody _rb;
 
     [SerializeField]
     private Transform _oriantation;
+
+    public SanityBar SanityBar;
+
+    bool sane;
    
     private void Start()
     {
@@ -41,6 +46,25 @@ public class PlayerMov : MonoBehaviour
         ControllerInputs();
         LimitVelocity();
         GroundCheck();
+        WalkAnimation();
+    }
+
+    private void OnTriggerEnter(Collider pills)
+    {
+
+         if (pills.gameObject.tag == "pills")
+         {
+                SanityBar.t += 100;
+                // SanityBar.slider.value = 100f;
+                Debug.Log("recovered");
+                Destroy(pills.gameObject);
+         }
+       
+    }
+    private void WalkAnimation()
+    {
+        float _palyerVelocity = Mathf.Abs(_rb.velocity.x);
+        _anim.SetFloat("Speed", _palyerVelocity);
     }
     void ControllerInputs()
     {
@@ -73,6 +97,5 @@ public class PlayerMov : MonoBehaviour
             _rb.velocity = new Vector3(_limitVel.x, _rb.velocity.y, _limitVel.z);
         }
     }
-   
 
 }
