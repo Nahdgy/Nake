@@ -46,6 +46,7 @@ TagManager:
   - 9
   - 0
   - QuitCode
+  - pills
   layers:
   - Default
   - TransparentFX
