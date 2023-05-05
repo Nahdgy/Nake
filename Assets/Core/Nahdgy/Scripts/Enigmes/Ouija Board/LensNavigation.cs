@@ -53,6 +53,10 @@ public class LensNavigation : MonoBehaviour,Icodable
                 _code._letter = _hit.collider.gameObject.tag;
                 _code.Validation(_code._letter);
             }
+            if (_hit.transform.CompareTag("QuitCode") && Input.GetButtonDown("Action"))
+            {
+                _code.QuitCode();
+            }
         }
     }
 }

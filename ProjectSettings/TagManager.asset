@@ -45,6 +45,7 @@ TagManager:
   - 8
   - 9
   - 0
+  - QuitCode
   layers:
   - Default
   - TransparentFX
