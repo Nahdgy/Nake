@@ -16,10 +16,6 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]
     private LayerMask _whatIsGround;
 
-    public int maxHealth = 100;
-    public int Health;
-    public SanityBar sanityBar;
-
     private Vector3 _moveDirection, _velocity = Vector3.zero;
 
     [SerializeField]
@@ -30,14 +26,15 @@ public class PlayerMov : MonoBehaviour
 
     [SerializeField]
     private Transform _oriantation;
+
+    public SanityBar SanityBar;
+
+    bool sane;
    
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
-
-        Health = maxHealth;
-        sanityBar.SetMaxHealth(maxHealth);
     }
     private void FixedUpdate()
     {
@@ -50,6 +47,18 @@ public class PlayerMov : MonoBehaviour
         LimitVelocity();
         GroundCheck();
         WalkAnimation();
+    }
+
+    private void OnTriggerEnter(Collider pills)
+    {
+
+         if (pills.gameObject.tag == "pills")
+         {
+                SanityBar.t += 100;
+                // SanityBar.slider.value = 100f;
+                Debug.Log("recovered");
+                Destroy(pills.gameObject);
+         }
        
     }
     private void WalkAnimation()
