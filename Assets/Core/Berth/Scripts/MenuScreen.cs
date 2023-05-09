@@ -1,16 +1,15 @@
 
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuScreen : MonoBehaviour
 {
-
-    private void Update()
+    
+    public void Fade()
     {
-        if (Input.GetButtonDown("Action"))
-        {
-            FadeToLevel(1);
-        }
+       FadeToLevel(1);
+        Debug.Log("fade");
     }
 
     public Animator animator;
@@ -24,10 +23,14 @@ public class MenuScreen : MonoBehaviour
         animator.SetTrigger("FadeOut");
     }
 
+    public void OnFadeComplete()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void Quit()
     {
         Debug.Log("left");
         Application.Quit();
     }
-
 }
