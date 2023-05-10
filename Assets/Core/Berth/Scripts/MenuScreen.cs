@@ -5,27 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class MenuScreen : MonoBehaviour
 {
-    
+    public Animator animator;
+    public string levelToLoad;
+    private float timer = 5f;
+    public bool canInterract = true;
+
     public void Fade()
     {
-       FadeToLevel(1);
+        canInterract= false;
+        Timer();
         Debug.Log("fade");
+        GameObject.Find("Play").GetComponent<Button>().enabled= false;
     }
 
-    public Animator animator;
-    public void Play()
+    public void Timer()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            FadeToLevel(1);
+        }
     }
 
     public void FadeToLevel(int levelIndex)
     {
         animator.SetTrigger("FadeOut");
-    }
-
-    public void OnFadeComplete()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 
     public void Quit()

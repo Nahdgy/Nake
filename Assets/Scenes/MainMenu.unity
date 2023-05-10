@@ -340,18 +340,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 711994219}
         m_TargetAssemblyTypeName: MenuScreen, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 711994219}
-        m_TargetAssemblyTypeName: MenuScreen, Assembly-CSharp
         m_MethodName: Fade
         m_Mode: 1
         m_Arguments:
@@ -541,6 +529,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 276465293}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!95 &276465295
 Animator:
   serializedVersion: 5
@@ -707,6 +711,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  levelToLoad: 
+  canInterract: 1
+  canvas: {fileID: 0}
 --- !u!114 &478824392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,7 +1027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &710574844
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5934,6 +5941,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  levelToLoad: 
+  canInterract: 1
+  canvas: {fileID: 0}
 --- !u!1 &712104457
 GameObject:
   m_ObjectHideFlags: 0
@@ -11118,6 +11128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1181221759}
+  levelToLoad: 
+  canInterract: 1
+  canvas: {fileID: 0}
 --- !u!1 &1232489416
 GameObject:
   m_ObjectHideFlags: 0
@@ -11806,7 +11819,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 711994219}
         m_TargetAssemblyTypeName: MenuScreen, Assembly-CSharp
-        m_MethodName: FadeOut
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
