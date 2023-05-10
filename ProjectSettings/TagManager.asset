@@ -58,9 +58,9 @@ TagManager:
   - Object
   - TriggerInteract
   - Camera
-  - 
-  - 
-  - 
+  - Enigma
+  - Player
+  - Collider
   - 
   - 
   - 
