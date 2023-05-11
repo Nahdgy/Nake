@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuScreen : MonoBehaviour
 {
-    public Animator animator;
-    public string levelToLoad;
+   [SerializeField] public Animator animator;
+   [SerializeField] public string levelToLoad;
     private float timer = 5f;
     public bool canInterract = true;
 
