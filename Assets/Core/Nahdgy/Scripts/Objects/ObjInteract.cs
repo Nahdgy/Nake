@@ -12,13 +12,14 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     private Light _light;
     [SerializeField]
     private float _timerDoor, _rotationDoor, _baseAngle, _endAngle;
+    [SerializeField]
+    private PlayerCam _playerCam = new PlayerCam();
 
 
     public void SwitchLight()
     {
         TurnLight();
         _canSwitch = !_canSwitch;
-        Debug.Log("yesess");
     }
     private void TurnLight()
     {
@@ -61,6 +62,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
             _timer += Time.deltaTime;
             _rotationDoor = Mathf.Lerp(_endAngle, 0f, _timer / _lerpDuration);
             _door.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0);
+            _playerCam._canOpen = false;
             yield return null;
         }
     

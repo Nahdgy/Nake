@@ -47,6 +47,7 @@ TagManager:
   - 0
   - QuitCode
   - pills
+  - OUIJA
   layers:
   - Default
   - TransparentFX
@@ -55,11 +56,11 @@ TagManager:
   - Water
   - UI
   - Object
-  - 
-  - 
-  - 
-  - 
-  - 
+  - TriggerInteract
+  - Camera
+  - Enigma
+  - Player
+  - Collider
   - 
   - 
   - 

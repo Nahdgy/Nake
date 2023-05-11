@@ -18,8 +18,15 @@ public class PlayerMov : MonoBehaviour
 
     private Vector3 _moveDirection, _velocity = Vector3.zero;
 
+
     [SerializeField]
     Animator _anim;
+
+   
+    [SerializeField]
+    private PlayerCam _playerCam = new PlayerCam();
+
+
 
     [SerializeField]
     private Rigidbody _rb;
@@ -46,7 +53,7 @@ public class PlayerMov : MonoBehaviour
         ControllerInputs();
         LimitVelocity();
         GroundCheck();
-        WalkAnimation();
+       
     }
 
     private void OnTriggerEnter(Collider pills)
@@ -84,6 +91,7 @@ public class PlayerMov : MonoBehaviour
             if (_isGrounded)
             {
                 _rb.AddForce(_moveDirection.normalized * _moveSpeed, ForceMode.Force);
+                WalkAnimation();
             }
             else if (!_isGrounded) _rb.AddForce(_moveDirection.normalized * _moveSpeed * _moveMultiplier, ForceMode.Force);
         }
