@@ -10,6 +10,15 @@ public class MenuScreen : MonoBehaviour
     private float timer = 5f;
     public bool canInterract = true;
 
+    private void Start()
+    {
+        inIt();
+    }
+
+    public void inIt()
+    {
+        
+    }
     public void Fade()
     {
         canInterract= false;

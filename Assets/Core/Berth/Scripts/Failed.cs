@@ -5,14 +5,7 @@ using UnityEngine;
 public class Failed : MonoBehaviour
 {
     public Animator animator;
-    private float timer = 10f;
-    private int levelToLoad;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    private float timer = 15f;
 
     // Update is called once per frame
     void Update()
@@ -26,14 +19,9 @@ public class Failed : MonoBehaviour
 
     public void FadeToLevel(int levelIndex)
     {
-        levelToLoad = levelIndex;
         animator.SetTrigger("FadeOut");
     }
 
-    public void fadeToNextLev()
-    {
-        FadeToLevel(SceneManager.GetActiveScene().buildIndex - 3);
-    }
     public void OnFadeComplete()
     {
         SceneManager.LoadScene("MainMenu");
