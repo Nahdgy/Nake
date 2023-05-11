@@ -19,6 +19,10 @@ public class PlayerCam : MonoBehaviour
 
     [SerializeField]
     Animator _anim;
+    [SerializeField]
+    AudioSource _audioSource;
+    [SerializeField]
+    AudioClip _sfxLock;
 
 
     [SerializeField]
@@ -31,6 +35,7 @@ public class PlayerCam : MonoBehaviour
 
     public bool _canSee = true;
     public bool _canSave = false;
+    public bool _canOpen = false;
     private bool _canRay = false;
 
 
@@ -93,10 +98,9 @@ public class PlayerCam : MonoBehaviour
             _obj = _hit.collider.gameObject;
             if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
             {
-
+//Object can be manipulate 360°
                 if (_hit.transform.CompareTag("Object"))
                 {
-
                     if (Input.GetButtonDown("Action"))
                     {
                         _actionUI.SetActive(false);
@@ -116,15 +120,9 @@ public class PlayerCam : MonoBehaviour
                         interactObj.Back();
                     }
                 }
-                if (_hit.transform.CompareTag("Default"))
-                {
-                    Debug.Log("A desactivé");
-                    _actionUI.SetActive(false);
-                }
-
+//Light switcher action
                 if (_hit.transform.CompareTag("Light"))
                 {
-                    _actionUI.SetActive(true);
 
                     if (Input.GetButtonDown("Action"))
                     {
@@ -132,14 +130,18 @@ public class PlayerCam : MonoBehaviour
                         _actionUI.SetActive(false);
                     }
                 }
+//Open the door when the key is selected
                 if (_hit.transform.CompareTag("Door"))
                 {
-                    _actionUI.SetActive(true);
 
-                    if (Input.GetButtonDown("Action"))
+                    if (Input.GetButtonDown("Action") && _canOpen == true)
                     {
                         interactObj.OpenDoor();
                         _actionUI.SetActive(false);
+                    }
+                    else if (Input.GetButtonDown("Action"))
+                    {
+                        _audioSource.PlayOneShot(_sfxLock);
                     }
                 }
                
@@ -154,10 +156,7 @@ public class PlayerCam : MonoBehaviour
         {
             _obj = _hit.collider.gameObject;
             if (_obj.TryGetComponent<Icodable>(out Icodable interactObj))
-            {
-                Debug.Log("hit layer");
-                
-
+            { 
                 if (Input.GetButtonDown("Action"))
                 {
                     interactObj.Open();
