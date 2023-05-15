@@ -35,8 +35,6 @@ public class PlayerMov : MonoBehaviour
     private Transform _oriantation;
 
     public SanityBar SanityBar;
-
-    bool sane;
    
     private void Start()
     {
@@ -66,7 +64,6 @@ public class PlayerMov : MonoBehaviour
                 Debug.Log("recovered");
                 Destroy(pills.gameObject);
          }
-       
     }
     private void WalkAnimation()
     {
@@ -77,7 +74,6 @@ public class PlayerMov : MonoBehaviour
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
-
     }
     void GroundCheck()
     {
