@@ -105,5 +105,4 @@ public class PlayerMov : MonoBehaviour
             _rb.velocity = new Vector3(_limitVel.x, _rb.velocity.y, _limitVel.z);
         }
     }
-
 }

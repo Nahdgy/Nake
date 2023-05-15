@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb6e7a5c90b70f42aea4272a261a556, type: 3}
   m_Name: KeyRoom
   m_EditorClassIdentifier: 
-  _name: 
-  _visual: {fileID: 0}
-  _prefab: {fileID: 0}
+  _name: Key
+  _visual: {fileID: 21300000, guid: 3086d66a563317b40a20a20da2c64ac0, type: 3}
+  _prefab: {fileID: 5409939973119488421, guid: 5f753c3d855ecc54c8c56d844e67b5b4, type: 3}
+  _id: 1
+  _itemType: 2

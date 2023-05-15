@@ -10,31 +10,30 @@ public class PlayerCam : MonoBehaviour
     private float _cameraRotationX, _cameraRotationY;
     [SerializeField]
     private int _layer;
+
     [SerializeField]
     private Transform _oriantationCam, _objInView;
-
     //UI GameObjects
     [SerializeField]
-    private GameObject _obj, _actionUI, _lessUI;
+    private GameObject _obj, _actionUI, _lessUI; 
+    [SerializeField]
+    private Rigidbody _rb;
 
     [SerializeField]
     Animator _anim;
     [SerializeField]
     AudioSource _audioSource;
     [SerializeField]
-    AudioClip _sfxLock;
+    AudioClip _sfxLock, _sfxZip;
 
-
+    [SerializeField]
+    private ItemBehavior _pickUp = new ItemBehavior();
     [SerializeField]
     private PlayerMov _player;
-    [SerializeField]
-    private Rigidbody _rb;
-
     [SerializeField]
     private LayerMask _layerMask,_layerMaskEnigma;
 
     public bool _canSee = true;
-    public bool _canSave = false;
     public bool _canOpen = false;
     private bool _canRay = false;
 
@@ -59,6 +58,10 @@ public class PlayerCam : MonoBehaviour
             _canRay = true;
             _actionUI.SetActive(true); 
         }  
+        else
+        {
+            _actionUI.SetActive(false);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -95,6 +98,16 @@ public class PlayerCam : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask) && _canRay == true)
         {
+//Pick up items
+            if (_hit.transform.CompareTag("Item"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _audioSource.PlayOneShot(_sfxZip);
+                    _pickUp.DoPickUp(_hit.transform.gameObject.GetComponent<Item>());
+                }
+            }
+
             _obj = _hit.collider.gameObject;
             if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
             {
@@ -133,13 +146,19 @@ public class PlayerCam : MonoBehaviour
 //Open the door when the key is selected
                 if (_hit.transform.CompareTag("Door"))
                 {
+                    interactObj.CheckList();
+                    ObjInteract objInteract = _hit.collider.gameObject.GetComponent<ObjInteract>();
 
+                    if(objInteract._isInHand == true)
+                    {
+                        _canOpen = true;
+                    }
                     if (Input.GetButtonDown("Action") && _canOpen == true)
                     {
                         interactObj.OpenDoor();
                         _actionUI.SetActive(false);
                     }
-                    else if (Input.GetButtonDown("Action"))
+                    if (Input.GetButtonDown("Action") && _canOpen == false)
                     {
                         _audioSource.PlayOneShot(_sfxLock);
                     }

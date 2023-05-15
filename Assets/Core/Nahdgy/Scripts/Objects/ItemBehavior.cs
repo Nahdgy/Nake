@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemBehavior : MonoBehaviour
 {
     [SerializeField]
-    private innventory _inventory;
+    private Innventory _inventory;
     [SerializeField]
     private float _destroyTiming;
    
@@ -17,8 +17,6 @@ public class ItemBehavior : MonoBehaviour
             return;
         }    
         _inventory.AddItem(_itemBehavior._itemData);
-        Destroy(_itemBehavior.gameObject, _destroyTiming);
-
-        
+        Destroy(_itemBehavior.gameObject, _destroyTiming);   
     }
 }

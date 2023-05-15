@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ObjInteract : MonoBehaviour, Iinteractable
 {
+    
+    public bool _isInHand = false;
     public bool _canSwitch;
+
     //Intaractable GameObjects
     [SerializeField]
     private GameObject _door;
@@ -14,7 +17,10 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     private float _timerDoor, _rotationDoor, _baseAngle, _endAngle;
     [SerializeField]
     private PlayerCam _playerCam = new PlayerCam();
-
+    [SerializeField]
+    private Innventory _itemSelect;
+    [SerializeField]
+    private int _itemNeed;
 
     public void SwitchLight()
     {
@@ -41,7 +47,6 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     public void OpenDoor()
     {
         StartCoroutine(ClosingDoor());
-        
     }
     private IEnumerator ClosingDoor()
     {  
@@ -65,7 +70,20 @@ public class ObjInteract : MonoBehaviour, Iinteractable
             _playerCam._canOpen = false;
             yield return null;
         }
-    
+    }
+    public void CheckList()
+    {
+        if (_itemNeed == 0) return;
+
+        if (_itemSelect._objId == _itemNeed)
+        {
+            Debug.Log("L'objet est dans la main");
+            _isInHand = true;
+        }
+        else if (_itemSelect._objId != _itemNeed)
+        {
+            _isInHand = false;
+        }
     }
     public void Pick()
     { }
