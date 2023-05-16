@@ -11,6 +11,7 @@ public class Clock : MonoBehaviour
     void Start()
     {
         Animation = GetComponent<Animator>();
+        Animation.speed = 0;
     }
 
     void Update()
@@ -22,6 +23,14 @@ public class Clock : MonoBehaviour
        {
             Animation.speed = 0;
        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag ("Time"))
+        {
+
+        }
     }
 
 }
