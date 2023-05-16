@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCam : MonoBehaviour
 {
+
     [SerializeField]
     private float _mouseSensibilityX, _mouseSensibilityY, _distRange;
     private float _cameraRotationX, _cameraRotationY;
@@ -13,29 +14,29 @@ public class PlayerCam : MonoBehaviour
 
     [SerializeField]
     private Transform _oriantationCam, _objInView;
-    //UI GameObjects
     [SerializeField]
     private GameObject _obj, _actionUI, _lessUI; 
     [SerializeField]
     private Rigidbody _rb;
+    [SerializeField]
+    private LayerMask _layerMask,_layerMaskEnigma;
 
     [SerializeField]
-    Animator _anim;
+    private Animator _anim;
     [SerializeField]
-    AudioSource _audioSource;
+    private AudioSource _audioSource;
     [SerializeField]
-    AudioClip _sfxLock, _sfxZip;
+    private AudioClip _sfxLock, _sfxZip;
 
     [SerializeField]
     private ItemBehavior _pickUp = new ItemBehavior();
     [SerializeField]
     private PlayerMov _player;
-    [SerializeField]
-    private LayerMask _layerMask,_layerMaskEnigma;
+    
 
     public bool _canSee = true;
     public bool _canOpen = false;
-    private bool _canRay = false;
+    public bool _canRay = false;
 
 
     private void Update()
@@ -52,6 +53,7 @@ public class PlayerCam : MonoBehaviour
         
     }
     private void OnTriggerEnter(Collider other)
+//Activation of the raycast in the box trigger
     {
         if(other.gameObject.layer == _layer)
         { 
@@ -63,6 +65,7 @@ public class PlayerCam : MonoBehaviour
             _actionUI.SetActive(false);
         }
     }
+//Desactivation of the raycast out of the box trigger
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == _layer)
@@ -72,6 +75,7 @@ public class PlayerCam : MonoBehaviour
         }
 
     }
+//Convert mous input in controller inputs axis
     void GetMouseInput()
     {
         if (_canSee == true)
@@ -87,11 +91,13 @@ public class PlayerCam : MonoBehaviour
             _oriantationCam.rotation = Quaternion.Euler(0, _cameraRotationY, 0);
         }
     }
+//Rotation Y of the Mesh Player with the camera
     private void TurnAnimation()
     {
         float _playerRotation = Mathf.Abs(_rb.rotation.y);
         _anim.SetFloat("Direction", _playerRotation);
     }
+//Raycast innitialization
     private void ObjectTargeted()
     {
         RaycastHit _hit;
@@ -167,6 +173,7 @@ public class PlayerCam : MonoBehaviour
             }
         }
     }
+//Open enigma's resolve objects
     private void EnigmaTargeted()
     {
         RaycastHit _hit;

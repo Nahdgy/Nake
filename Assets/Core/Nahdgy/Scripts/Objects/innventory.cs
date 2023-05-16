@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 
 
@@ -13,6 +14,11 @@ public class Innventory : MonoBehaviour
     private Transform _inventorySlotsParents;
     [SerializeField]
     private INavigation _navSlot;
+
+    [SerializeField]
+    private AudioSource _source;
+    [SerializeField]
+    private AudioClip _pickSfx, _nullSfx, _openSfx, _closeSfx;
 
     public int _objId;
 
@@ -80,6 +86,7 @@ public class Innventory : MonoBehaviour
             case ItemType.Letter:
                 ReadALetter();
                 break;
+
         }
 
     }
