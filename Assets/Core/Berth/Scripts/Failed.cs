@@ -6,8 +6,12 @@ public class Failed : MonoBehaviour
 {
     public Animator animator;
     private float timer = 15f;
+    private AnimationBehavior AnimationBehavior;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        AnimationBehavior.Failed();
+    }
     void Update()
     {
         timer -= Time.deltaTime;
@@ -19,12 +23,6 @@ public class Failed : MonoBehaviour
 
     public void FadeToLevel(int levelIndex)
     {
-        animator.SetTrigger("FadeOut");
+        AnimationBehavior.FadeIn();
     }
-
-    public void OnFadeComplete()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
 }
