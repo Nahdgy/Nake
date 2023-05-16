@@ -5,38 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCam : MonoBehaviour
 {
+
     [SerializeField]
     private float _mouseSensibilityX, _mouseSensibilityY, _distRange;
     private float _cameraRotationX, _cameraRotationY;
     [SerializeField]
     private int _layer;
+
     [SerializeField]
     private Transform _oriantationCam, _objInView;
-
-    //UI GameObjects
     [SerializeField]
-    private GameObject _obj, _actionUI, _lessUI;
-
-    [SerializeField]
-    Animator _anim;
-    [SerializeField]
-    AudioSource _audioSource;
-    [SerializeField]
-    AudioClip _sfxLock;
-
-
-    [SerializeField]
-    private PlayerMov _player;
+    private GameObject _obj, _actionUI, _lessUI; 
     [SerializeField]
     private Rigidbody _rb;
-
     [SerializeField]
     private LayerMask _layerMask,_layerMaskEnigma;
 
+    [SerializeField]
+    private Animator _anim;
+    [SerializeField]
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _sfxLock, _sfxZip;
+
+    [SerializeField]
+    private ItemBehavior _pickUp = new ItemBehavior();
+    [SerializeField]
+    private PlayerMov _player;
+    
+
     public bool _canSee = true;
-    public bool _canSave = false;
     public bool _canOpen = false;
-    private bool _canRay = false;
+    public bool _canRay = false;
 
 
     private void Update()
@@ -53,13 +53,19 @@ public class PlayerCam : MonoBehaviour
         
     }
     private void OnTriggerEnter(Collider other)
+//Activation of the raycast in the box trigger
     {
         if(other.gameObject.layer == _layer)
         { 
             _canRay = true;
             _actionUI.SetActive(true); 
         }  
+        else
+        {
+            _actionUI.SetActive(false);
+        }
     }
+//Desactivation of the raycast out of the box trigger
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == _layer)
@@ -69,6 +75,7 @@ public class PlayerCam : MonoBehaviour
         }
 
     }
+//Convert mous input in controller inputs axis
     void GetMouseInput()
     {
         if (_canSee == true)
@@ -84,17 +91,29 @@ public class PlayerCam : MonoBehaviour
             _oriantationCam.rotation = Quaternion.Euler(0, _cameraRotationY, 0);
         }
     }
+//Rotation Y of the Mesh Player with the camera
     private void TurnAnimation()
     {
         float _playerRotation = Mathf.Abs(_rb.rotation.y);
         _anim.SetFloat("Direction", _playerRotation);
     }
+//Raycast innitialization
     private void ObjectTargeted()
     {
         RaycastHit _hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask) && _canRay == true)
         {
+//Pick up items
+            if (_hit.transform.CompareTag("Item"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _audioSource.PlayOneShot(_sfxZip);
+                    _pickUp.DoPickUp(_hit.transform.gameObject.GetComponent<Item>());
+                }
+            }
+
             _obj = _hit.collider.gameObject;
             if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
             {
@@ -133,13 +152,19 @@ public class PlayerCam : MonoBehaviour
 //Open the door when the key is selected
                 if (_hit.transform.CompareTag("Door"))
                 {
+                    interactObj.CheckList();
+                    ObjInteract objInteract = _hit.collider.gameObject.GetComponent<ObjInteract>();
 
+                    if(objInteract._isInHand == true)
+                    {
+                        _canOpen = true;
+                    }
                     if (Input.GetButtonDown("Action") && _canOpen == true)
                     {
                         interactObj.OpenDoor();
                         _actionUI.SetActive(false);
                     }
-                    else if (Input.GetButtonDown("Action"))
+                    if (Input.GetButtonDown("Action") && _canOpen == false)
                     {
                         _audioSource.PlayOneShot(_sfxLock);
                     }
@@ -148,6 +173,7 @@ public class PlayerCam : MonoBehaviour
             }
         }
     }
+//Open enigma's resolve objects
     private void EnigmaTargeted()
     {
         RaycastHit _hit;
