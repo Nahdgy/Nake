@@ -49,6 +49,8 @@ TagManager:
   - pills
   - OUIJA
   - Item
+  - Quinze
+  - Trente
   layers:
   - Default
   - TransparentFX
