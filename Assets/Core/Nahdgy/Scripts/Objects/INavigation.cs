@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 
 public class INavigation : MonoBehaviour
 {   
-    public ItemData _item;
-
     [SerializeField]
     private float _timerClick;
     [SerializeField]
@@ -23,6 +23,8 @@ public class INavigation : MonoBehaviour
     private PlayerCam _playerCam;
     [SerializeField]
     private PlayerMov _playerMov;
+    [SerializeField]
+    private Innventory _innventoryCode;
 
 
     private void Update()
@@ -31,7 +33,7 @@ public class INavigation : MonoBehaviour
     }
     private void OpenTheInventory()
     {
-        if(Input.GetButtonDown("Inventory") && _isOpen == false)
+        if (Input.GetButtonDown("Inventory") && _isOpen == false)
         {
             _source.PlayOneShot(_openSfx);
             _inventoryUi.SetActive(true);
@@ -51,26 +53,13 @@ public class INavigation : MonoBehaviour
 
         }
     }
-    public void ClickButton()
-    {
-        Innventory.Instance.SelectedObject(_item);
-
-        if(Innventory.Instance._objId != 0)
-        {      
-            StartCoroutine(ClickTimer());
-        }
-        else
-        {
-            _source.PlayOneShot(_nullSfx);
-        }
-       
-    }
-    private IEnumerator ClickTimer()
+    public IEnumerator ClickTimer()
     {
         _source.PlayOneShot(_pickSfx);
         yield return new WaitForSeconds(_timerClick);
         _inventoryUi.SetActive(false);
         _playerMov._canMove = true;
         _playerCam._canSee = true;
+        _isOpen = false;
     }
 }
