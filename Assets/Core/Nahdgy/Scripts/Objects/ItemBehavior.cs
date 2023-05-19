@@ -17,8 +17,6 @@ public class ItemBehavior : MonoBehaviour
         {
             return;
         }
-
-        Debug.Log("add to list");
         Innventory.Instance.AddItem(_itemBehavior._itemData);
         Destroy(_itemBehavior.gameObject, _destroyTiming);   
     }

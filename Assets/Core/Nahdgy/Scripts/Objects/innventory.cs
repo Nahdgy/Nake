@@ -102,10 +102,6 @@ public class Innventory : MonoBehaviour
             Slot currentSlot = _inventorySlotsParents.GetChild(i).GetComponent<Slot>();
 
             currentSlot._item = _content[i].itemData;
-            Debug.Log("visual"+currentSlot._itemVisual);
-            Debug.Log("sprite"+currentSlot._itemVisual.sprite) ;
-            Debug.Log("itemdata"+ _content[i].itemData) ;
-            Debug.Log("itemdatavisual"+ _content[i].itemData._visual) ;
             currentSlot._itemVisual.sprite = _content[i].itemData._visual;
         }
     }

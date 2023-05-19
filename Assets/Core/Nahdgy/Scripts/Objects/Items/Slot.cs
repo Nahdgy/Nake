@@ -29,7 +29,7 @@ public class Slot : MonoBehaviour
         {
             StartCoroutine(_navInv.ClickTimer());
 
-            //Innventory.Instance.RemoveItem(_item);
+            Innventory.Instance.RemoveItem(_item);
         }
         else
         {

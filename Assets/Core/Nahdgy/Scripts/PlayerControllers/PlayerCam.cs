@@ -31,7 +31,9 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private ItemBehavior _pickUp = new ItemBehavior();
     [SerializeField]
-    private PlayerMov _player;
+    private PlayerMov _player = new PlayerMov();
+    [SerializeField]
+    private Letter _letter = new Letter();
     
 
     public bool _canSee = true;
@@ -113,7 +115,28 @@ public class PlayerCam : MonoBehaviour
                     _pickUp.DoPickUp(_hit.transform.gameObject.GetComponent<Item>());
                 }
             }
+//Read Letter
+            if (_hit.transform.CompareTag("Letter"))
+            {
+                if (Input.GetButtonDown("Action"))
+                { 
+                    _letter.PickLetter();
+                    _actionUI.SetActive(false);
+                    _lessUI.SetActive(true);
+                    _canSee = false; 
+                    _player._canMove = false;
 
+                }
+                if (Input.GetButtonDown("Back"))
+                {
+                    _letter.BackInPosition();
+                    _actionUI.SetActive(false);
+                    _lessUI.SetActive(false);
+                    _canSee = true;
+                    _player._canMove = true;
+                }
+            }
+     
             _obj = _hit.collider.gameObject;
             if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
             {
