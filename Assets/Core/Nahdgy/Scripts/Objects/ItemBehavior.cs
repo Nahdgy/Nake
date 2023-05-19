@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemBehavior : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class ItemBehavior : MonoBehaviour
         if (_inventory.IsFull())
         {
             return;
-        }    
-        _inventory.AddItem(_itemBehavior._itemData);
+        }
+
+        Debug.Log("add to list");
+        Innventory.Instance.AddItem(_itemBehavior._itemData);
         Destroy(_itemBehavior.gameObject, _destroyTiming);   
     }
 }
