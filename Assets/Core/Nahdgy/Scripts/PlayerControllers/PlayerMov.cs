@@ -25,8 +25,6 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]
     private PlayerCam _playerCam = new PlayerCam();
 
-
-
     [SerializeField]
     private Rigidbody _rb;
 
@@ -57,7 +55,6 @@ public class PlayerMov : MonoBehaviour
     private void OnTriggerEnter(Collider pills)
 //Pick item for the sanity bar    
     {
-
          if (pills.gameObject.tag == "pills")
          {
                 SanityBar.t += 100;
