@@ -54,4 +54,6 @@ public class ObjManip : MonoBehaviour, Iinteractable
     {}
     public void OpenDoor()
     {}
+    public void CheckList()
+    {}    
 }

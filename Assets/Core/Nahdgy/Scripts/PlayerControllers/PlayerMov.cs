@@ -18,7 +18,6 @@ public class PlayerMov : MonoBehaviour
 
     private Vector3 _moveDirection, _velocity = Vector3.zero;
 
-
     [SerializeField]
     Animator _anim;
 
@@ -32,7 +31,8 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]
     private Transform _oriantation;
 
-    public SanityBar SanityBar;
+    [SerializeField]
+    private SanityBar SanityBar;
    
     private void Start()
     {
@@ -53,6 +53,7 @@ public class PlayerMov : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider pills)
+//Pick item for the sanity bar    
     {
          if (pills.gameObject.tag == "pills")
          {
@@ -63,6 +64,7 @@ public class PlayerMov : MonoBehaviour
          }
     }
     private void WalkAnimation()
+//Aniamtion of Player steps by his velocity
     {
         float _palyerVelocity = Mathf.Abs(_rb.velocity.x);
         _anim.SetFloat("Speed", _palyerVelocity);
@@ -98,5 +100,4 @@ public class PlayerMov : MonoBehaviour
             _rb.velocity = new Vector3(_limitVel.x, _rb.velocity.y, _limitVel.z);
         }
     }
-
 }

@@ -48,6 +48,7 @@ TagManager:
   - QuitCode
   - pills
   - OUIJA
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -61,7 +62,7 @@ TagManager:
   - Enigma
   - Player
   - Collider
-  - 
+  - Item
   - 
   - 
   - 
