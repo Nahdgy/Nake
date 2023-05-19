@@ -15,7 +15,3 @@ MonoBehaviour:
   _name: 
   _visual: {fileID: 0}
   _prefab: {fileID: 0}
-  _id: 0
-  _maxStack: 10
-  _stackable: 1
-  _itemType: 0

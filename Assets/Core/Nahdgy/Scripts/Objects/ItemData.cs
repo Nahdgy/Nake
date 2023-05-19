@@ -10,9 +10,6 @@ public class ItemData : ScriptableObject
     public Sprite _visual;
     public GameObject _prefab;
     public int _id;
-    public int _maxStack;
-    public bool _stackable;
-
 
     public ItemType _itemType;
 
