@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 82933801}
   - component: {fileID: 82933802}
   - component: {fileID: 82933803}
+  - component: {fileID: 82933804}
   m_Layer: 11
   m_Name: 3
   m_TagString: Quinze
@@ -154,7 +155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 910631798}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.55}
 --- !u!65 &82933802
 BoxCollider:
@@ -167,8 +168,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.009463783, y: 0.016159257, z: 0.0066553727}
-  m_Center: {x: 0.0010910997, y: -0.0015948594, z: -0.04856721}
+  m_Size: {x: 0.005676452, y: 0.016159255, z: 0.0066553727}
+  m_Center: {x: 0.00090180564, y: -0.0015948595, z: -0.04856721}
 --- !u!54 &82933803
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,6 +186,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &82933804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82933800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ea09ad067a4d04ea268b97c30c2ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Small: {fileID: 1837170920}
+  isOkSmall: 0
 --- !u!1 &83703064
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,8 +460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animation: {fileID: 174342491}
-  trente: 0
-  quinze: 0
+  six: {fileID: 1406103511}
+  three: {fileID: 82933804}
 --- !u!95 &174342491
 Animator:
   serializedVersion: 5
@@ -1567,8 +1582,9 @@ GameObject:
   - component: {fileID: 1406103508}
   - component: {fileID: 1406103510}
   - component: {fileID: 1406103509}
+  - component: {fileID: 1406103511}
   m_Layer: 0
-  m_Name: 30
+  m_Name: 6
   m_TagString: Trente
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,7 +1603,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 910631798}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!54 &1406103509
 Rigidbody:
@@ -1616,8 +1632,22 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.009463781, y: 0.017103102, z: 0.010168307}
-  m_Center: {x: 0.0010911012, y: -0.0014672449, z: -0.04202361}
+  m_Size: {x: 0.006526153, y: 0.017103102, z: 0.01016831}
+  m_Center: {x: 0.0010409515, y: -0.0014672449, z: -0.04202361}
+--- !u!114 &1406103511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406103507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a67f6cbe0bae414e8acda243e2972e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tall: {fileID: 174342482}
+  isOkTall: 0
 --- !u!1 &1409833697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,8 +2406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animation: {fileID: 1837170921}
-  trente: 0
-  quinze: 0
+  six: {fileID: 1406103511}
+  three: {fileID: 82933804}
 --- !u!54 &1837170924
 Rigidbody:
   m_ObjectHideFlags: 0
