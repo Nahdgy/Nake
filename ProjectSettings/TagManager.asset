@@ -52,7 +52,6 @@ TagManager:
   - Quinze
   - Trente
   - Letter
-  - Globe
   layers:
   - Default
   - TransparentFX
