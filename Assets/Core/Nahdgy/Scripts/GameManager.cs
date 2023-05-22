@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Volume _volumeVignette;
+    [SerializeField]
+    private UniversalRenderPipelineAsset _renderPipelineAsset;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
