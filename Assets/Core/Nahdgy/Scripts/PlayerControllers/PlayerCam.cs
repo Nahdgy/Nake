@@ -34,6 +34,8 @@ public class PlayerCam : MonoBehaviour
     private PlayerMov _player;
     [SerializeField]
     private GameObject _letterMail;
+    [SerializeField]
+    private GameManager _gameManager;
 
 
     public bool _canSee = true;
@@ -52,6 +54,8 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        
 
     }
     private void OnTriggerEnter(Collider other)
@@ -110,7 +114,7 @@ public class PlayerCam : MonoBehaviour
             _letterMail = _hit.collider.gameObject;
             if(_letterMail.TryGetComponent<LetterRead>(out LetterRead _mailCode))
             {
-                Debug.Log("CommponnentGetted");
+                
                 if (_hit.transform.CompareTag("Letter"))
                 {
 
@@ -122,6 +126,7 @@ public class PlayerCam : MonoBehaviour
                         _canSee = false;
                         _player._canMove = false;
                         _mailCode.Read();
+                        _gameManager.Focus();
 
                     }
 
@@ -133,6 +138,7 @@ public class PlayerCam : MonoBehaviour
                         _canSee = true;
                         _player._canMove = true;
                         _mailCode.BackInPlace();
+                        _gameManager.UnFocus();
                     }
                 }
             }
@@ -163,9 +169,10 @@ public class PlayerCam : MonoBehaviour
                             _actionUI.SetActive(false);
                             _lessUI.SetActive(true);
                             _canSee = false;
-                            interactObj.Pick();
                             _obj.transform.position = _objInView.transform.position;
-                            _player._canMove = false;
+                            _player._canMove = false; 
+                            interactObj.Pick();
+                            _gameManager.Focus();
                         }
                         if (Input.GetButtonDown("Back"))
                         {
@@ -175,6 +182,7 @@ public class PlayerCam : MonoBehaviour
                             _player._canMove = true;
                             interactObj.ReturnBase();
                             interactObj.Back();
+                            _gameManager.UnFocus();
                         }
                     }
                     //Light switcher action
