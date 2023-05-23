@@ -49,6 +49,10 @@ TagManager:
   - pills
   - OUIJA
   - Item
+  - Quinze
+  - Trente
+  - Letter
+  - Italie
   layers:
   - Default
   - TransparentFX
@@ -63,7 +67,7 @@ TagManager:
   - Player
   - Collider
   - Item
-  - 
+  - PostPrecessing
   - 
   - 
   - 

@@ -67,7 +67,7 @@ public class PlayerMov : MonoBehaviour
 //Aniamtion of Player steps by his velocity
     {
         float _palyerVelocity = Mathf.Abs(_rb.velocity.x);
-        _anim.SetFloat("Speed", _palyerVelocity);
+        _anim.SetFloat("Speed", Mathf.Clamp(_palyerVelocity,0,1));
     }
     void ControllerInputs()
     {
