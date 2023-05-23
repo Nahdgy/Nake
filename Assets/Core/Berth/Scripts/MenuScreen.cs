@@ -9,7 +9,6 @@ public class MenuScreen : MonoBehaviour
    [SerializeField] public string levelToLoad;
     private float timer = 5f;
     public bool canInterract = true;
-    [SerializeField] AnimationBehavior animBehavior;
 
     private void Start()
     {
@@ -18,7 +17,7 @@ public class MenuScreen : MonoBehaviour
 
     public void inIt()
     {
-        animBehavior.FadeIn();
+        
     }
     public void Fade()
     {
