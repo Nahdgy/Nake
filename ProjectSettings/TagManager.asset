@@ -47,6 +47,12 @@ TagManager:
   - 0
   - QuitCode
   - pills
+  - OUIJA
+  - Item
+  - Quinze
+  - Trente
+  - Letter
+  - Italie
   layers:
   - Default
   - TransparentFX
@@ -55,13 +61,13 @@ TagManager:
   - Water
   - UI
   - Object
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - TriggerInteract
+  - Camera
+  - Enigma
+  - Player
+  - Collider
+  - Item
+  - PostPrecessing
   - 
   - 
   - 

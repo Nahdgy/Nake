@@ -9,6 +9,7 @@ public interface Iinteractable
     public void ReturnBase();
     public void SwitchLight();
     public void OpenDoor();
+    public void CheckList();
     //public void CloseDoor();
     //public void Read();
 
