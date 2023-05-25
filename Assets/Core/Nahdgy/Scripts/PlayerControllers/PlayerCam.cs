@@ -28,6 +28,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private AudioClip _sfxLock, _sfxZip;
 
+
     [SerializeField]
     private ItemBehavior _pickUp = new ItemBehavior();
     [SerializeField]
@@ -36,6 +37,8 @@ public class PlayerCam : MonoBehaviour
     private GameObject _letterMail;
     [SerializeField]
     private GameManager _gameManager;
+    [SerializeField]
+    private GlobeNav _globeCode;
 
 
     public bool _canSee = true;
@@ -48,7 +51,6 @@ public class PlayerCam : MonoBehaviour
         GetMouseInput();
         ObjectTargeted();
         EnigmaTargeted();
-        //TurnAnimation();
     }
     private void Start()
     {
@@ -94,12 +96,7 @@ public class PlayerCam : MonoBehaviour
             _oriantationCam.rotation = Quaternion.Euler(0, _cameraRotationY, 0);
         }
     }
-    //Rotation Y of the Mesh Player with the camera
-    private void TurnAnimation()
-    {
-        float _playerRotation = Mathf.Abs(_rb.rotation.y);
-        _anim.SetFloat("Direction", _playerRotation);
-    }
+    
     //Raycast innitialization
     private void ObjectTargeted()
     {
@@ -107,15 +104,34 @@ public class PlayerCam : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask) && _canRay == true)
         {
+            //Pick up items
+            if (_hit.transform.CompareTag("Item"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _audioSource.PlayOneShot(_sfxZip);
+                    _pickUp.DoPickUp(_hit.transform.gameObject.GetComponent<Item>());
+                }
+            }
+            //Interact Globe
+            if (_hit.transform.CompareTag("Globe"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _globeCode.Open();
+                }
+                if (Input.GetButtonDown("Back")) 
+                { 
+                    _globeCode.Back();
+                }
+            }
+
             //Pick letters for read
             _letterMail = _hit.collider.gameObject;
             if(_letterMail.TryGetComponent<LetterRead>(out LetterRead _mailCode))
-            {
-                
+            { 
                 if (_hit.transform.CompareTag("Letter"))
                 {
-
-
                     if (Input.GetButtonDown("Action"))
                     {
                         _actionUI.SetActive(false);
@@ -143,45 +159,34 @@ public class PlayerCam : MonoBehaviour
             {
                 _letterMail = null;
             }
-            
-           
-                //Pick up items
-                if (_hit.transform.CompareTag("Item"))
-                {
-                    if (Input.GetButtonDown("Action"))
-                    {
-                        _audioSource.PlayOneShot(_sfxZip);
-                        _pickUp.DoPickUp(_hit.transform.gameObject.GetComponent<Item>());
-                    }
-                }
 
-                _obj = _hit.collider.gameObject;
-                if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
-                {
-                    //Object can be manipulate 360°
-                    if (_hit.transform.CompareTag("Object"))
-                    {
-                        if (Input.GetButtonDown("Action"))
-                        {
-                            _actionUI.SetActive(false);
-                            _lessUI.SetActive(true);
-                            _canSee = false;
-                            _obj.transform.position = _objInView.transform.position;
-                            _player._canMove = false; 
-                            interactObj.Pick();
-                            _gameManager.Focus();
-                        }
-                        if (Input.GetButtonDown("Back"))
-                        {
-                            _actionUI.SetActive(false);
-                            _lessUI.SetActive(false);
-                            _canSee = true;
-                            _player._canMove = true;
-                            interactObj.ReturnBase();
-                            interactObj.Back();
-                            _gameManager.UnFocus();
-                        }
-                    }
+            _obj = _hit.collider.gameObject;
+            if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
+            {
+               //Object can be manipulate 360°
+               if (_hit.transform.CompareTag("Object"))
+               {
+                 if (Input.GetButtonDown("Action"))
+                 {
+                    _actionUI.SetActive(false);
+                    _lessUI.SetActive(true);
+                    _canSee = false;
+                    _obj.transform.position = _objInView.transform.position;
+                    _player._canMove = false; 
+                    interactObj.Pick();
+                    _gameManager.Focus();
+                 }
+                 if (Input.GetButtonDown("Back"))
+                 {
+                     _actionUI.SetActive(false);
+                     _lessUI.SetActive(false);
+                     _canSee = true;
+                     _player._canMove = true;
+                     interactObj.ReturnBase();
+                     interactObj.Back();
+                     _gameManager.UnFocus();
+                 }
+               }
                     //Light switcher action
                     if (_hit.transform.CompareTag("Light"))
                     {
