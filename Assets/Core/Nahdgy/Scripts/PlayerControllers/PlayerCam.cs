@@ -54,9 +54,6 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
-        
-
     }
     private void OnTriggerEnter(Collider other)
     //Activation of the raycast in the box trigger
