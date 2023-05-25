@@ -39,7 +39,7 @@
                 {
                     "name": "up",
                     "id": "8c47c255-e857-4c16-a465-6d96cc9f9580",
-                    "path": "<Keyboard>/w",
+                    "path": "<XInputController>/leftStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -50,7 +50,7 @@
                 {
                     "name": "down",
                     "id": "4faf20ae-5dc3-4aca-b671-6867484431ac",
-                    "path": "<Keyboard>/s",
+                    "path": "<XInputController>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -61,7 +61,7 @@
                 {
                     "name": "left",
                     "id": "37dfea54-cc54-4536-8bd4-e59c50244516",
-                    "path": "<Keyboard>/a",
+                    "path": "<XInputController>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -72,7 +72,7 @@
                 {
                     "name": "right",
                     "id": "c781db0c-e714-4802-956e-ea0909731db2",
-                    "path": "<Keyboard>/d",
+                    "path": "<XInputController>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -83,7 +83,7 @@
                 {
                     "name": "",
                     "id": "2f43b116-d0c2-4169-b516-cc803dd20891",
-                    "path": "<Mouse>/delta",
+                    "path": "<XInputController>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
