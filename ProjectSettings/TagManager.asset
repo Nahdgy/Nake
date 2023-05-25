@@ -52,7 +52,7 @@ TagManager:
   - Quinze
   - Trente
   - Letter
-  - Italie
+  - Globe
   layers:
   - Default
   - TransparentFX
@@ -68,7 +68,7 @@ TagManager:
   - Collider
   - Item
   - PostPrecessing
-  - Italy
+  - Algeria
   - 
   - 
   - 

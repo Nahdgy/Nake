@@ -9,16 +9,18 @@ public class GlobeNav : MonoBehaviour
 {
 
 
-    private float _horizontalInput, _verticalInput;
+    private float _horizontalInput, _verticalInput,_inclineAngleX = -65f, _inclineAngleY = 0f;
     public bool _italyHere = false;
     public bool _canManip = false;
 
     [SerializeField]
-    private Transform _obj,_globe, _basePosition, _ping, _objInView;
+    private Camera _cameraPlayer, _cameraGlobe;
     [SerializeField]
-    private float _multiplySpeed, _multiplySpeedRot, _pingHeight, _distRange,_inclineAngle, _min, _max;
+    private Transform _obj,_globe, _ping;
     [SerializeField]
-    private LayerMask _italyLayer;
+    private float _multiplySpeed, _multiplySpeedRot, _pingHeight, _distRange, _min, _max;
+    [SerializeField]
+    private LayerMask _countryLayer;
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
@@ -28,12 +30,15 @@ public class GlobeNav : MonoBehaviour
     [SerializeField]
     private PlayerCam _playerCam;
 
+    private void Start()
+    {
+        _cameraGlobe = GetComponent<Camera>();
+    }
     void Update()
     {
         ControllerInputs();
         Turn();
-        PingNav();
-        
+        PingNav();    
         Detection();
         //Mettre dans open après
     }
@@ -45,19 +50,21 @@ public class GlobeNav : MonoBehaviour
     }
     public void Open()
     {
-        _canManip = true;
-        _obj.transform.position = _objInView.position;
+        _cameraPlayer.enabled = false;
+        _cameraGlobe.enabled = true;
+        _canManip = true; 
         _player._canMove = false;
         _playerCam._canSee = false;
-        
+        _ping.gameObject.SetActive(true);
     }
     public void Back()
     {
+        _cameraPlayer.enabled = true;
+        _cameraGlobe.enabled = false;
         _canManip = false;
         _player._canMove = true;
-        _playerCam._canSee = true; 
-        ReturnBase();
-
+        _playerCam._canSee = true;  
+        _ping.gameObject.SetActive(false);
     }
 
     private void Turn()
@@ -66,7 +73,7 @@ public class GlobeNav : MonoBehaviour
         if (_canManip)
         {
             Debug.Log("IsMoving");
-            _globe.rotation = Quaternion.Euler(_inclineAngle, _horizontalInput * _multiplySpeedRot + _obj.rotation.eulerAngles.y, 0f);
+            _globe.rotation = Quaternion.Euler(_inclineAngleX,_inclineAngleY, _horizontalInput * _multiplySpeedRot + _obj.rotation.eulerAngles.z);
         }
     }
 
@@ -74,7 +81,7 @@ public class GlobeNav : MonoBehaviour
     {
         if(_canManip)
         {
-            _ping.transform.position = new Vector3(_obj.transform.position.x + _pingHeight,_verticalInput * _multiplySpeed + Mathf.Clamp(_ping.transform.position.y,_min,_max), _obj.transform.position.z + _pingHeight);
+            _ping.transform.position = new Vector3(_obj.transform.position.x,_verticalInput * _multiplySpeed + Mathf.Clamp(_ping.transform.position.y,_min,_max), _obj.transform.position.z + _pingHeight);
         }
     }
 
@@ -83,7 +90,7 @@ public class GlobeNav : MonoBehaviour
         if (_canManip == true)
         {
             RaycastHit _hit;
-            if (Physics.Raycast(_ping.transform.position, Vector3.forward, out _hit, _distRange, _italyLayer))
+            if (Physics.Raycast(_ping.transform.position, Vector3.forward * -1, out _hit, _distRange, _countryLayer))
             {
                 _italyHere = true;
                 if (Input.GetButtonDown("Action") && _italyHere == true)
@@ -91,13 +98,12 @@ public class GlobeNav : MonoBehaviour
                     StartCoroutine(Validation());
                 }
             }
+            else
+            {
+                _italyHere = false;
+            }
         }
     } 
-    public void ReturnBase()
-    {
-        _obj.position = _basePosition.position;
-        _obj.rotation = Quaternion.Euler(_basePosition.rotation.x, _basePosition.rotation.y, _basePosition.rotation.z);
-    }
     private IEnumerator Validation()
     {
         float timer = 0.3f;
