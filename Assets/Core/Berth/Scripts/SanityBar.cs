@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class SanityBar : MonoBehaviour
 {
-    public Slider slider;
-    public Gradient gradient;
-    public Image fill;
-    public int health; 
+    [SerializeField] private Slider slider;
+    [SerializeField] private Gradient gradient;
+    [SerializeField] private Image fill;
+    [SerializeField] private int health; 
     public PlayerMov PlayerMov;
     public float t = 100f;
     private bool gameOver;

@@ -14,21 +14,21 @@ public class Code : MonoBehaviour
     private AudioSource _audioSource;
     private bool _find = false, _unlock = false; 
     private string _code;
-   
+
+    [SerializeField]
+    private float _timing;
     [SerializeField]
     private AudioClip _sfxRight, _sfxUnlock,_sfxWrong;
     [SerializeField]
     private List<AudioClip> _sfxTab = new List<AudioClip>();
     [SerializeField]
-    private float _waintingScene;
-    [SerializeField]
     private GameObject _enigme; 
     [SerializeField]
-    private string _sceneName; 
-    [SerializeField]
-    private Text _txt;
+    private TextMeshProUGUI _txt;
     [SerializeField]
     private Words _word = new Words();
+    [SerializeField]
+    private LensNavigation _lensScript;
      
     void Start()
     {
@@ -40,18 +40,11 @@ public class Code : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private IEnumerator ChangeScene()
+    private IEnumerator FindingCode()
     {
-        yield return new WaitForSeconds(_waintingScene);
-        SceneManager.LoadScene(_sceneName);
+        yield return new WaitForSeconds(_timing);
+        _lensScript.Back();
     }
-
-    public void QuitCode()
-    {
-        SceneManager.LoadScene(_sceneName);
-    }
-       
-
 
     public void Validation(string letter)
     {
@@ -93,7 +86,7 @@ public class Code : MonoBehaviour
             {
                 _audioSource.PlayOneShot(_sfxUnlock);
                 _unlock = true;
-                StartCoroutine(ChangeScene());
+                StartCoroutine(FindingCode());
             }
         }
         else
