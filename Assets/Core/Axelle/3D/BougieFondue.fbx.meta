@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Core/Axelle/3D/BougieFondue.fbx.meta
 guid: fb14e56eb2946344c83e7dc0ce4027c6
+========
+guid: b5ccfca49c8dbd044b9bf13eb377217f
+>>>>>>>> 39b6e11d243595e64159216006625cf372eb1fd1:Assets/Core/Axelle/3D/4Hornes.fbx.meta
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
