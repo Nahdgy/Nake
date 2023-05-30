@@ -1,22 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Fioles : MonoBehaviour
 {
 
-    [SerializeField] GameManager Flask1, Flask2, Flask3, Flask4;
-    [SerializeField] List<Transform> Flasks;
+    [SerializeField] int[] Flasks = { 0, 1, 2, 3};
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        CheckOrder();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CheckOrder()
     {
-        
+        for (int i = 0; i < Flasks.Length; ++i)
+        {
+            if (Flasks[i] != 0) return;
+            if (Flasks[i] != 1) return;
+            if (Flasks[i] != 2) return;
+            if (Flasks[i] != 3) return;
+        }
     }
+
 }
