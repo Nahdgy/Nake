@@ -13,31 +13,45 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _renderBlur;
     [SerializeField]
-    private float _min, _max;
+    private float _min, _max, _speed;
+
 
     static float t = 0.0f;
-    private void Start()
+   
+    IEnumerator VignetteEffectFocus()
     {
-        
-    }
+        if (_volumeVignette.profile.TryGet(out Vignette vignette))
+        {
+            while(t<1f)
+            {
+                vignette.intensity.value = Mathf.Lerp(_min, _max, t);
+                t += _speed * Time.deltaTime;
+                yield return null;
+            }    
+        } 
+    } 
     public void Focus()
     {
         _renderBlur.SetActive(true);
-        if(_volumeVignette.profile.TryGet(out Vignette vignette))
-        { 
-            vignette.intensity.value = Mathf.Lerp(_min,_max, t);
-            t += 0.5f * Time.deltaTime;
+        StartCoroutine(VignetteEffectFocus());
+    }
+    IEnumerator VignetteEffectUnFocus()
+    {
+        if (_volumeVignette.profile.TryGet(out Vignette vignette))
+        {
+            while (t > 0f)
+            {
+                vignette.intensity.value = Mathf.Lerp(_min, _max, t);
+                t -= _speed * Time.deltaTime;
+                yield return null;
+            }
         }
     }
 
     public void UnFocus()
     { 
         _renderBlur.SetActive(false);
-        if (_volumeVignette.profile.TryGet(out Vignette vignette))
-        { 
-            vignette.intensity.value = Mathf.Lerp(_max, _min, t);
-            t += 0.5f * Time.deltaTime;
-        }
+        StartCoroutine(VignetteEffectUnFocus());
     }
 
 }

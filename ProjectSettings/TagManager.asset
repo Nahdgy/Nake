@@ -52,6 +52,7 @@ TagManager:
   - Quinze
   - Trente
   - Letter
+  - Globe
   layers:
   - Default
   - TransparentFX
@@ -67,7 +68,7 @@ TagManager:
   - Collider
   - Item
   - PostPrecessing
-  - 
+  - Algeria
   - 
   - 
   - 

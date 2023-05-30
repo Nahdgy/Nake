@@ -25,7 +25,7 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]
     private PlayerCam _playerCam = new PlayerCam();
 
-    [SerializeField]
+   
     private Rigidbody _rb;
 
     [SerializeField]
@@ -49,6 +49,7 @@ public class PlayerMov : MonoBehaviour
         ControllerInputs();
         LimitVelocity();
         GroundCheck();
+        //WalkAnimation();
        
     }
 
@@ -67,7 +68,7 @@ public class PlayerMov : MonoBehaviour
 //Aniamtion of Player steps by his velocity
     {
         float _palyerVelocity = Mathf.Abs(_rb.velocity.x);
-        _anim.SetFloat("Speed", _palyerVelocity);
+        _anim.SetFloat("Speed", Mathf.Clamp(_palyerVelocity,0,1));
     }
     void ControllerInputs()
     {
@@ -86,7 +87,7 @@ public class PlayerMov : MonoBehaviour
             if (_isGrounded)
             {
                 _rb.AddForce(_moveDirection.normalized * _moveSpeed, ForceMode.Force);
-                WalkAnimation();
+               
             }
             else if (!_isGrounded) _rb.AddForce(_moveDirection.normalized * _moveSpeed * _moveMultiplier, ForceMode.Force);
         }
