@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,7 +15,7 @@ public class GlobeNav : MonoBehaviour
     public bool _canManip = false;
 
     [SerializeField]
-    private Camera _cameraPlayer, _cameraGlobe;
+    private CinemachineVirtualCamera _cameraPlayer, _cameraGlobe;
     [SerializeField]
     private Transform _obj,_globe, _ping;
     [SerializeField]
@@ -32,7 +33,7 @@ public class GlobeNav : MonoBehaviour
 
     private void Start()
     {
-        _cameraGlobe = GetComponent<Camera>();
+        //_cameraGlobe = GetComponent<CinemachineVirtualCamera>();
     }
     void Update()
     {
@@ -50,8 +51,8 @@ public class GlobeNav : MonoBehaviour
     }
     public void Open()
     {
-        _cameraPlayer.enabled = false;
-        _cameraGlobe.enabled = true;
+        _cameraPlayer.Priority = 0;
+        _cameraGlobe.Priority = 10;
         _canManip = true; 
         _player._canMove = false;
         _playerCam._canSee = false;
@@ -59,8 +60,8 @@ public class GlobeNav : MonoBehaviour
     }
     public void Back()
     {
-        _cameraPlayer.enabled = true;
-        _cameraGlobe.enabled = false;
+        _cameraPlayer.Priority = 10;
+        _cameraGlobe.Priority = 0;
         _canManip = false;
         _player._canMove = true;
         _playerCam._canSee = true;  
