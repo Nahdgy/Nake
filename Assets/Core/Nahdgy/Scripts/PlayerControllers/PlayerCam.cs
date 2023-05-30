@@ -5,24 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCam : MonoBehaviour
 {
+    [Header("YUP")] //Header to organize
 
     [SerializeField]
-    private float _mouseSensibilityX, _mouseSensibilityY, _distRange;
-    private float _cameraRotationX, _cameraRotationY;
+    private float _distRange;
     [SerializeField]
     private int _layer;
 
     [SerializeField]
-    private Transform _oriantationCam, _objInView;
+    private Transform _objInView;
     [SerializeField]
     private GameObject _obj, _actionUI, _lessUI;
     [SerializeField]
-    private Rigidbody _rb;
-    [SerializeField]
     private LayerMask _layerMask, _layerMaskEnigma;
 
-    [SerializeField]
-    private Animator _anim;
+  
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
@@ -48,7 +45,6 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
-        GetMouseInput();
         ObjectTargeted();
         EnigmaTargeted();
     }
@@ -79,22 +75,6 @@ public class PlayerCam : MonoBehaviour
             _actionUI.SetActive(false);
         }
 
-    }
-    //Convert mous input in controller inputs axis
-    void GetMouseInput()
-    {
-        if (_canSee == true)
-        {
-            float _mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _mouseSensibilityX;
-            float _mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _mouseSensibilityY;
-            _cameraRotationY += _mouseX;
-            _cameraRotationX -= _mouseY;
-            _cameraRotationX = Mathf.Clamp(_cameraRotationX, -90f, 90f);
-
-            _rb.rotation = Quaternion.Euler(0, _cameraRotationY, 0);
-            transform.rotation = Quaternion.Euler(_cameraRotationX, _cameraRotationY, 0);
-            _oriantationCam.rotation = Quaternion.Euler(0, _cameraRotationY, 0);
-        }
     }
     
     //Raycast innitialization
