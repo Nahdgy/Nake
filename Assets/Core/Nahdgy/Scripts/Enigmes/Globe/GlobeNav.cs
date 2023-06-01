@@ -27,7 +27,7 @@ public class GlobeNav : MonoBehaviour
     [SerializeField]
     private AudioClip _validSfx;
     [SerializeField]
-    private PlayerMov _player;
+    private PlayerController _player;
     [SerializeField]
     private PlayerCam _playerCam;
 

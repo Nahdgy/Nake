@@ -22,7 +22,7 @@ public class INavigation : MonoBehaviour
     [SerializeField]
     private PlayerCam _playerCam;
     [SerializeField]
-    private PlayerMov _playerMov;
+    private PlayerController _playerMov;
     [SerializeField]
     private Innventory _innventoryCode;
 

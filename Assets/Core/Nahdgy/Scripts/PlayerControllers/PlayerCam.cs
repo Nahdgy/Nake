@@ -29,7 +29,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private ItemBehavior _pickUp = new ItemBehavior();
     [SerializeField]
-    private PlayerMov _player;
+    private PlayerController _player;
     [SerializeField]
     private GameObject _letterMail;
     [SerializeField]
