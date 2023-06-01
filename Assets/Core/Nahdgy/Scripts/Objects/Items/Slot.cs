@@ -28,8 +28,7 @@ public class Slot : MonoBehaviour
         if (Innventory.Instance._objId != 0)
         {
             StartCoroutine(_navInv.ClickTimer());
-
-            //Innventory.Instance.RemoveItem(_item);
+            Innventory.Instance.RemoveItem(_item);
         }
         else
         {

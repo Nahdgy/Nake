@@ -19,10 +19,6 @@ public class Innventory : MonoBehaviour
     public ItemData _itemCurrentlySelected;
 
     [SerializeField]
-    private AudioSource _source;
-    [SerializeField]
-    private AudioClip _pickSfx, _nullSfx, _openSfx, _closeSfx;
-    [SerializeField]
     private Sprite _emptySlotVisual;
 
     public int _objId;
@@ -77,41 +73,17 @@ public class Innventory : MonoBehaviour
         }
         RefreshContent();
 
-        // Add sprite on the innventary slot
-        /*for (int i = 0; i < _content.Count; i++)
-        {
-            Slot currentSlot = _inventorySlotsParents.GetChild(i).GetComponent<Slot>();
-            currentSlot._item = _content[i].itemData;
-            currentSlot._itemVisual.sprite = _content[i].itemData._visual;
-        }*/
     }
     public void RefreshContent()
     {
-        // Move up all slots
-        /*for (int i = 0; i < _inventorySlotsParents.childCount; i++)
-        {
-            Slot currentSlot = _inventorySlotsParents.GetChild(i).GetComponent<Slot>();
-
-            currentSlot._item = null;
-            currentSlot._itemVisual.sprite = _emptySlotVisual;
-        }*/
 
         // On peuple le visuel des slots selon le contenu réel de l'inventaire
         for (int i = 0; i < _content.Count; i++)
         {
             Slot currentSlot = _inventorySlotsParents.GetChild(i).GetComponent<Slot>();
-
             currentSlot._item = _content[i].itemData;
-            Debug.Log("visual"+currentSlot._itemVisual);
-            Debug.Log("sprite"+currentSlot._itemVisual.sprite) ;
-            Debug.Log("itemdata"+ _content[i].itemData) ;
-            Debug.Log("itemdatavisual"+ _content[i].itemData._visual) ;
             currentSlot._itemVisual.sprite = _content[i].itemData._visual;
         }
-    }
-    public void ReadALetter()
-    {
-
     }
     public bool IsFull()
     {
@@ -131,6 +103,10 @@ public class Innventory : MonoBehaviour
         }
     }
 
+    public void ReadALetter()
+    {
+
+    }
     public void SelectedObject(ItemData item)
     {
         _itemCurrentlySelected = item;
