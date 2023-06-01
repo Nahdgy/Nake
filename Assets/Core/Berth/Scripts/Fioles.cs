@@ -6,7 +6,7 @@ using UnityEngine;
 public class Fioles : MonoBehaviour
 {
 
-    [SerializeField] int[] Flasks = { 0, 1, 2, 3};
+    [SerializeField] GameObject[] Flasks;
 
     private void Update()
     {
@@ -17,11 +17,16 @@ public class Fioles : MonoBehaviour
     {
         for (int i = 0; i < Flasks.Length; ++i)
         {
-            if (Flasks[i] != 0) return;
-            if (Flasks[i] != 1) return;
-            if (Flasks[i] != 2) return;
-            if (Flasks[i] != 3) return;
+            if (i != 0) return;
+            if (i != 1) return;
+            if (i != 2) return;
+            if (i != 3) return;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        CheckOrder();
     }
 
 }

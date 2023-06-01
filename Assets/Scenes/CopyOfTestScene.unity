@@ -1540,6 +1540,7 @@ GameObject:
   - component: {fileID: 558960280}
   - component: {fileID: 558960279}
   - component: {fileID: 558960278}
+  - component: {fileID: 558960283}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1642,6 +1643,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &558960283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558960277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac67d0c976f9a4646a174cdd45c7e334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _playerCam: {fileID: 0}
+  _throwForce: 10
+  _hasPlayer: 0
+  _beingCarried: 0
+  _touched: 0
+  _remy: 6
+  _grabUI: {fileID: 0}
+  _goUI: {fileID: 0}
 --- !u!1 &561474558
 GameObject:
   m_ObjectHideFlags: 0

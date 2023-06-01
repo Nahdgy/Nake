@@ -6,13 +6,10 @@ public class GrabObj : MonoBehaviour
 {
     public Transform _player;
     public Transform _playerCam;
-    public float _throwForce = 10;
 
     [SerializeField]
     private bool _hasPlayer = false, _beingCarried = false, _touched = false;
 
-    [SerializeField]
-    private int _remy = 6;
     [SerializeField]
     private GameObject _grabUI, _goUI;
 
@@ -56,7 +53,6 @@ public class GrabObj : MonoBehaviour
                 GetComponent<Rigidbody>().isKinematic = false;
                 transform.parent = null;
                 _beingCarried = false;
-
             }
         }
     }
@@ -67,8 +63,6 @@ public class GrabObj : MonoBehaviour
         {
             _touched = true;
         }
-
     }
-
 }
 
