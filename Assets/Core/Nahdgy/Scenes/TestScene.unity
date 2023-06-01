@@ -882,7 +882,7 @@ PrefabInstance:
     - target: {fileID: 3936106771762636020, guid: 34fa5ad3335e72d43a270f9bce98d2e5,
         type: 3}
       propertyPath: m_Lens.NearClipPlane
-      value: 0.01
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4122215340869418141, guid: 34fa5ad3335e72d43a270f9bce98d2e5,
         type: 3}
