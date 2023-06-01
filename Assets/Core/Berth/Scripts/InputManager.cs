@@ -24,8 +24,6 @@ public class InputManager : MonoBehaviour
         
         _moveAction.canceled += OnMove;
         _lookAction.canceled += OnLook;
-
-
     }
 
     private void OnMove(InputAction.CallbackContext context)
