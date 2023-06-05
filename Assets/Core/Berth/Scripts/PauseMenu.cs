@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause(InputAction.CallbackContext context)
     {
-        isPaused = false;
+        isPaused = !isPaused;
 
         if(isPaused)
         {

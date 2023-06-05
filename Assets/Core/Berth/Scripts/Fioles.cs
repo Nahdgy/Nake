@@ -2,31 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Fioles : MonoBehaviour
 {
 
-    [SerializeField] GameObject[] Flasks;
+    Vector3 OGPos;
 
-    private void Update()
+    private void Start()
     {
-        CheckOrder();
+        OGPos = gameObject.transform.position;
     }
 
-    private void CheckOrder()
-    {
-        for (int i = 0; i < Flasks.Length; ++i)
+    private void OnCollisionEnter(Collision collision)
         {
-            if (i != 0) return;
-            if (i != 1) return;
-            if (i != 2) return;
-            if (i != 3) return;
+            string tag = collision.gameObject.tag;
+            switch (tag)
+        {
+           // case "1": GameManager.
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        CheckOrder();
+        if (other.gameObject.tag != "Chodron")
+        {
+            transform.position = OGPos;
+        }
     }
 
 }

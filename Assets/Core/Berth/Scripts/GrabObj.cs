@@ -28,7 +28,7 @@ public class GrabObj : MonoBehaviour
             _grabUI.SetActive(false);
         }
 
-        if (_hasPlayer == true && Input.GetButtonDown("Action"))
+        if (_hasPlayer == true && Input.GetAxis("RT") > 0)
         {
 
             GetComponent<Rigidbody>().isKinematic = true;
@@ -47,7 +47,7 @@ public class GrabObj : MonoBehaviour
                 _touched = false;
             }
 
-            else if (Input.GetButtonUp("Action"))
+            else if (Input.GetAxis("RT") <= 0)
             {
                 _goUI.SetActive(false);
                 GetComponent<Rigidbody>().isKinematic = false;
