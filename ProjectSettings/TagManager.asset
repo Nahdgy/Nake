@@ -53,6 +53,7 @@ TagManager:
   - Trente
   - Letter
   - Globe
+  - Piano
   layers:
   - Default
   - TransparentFX
@@ -69,12 +70,12 @@ TagManager:
   - Item
   - PostPrecessing
   - Algeria
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Touche
+  - Finger
+  - Note1
+  - Note2
+  - Note3
+  - Note4
   - 
   - 
   - 

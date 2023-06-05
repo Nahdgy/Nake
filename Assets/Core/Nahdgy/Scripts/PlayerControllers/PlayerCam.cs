@@ -36,6 +36,8 @@ public class PlayerCam : MonoBehaviour
     private GameManager _gameManager;
     [SerializeField]
     private GlobeNav _globeCode;
+    [SerializeField]
+    private PianoNav _pianoNav;
 
 
     public bool _canSee = true;
@@ -104,6 +106,19 @@ public class PlayerCam : MonoBehaviour
                 { 
                     _globeCode.Back();
                 }
+            }
+            //Interact Piano
+            if(_hit.transform.CompareTag("Piano"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _pianoNav.Open();
+                }
+                if (Input.GetButtonDown("Back"))
+                {
+                    _pianoNav.Back();
+                }
+
             }
 
             //Pick letters for read
