@@ -25,6 +25,21 @@ public class INavigation : MonoBehaviour
     private PlayerController _playerMov;
     [SerializeField]
     private Innventory _innventoryCode;
+    
+
+    [SerializeField]
+    private GlobeNav _globeCode;
+    [SerializeField]
+    private LensNavigation _ouijaCode;
+    [SerializeField]
+    private ObjManip _manipCode;
+    [SerializeField]
+    private LetterRead _letterCode;
+    [SerializeField]
+    private PianoNav _pianoCode;
+    [SerializeField]
+    private GameManager _gameManager;
+
 
 
     private void Update()
@@ -41,6 +56,13 @@ public class INavigation : MonoBehaviour
             _playerCam._canSee = false;
             _playerCam._canRay = false;
             _isOpen = true;
+            _globeCode.Back();
+            _ouijaCode.Back();
+            _manipCode.Back(); //do a get component for all the letter
+            _manipCode.ReturnBase();
+            _gameManager.UnFocus();
+            _letterCode.BackInPlace(); //do a get component for all the letter
+            _pianoCode.Back();
         }
         else if (Input.GetButtonDown("Back") && _isOpen == true)
         {

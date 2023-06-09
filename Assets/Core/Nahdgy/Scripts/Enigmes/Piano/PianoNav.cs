@@ -25,9 +25,12 @@ public class PianoNav : MonoBehaviour
     [SerializeField]
     private Transform _obj, _finger, _down, _up;
     [SerializeField]
-    private float _multiplySpeed, _min, _max,_timer;
+    private float _multiplySpeed, _min, _max,_timer, _speed, _force;
+    [SerializeField]
+    private Rigidbody _fingerRb;
+    bool buttonFingerIsPressed;
 
-    static float t = 0.0f;
+    float timeToLerp = 1f;
 
     private void Update()
     {
@@ -65,32 +68,44 @@ public class PianoNav : MonoBehaviour
     }
     private void FingerNav()
     {
+        PressFinger();
         if (_canManip)
         {
-            _finger.transform.position = new Vector3(_horizontalInput * _multiplySpeed + Mathf.Clamp(_finger.transform.position.x, _min, _max),_obj.transform.position.y, _obj.transform.position.z);
+            _finger.transform.position = new Vector3(_horizontalInput * _multiplySpeed + Mathf.Clamp(_finger.transform.position.x, _min, _max), _finger.transform.position.y, _obj.transform.position.z);
         }
-        if(_canManip && Input.GetButton("Action"))
-        {
-            StartCoroutine(Down());
-        }
-        if(_canManip && Input.GetButtonUp("Action"))
-        {
-            StartCoroutine(Down());
-        }
-        if(key4 == true) 
+        if (key4 == true)
         {
             StartCoroutine(Melody());
         }
     }
-    private IEnumerator Down()
+    private void PressFinger()
     {
-        _finger.transform.position = new Vector3(_finger.position.x,_down.position.y,_finger.position.z);
-        yield return null;
-    }
-    private IEnumerator Up()
-    {
-        _finger.transform.position = new Vector3(_finger.position.x, _up.position.y, _finger.position.z); 
-        yield return null;
+        buttonFingerIsPressed = Input.GetButton("Action");
+
+        float downPos = _down.position.y;
+        float upPos = _up.position.y;
+        float currentPosY;
+
+        if (buttonFingerIsPressed)
+        {
+            _canManip = false;
+            if (timeToLerp > 0f)
+            {
+                //descendre
+                timeToLerp -= _speed * Time.deltaTime;
+            }
+        }
+        else
+        {
+            _canManip = true;
+            if (timeToLerp < 1f)
+            {
+                //remonte
+                timeToLerp += _speed * Time.deltaTime;
+            }
+        }
+        currentPosY = Mathf.Lerp(downPos, upPos, timeToLerp);
+        _finger.position = new Vector3(_finger.position.x, currentPosY, _finger.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -127,7 +142,6 @@ public class PianoNav : MonoBehaviour
         {
             key4 = false;
         }
-
     }
 
     private IEnumerator Melody()
