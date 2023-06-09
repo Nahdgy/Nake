@@ -6,22 +6,10 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private bool FioleOne, FioleTwo, FioleThree, FioleFour;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void CorrectOrder()
     {
 
     }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,5 +19,8 @@ public class Chaudron : MonoBehaviour
         }
 
         if (collision.gameObject.name == "Fiole2")
+        { 
+            FioleTwo = true;
+        }    
     }
 }
