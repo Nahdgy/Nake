@@ -25,9 +25,8 @@ public class PianoNav : MonoBehaviour
     [SerializeField]
     private Transform _obj, _finger, _down, _up;
     [SerializeField]
-    private float _multiplySpeed, _min, _max,_timer, _speed, _force;
-    [SerializeField]
-    private Rigidbody _fingerRb;
+    private float _multiplySpeed, _min, _max,_timer, _speed;
+    
     bool buttonFingerIsPressed;
 
     float timeToLerp = 1f;

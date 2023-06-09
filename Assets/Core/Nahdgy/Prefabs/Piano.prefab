@@ -766,6 +766,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3581934208612991604, guid: a855e2d905576a144bbc042ac87356c8,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f4fd0c0f606340c4c86d771cb728f15f, type: 3}
     - target: {fileID: 3581934208612991606, guid: a855e2d905576a144bbc042ac87356c8,
         type: 3}
       propertyPath: m_Constraints
