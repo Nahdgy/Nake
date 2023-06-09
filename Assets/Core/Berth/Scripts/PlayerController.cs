@@ -7,7 +7,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float AnimBlendSpeed = 8.9f, UpperLimit = -40f, BottomLimit = 70f, LookSensitivity = 21.9f;
     [SerializeField] private Transform CameraRoot, Camera;
-    
+
+    [HideInInspector]
+    public bool _canMove = true;
+
+    public PlayerCam _camera;
+
     private Rigidbody rb;
 
     private InputManager inputManager;
@@ -47,10 +52,12 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (!hasAnimator) return;
+        if(_canMove == true)
+        { 
+            if (!hasAnimator) return;
 
         float targetSpeed = speed;
-        if (inputManager.Move == Vector2.zero) targetSpeed = 0.1f;
+            if (inputManager.Move == Vector2.zero) targetSpeed = 0.1f;
 
         currentVelocity.x = Mathf.Lerp(currentVelocity.x, inputManager.Move.x * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
         currentVelocity.y = Mathf.Lerp(currentVelocity.y, inputManager.Move.y * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
@@ -61,22 +68,26 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(transform.TransformVector(new Vector3(xVelDiff, 0, zVelDiff)), ForceMode.VelocityChange);
 
         animator.SetFloat(xVel, currentVelocity.x);
-        animator.SetFloat (yVel, currentVelocity.y);
+        animator.SetFloat (yVel, currentVelocity.y);  
+        }
     }
 
     private void CamMov()
     {
         if (!hasAnimator) return;
 
-        var JoystickX = inputManager.Look.x;
-        var JoystickY = inputManager.Look.y;
-        Camera.position = CameraRoot.position;
+        if(_camera._canSee == true)
+        { 
+            var JoystickX = inputManager.Look.x;
+            var JoystickY = inputManager.Look.y;
+            Camera.position = CameraRoot.position;
 
-        xRot -= JoystickY *LookSensitivity * Time.deltaTime;
-        xRot = Mathf.Clamp(xRot, UpperLimit, BottomLimit);
+            xRot -= JoystickY *LookSensitivity * Time.deltaTime;
+            xRot = Mathf.Clamp(xRot, UpperLimit, BottomLimit);
 
-        Camera.localRotation = Quaternion.Euler(xRot, 0, 0);
-        transform.Rotate(Vector3.up, JoystickX * LookSensitivity * Time.deltaTime);
+            Camera.localRotation = Quaternion.Euler(xRot, 0, 0);
+            transform.Rotate(Vector3.up, JoystickX * LookSensitivity * Time.deltaTime);
+        }
     }
 
 }
