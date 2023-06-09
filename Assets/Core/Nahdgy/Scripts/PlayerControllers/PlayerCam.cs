@@ -5,24 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCam : MonoBehaviour
 {
+    [Header("YUP")] //Header to organize
 
     [SerializeField]
-    private float _mouseSensibilityX, _mouseSensibilityY, _distRange;
-    private float _cameraRotationX, _cameraRotationY;
+    private float _distRange;
     [SerializeField]
     private int _layer;
 
     [SerializeField]
-    private Transform _oriantationCam, _objInView;
+    private Transform _objInView;
     [SerializeField]
     private GameObject _obj, _actionUI, _lessUI;
     [SerializeField]
-    private Rigidbody _rb;
-    [SerializeField]
     private LayerMask _layerMask, _layerMaskEnigma;
 
-    [SerializeField]
-    private Animator _anim;
+  
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
@@ -32,13 +29,15 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private ItemBehavior _pickUp = new ItemBehavior();
     [SerializeField]
-    private PlayerMov _player;
+    private PlayerController _player;
     [SerializeField]
     private GameObject _letterMail;
     [SerializeField]
     private GameManager _gameManager;
     [SerializeField]
     private GlobeNav _globeCode;
+    [SerializeField]
+    private PianoNav _pianoNav;
 
 
     public bool _canSee = true;
@@ -48,7 +47,6 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
-        GetMouseInput();
         ObjectTargeted();
         EnigmaTargeted();
     }
@@ -80,22 +78,6 @@ public class PlayerCam : MonoBehaviour
         }
 
     }
-    //Convert mous input in controller inputs axis
-    void GetMouseInput()
-    {
-        if (_canSee == true)
-        {
-            float _mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _mouseSensibilityX;
-            float _mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _mouseSensibilityY;
-            _cameraRotationY += _mouseX;
-            _cameraRotationX -= _mouseY;
-            _cameraRotationX = Mathf.Clamp(_cameraRotationX, -90f, 90f);
-
-            _rb.rotation = Quaternion.Euler(0, _cameraRotationY, 0);
-            transform.rotation = Quaternion.Euler(_cameraRotationX, _cameraRotationY, 0);
-            _oriantationCam.rotation = Quaternion.Euler(0, _cameraRotationY, 0);
-        }
-    }
     
     //Raycast innitialization
     private void ObjectTargeted()
@@ -124,6 +106,19 @@ public class PlayerCam : MonoBehaviour
                 { 
                     _globeCode.Back();
                 }
+            }
+            //Interact Piano
+            if(_hit.transform.CompareTag("Piano"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _pianoNav.Open();
+                }
+                if (Input.GetButtonDown("Back"))
+                {
+                    _pianoNav.Back();
+                }
+
             }
 
             //Pick letters for read

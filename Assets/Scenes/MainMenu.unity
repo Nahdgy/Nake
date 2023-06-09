@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  animBehavior: {fileID: 0}
+  levelToLoad: 
   canInterract: 1
 --- !u!114 &478824392
 MonoBehaviour:
@@ -5986,7 +5986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  animBehavior: {fileID: 543364782}
+  levelToLoad: 
   canInterract: 1
 --- !u!1 &712104457
 GameObject:
@@ -11079,7 +11079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1181221756
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11172,7 +11172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1181221759}
-  animBehavior: {fileID: 543364782}
+  levelToLoad: 
   canInterract: 1
 --- !u!1 &1232489416
 GameObject:

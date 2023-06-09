@@ -25,7 +25,7 @@ public class LensNavigation : MonoBehaviour,Icodable
     [SerializeField]
     private Words _words;
     [SerializeField]
-    private PlayerMov _player;
+    private PlayerController _player;
     [SerializeField]
     private PlayerCam _playerCam;
     [SerializeField]
