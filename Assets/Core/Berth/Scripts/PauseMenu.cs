@@ -2,34 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private bool isPaused;
 
-    [SerializeField] public GameObject PauseMenuUI;
+    [SerializeField] public GameObject PauseMenuUI, OtherCanvas;
+    [SerializeField] private Button firstSelectedButton;
 
     private PlayerControls PlayerControls;
     public InputAction menu;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     private void Awake()
     {
         PlayerControls = new PlayerControls();
     }
 
-    void Update()
-    {
-           
-    }
-
     private void OnEnable()
     {
-        Debug.Log("escapeds");
         menu = PlayerControls.Menu.Escape;
         menu.Enable(); 
 
         menu.performed += Pause;
-
     }
 
     void OnDisable()
@@ -56,6 +57,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         AudioListener.pause = true;
         PauseMenuUI.SetActive(true);
+        firstSelectedButton.Select();
+        isPaused = true;
+        OtherCanvas.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void DeactivateMenu()
@@ -64,5 +69,6 @@ public class PauseMenu : MonoBehaviour
         AudioListener.pause = false;
         PauseMenuUI.SetActive(false);
         isPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

@@ -1603,10 +1603,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   PauseMenuUI: {fileID: 977054455}
+  OtherCanvas: {fileID: 1597572783}
+  firstSelectedButton: {fileID: 213755971}
   menu:
     m_Name: Menu
-    m_Type: 0
-    m_ExpectedControlType: 
+    m_Type: 1
+    m_ExpectedControlType: Button
     m_Id: 7beb918b-7be7-4a83-8cbf-caa8427ae222
     m_Processors: 
     m_Interactions: 
@@ -5158,6 +5160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3385b411756a914388986a1f29814d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FioleOne: 0
+  FioleTwo: 0
+  FioleThree: 0
+  FioleFour: 0
 --- !u!1 &1489894993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6719,6 +6725,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3385b411756a914388986a1f29814d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FioleOne: 0
+  FioleTwo: 0
+  FioleThree: 0
+  FioleFour: 0
 --- !u!1 &1897411531
 GameObject:
   m_ObjectHideFlags: 0
