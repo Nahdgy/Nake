@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  animBehavior: {fileID: 0}
+  levelToLoad: 
   canInterract: 1
 --- !u!114 &478824392
 MonoBehaviour:
@@ -5986,7 +5986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  animBehavior: {fileID: 543364782}
+  levelToLoad: 
   canInterract: 1
 --- !u!1 &712104457
 GameObject:
@@ -11172,7 +11172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1181221759}
-  animBehavior: {fileID: 543364782}
+  levelToLoad: 
   canInterract: 1
 --- !u!1 &1232489416
 GameObject:
