@@ -30,6 +30,8 @@ public class GlobeNav : MonoBehaviour
     private PlayerController _player;
     [SerializeField]
     private PlayerCam _playerCam;
+    [SerializeField]
+    private Transform _camera, _place;
 
     private void Start()
     {
@@ -39,9 +41,9 @@ public class GlobeNav : MonoBehaviour
     {
         ControllerInputs();
         Turn();
-        PingNav();    
-        Detection();
-        //Mettre dans open après
+        PingNav();   
+        CamInPlace();
+
     }
 
     private void ControllerInputs()
@@ -50,13 +52,14 @@ public class GlobeNav : MonoBehaviour
         _verticalInput = Input.GetAxisRaw("Mouse Y");
     }
     public void Open()
-    {
+    { 
+        _ping.gameObject.SetActive(true);
         _cameraPlayer.Priority = 0;
         _cameraGlobe.Priority = 10;
         _canManip = true; 
         _player._canMove = false;
         _playerCam._canSee = false;
-        _ping.gameObject.SetActive(true);
+        Detection();
     }
     public void Back()
     {
@@ -67,13 +70,18 @@ public class GlobeNav : MonoBehaviour
         _playerCam._canSee = true;  
         _ping.gameObject.SetActive(false);
     }
+    private void CamInPlace()
+    {
+        _camera.position = _place.position;
+        _camera.rotation = _place.rotation;
+
+    }
 
     private void Turn()
     {
 
         if (_canManip)
         {
-            Debug.Log("IsMoving");
             _globe.rotation = Quaternion.Euler(_inclineAngleX,_inclineAngleY, _horizontalInput * _multiplySpeedRot + _obj.rotation.eulerAngles.z);
         }
     }

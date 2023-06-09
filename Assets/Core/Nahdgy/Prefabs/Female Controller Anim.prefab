@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293458969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.15}
+  m_LocalPosition: {x: -0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79,12 +79,7 @@ MonoBehaviour:
   _inventorySlotsParents: {fileID: 0}
   _inHandSlot: {fileID: 0}
   _itemCurrentlySelected: {fileID: 0}
-  _source: {fileID: 2209849293917870541}
-  _pickSfx: {fileID: 8300000, guid: 1ef87375cfe332c4b8dd16c8df0a8e74, type: 3}
-  _nullSfx: {fileID: 8300000, guid: 3fc67358f886c19419d8132759d4f943, type: 3}
-  _openSfx: {fileID: 8300000, guid: 4e5b5b6860b582946a1191e0156f712d, type: 3}
-  _closeSfx: {fileID: 8300000, guid: 184590e8e23cd4547b4bfcfc510e4513, type: 3}
-  _emptySlotVisual: {fileID: 0}
+  _emptySlotVisual: {fileID: 21300000, guid: 25d0ac2a41f0cd541869ac8148bf3e3f, type: 3}
   _objId: 0
 --- !u!1 &1846247647
 GameObject:
@@ -98,6 +93,10 @@ GameObject:
   - component: {fileID: 1846247651}
   - component: {fileID: 1846247650}
   - component: {fileID: 1846247649}
+  - component: {fileID: 1846247653}
+  - component: {fileID: 1846247654}
+  - component: {fileID: 1846247652}
+  - component: {fileID: 1846247659}
   m_Layer: 10
   m_Name: Camera
   m_TagString: Untagged
@@ -112,7 +111,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846247647}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -143,7 +142,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.2
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -204,6 +203,105 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!54 &1846247653
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846247647}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1846247654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846247647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1846247652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846247647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53581a9799c20c4aa8f94a64f5b935a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distRange: 3
+  _layer: 7
+  _objInView: {fileID: 1293458970}
+  _obj: {fileID: 0}
+  _actionUI: {fileID: 0}
+  _lessUI: {fileID: 0}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _layerMaskEnigma:
+    serializedVersion: 2
+    m_Bits: 512
+  _audioSource: {fileID: 2209849293917870541}
+  _sfxLock: {fileID: 8300000, guid: 334e4877a81fdef42bc045f944c1ca68, type: 3}
+  _sfxZip: {fileID: 8300000, guid: 8ec21dc562fcb74428e3fd606ad497be, type: 3}
+  _pickUp: {fileID: 2487192517418994650}
+  _player: {fileID: 6834754607421297274}
+  _letterMail: {fileID: 0}
+  _gameManager: {fileID: 0}
+  _globeCode: {fileID: 0}
+  _pianoNav: {fileID: 0}
+  _canSee: 1
+  _canOpen: 0
+  _canRay: 0
+--- !u!114 &1846247659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846247647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &49318976545398228
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +1062,8 @@ MonoBehaviour:
   LookSensitivity: 100
   CameraRoot: {fileID: 1488192801552023681}
   Camera: {fileID: 7700987887922067257}
+  _canMove: 1
+  _camera: {fileID: 1846247652}
   currentVelocity: {x: 0, y: 0}
 --- !u!82 &2209849293917870541
 AudioSource:
@@ -2885,7 +2985,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7700987887922067257}
   - component: {fileID: 4843331862865077491}
-  - component: {fileID: 2487192517418994649}
   m_Layer: 10
   m_Name: CamPlayer
   m_TagString: Untagged
@@ -2932,9 +3031,9 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 130
+    FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.25
+    NearClipPlane: 0.2
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -2949,41 +3048,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 3189308992756521510}
---- !u!114 &2487192517418994649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7008346224622575911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53581a9799c20c4aa8f94a64f5b935a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distRange: 3
-  _layer: 7
-  _objInView: {fileID: 1293458970}
-  _obj: {fileID: 0}
-  _actionUI: {fileID: 0}
-  _lessUI: {fileID: 0}
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _layerMaskEnigma:
-    serializedVersion: 2
-    m_Bits: 512
-  _audioSource: {fileID: 2209849293917870541}
-  _sfxLock: {fileID: 8300000, guid: 334e4877a81fdef42bc045f944c1ca68, type: 3}
-  _sfxZip: {fileID: 8300000, guid: 8ec21dc562fcb74428e3fd606ad497be, type: 3}
-  _pickUp: {fileID: 2487192517418994650}
-  _player: {fileID: 0}
-  _letterMail: {fileID: 0}
-  _gameManager: {fileID: 0}
-  _globeCode: {fileID: 0}
-  _canSee: 1
-  _canOpen: 0
-  _canRay: 0
 --- !u!1 &7361759826766913210
 GameObject:
   m_ObjectHideFlags: 0

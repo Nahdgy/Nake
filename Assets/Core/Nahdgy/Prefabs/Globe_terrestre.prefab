@@ -57,9 +57,10 @@ GameObject:
   - component: {fileID: 2144570159487546303}
   - component: {fileID: 5882223368379145231}
   - component: {fileID: 4521531005883030376}
-  m_Layer: 0
+  - component: {fileID: 3735322576792557759}
+  m_Layer: 6
   m_Name: Sphere001
-  m_TagString: Untagged
+  m_TagString: Globe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,16 +146,16 @@ MonoBehaviour:
   _italyHere: 0
   _canManip: 0
   _cameraPlayer: {fileID: 0}
-  _cameraGlobe: {fileID: 0}
+  _cameraGlobe: {fileID: 3936106771762636020}
   _obj: {fileID: 6255796207232925738}
   _globe: {fileID: 6255796207232925738}
   _ping: {fileID: 4521531004751445574}
   _multiplySpeed: 0.04
   _multiplySpeedRot: 1
-  _pingHeight: 1
+  _pingHeight: 0.25
   _distRange: 3
-  _min: 0
-  _max: 2
+  _min: 4
+  _max: 4.5
   _countryLayer:
     serializedVersion: 2
     m_Bits: 16384
@@ -162,6 +163,52 @@ MonoBehaviour:
   _validSfx: {fileID: 0}
   _player: {fileID: 0}
   _playerCam: {fileID: 0}
+  _camera: {fileID: 5548223187021584298}
+  _place: {fileID: 1821313143588995412}
+--- !u!135 &3735322576792557759
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221109731853686108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.7622995
+  m_Center: {x: 0, y: -0.000015258789, z: 0.000022888184}
+--- !u!1 &746108888689970000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1821313143588995412}
+  m_Layer: 6
+  m_Name: Place
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1821313143588995412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746108888689970000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4521531004751445574}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1575369493873148978
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5548223187021584298}
   - component: {fileID: 3936106771762636020}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CamPing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,9 +233,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575369493873148978}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.37999597, y: -1.2800263, z: 0}
-  m_LocalScale: {x: 20.120237, y: 20.120234, z: 20.120234}
+  m_LocalRotation: {x: -0.4657619, y: 0.5311927, z: 0.46673647, w: 0.5320313}
+  m_LocalPosition: {x: 1781.3481, y: -45746.49, z: -60467.066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2170715432819123548}
@@ -216,9 +263,9 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 130
+    FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.25
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -226,8 +273,8 @@ MonoBehaviour:
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
+    m_BlendHint: 3
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -245,7 +292,7 @@ GameObject:
   - component: {fileID: 2278882142746656898}
   - component: {fileID: 8857097602469900243}
   - component: {fileID: 3362349701221925690}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +386,7 @@ GameObject:
   - component: {fileID: 4122215340869418141}
   - component: {fileID: 1052389404257088312}
   - component: {fileID: 2989864447305058290}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Globe_terrestre
   m_TagString: Globe
   m_Icon: {fileID: 0}
@@ -426,13 +473,13 @@ GameObject:
   - component: {fileID: 4521531004751445575}
   - component: {fileID: 4521531004751445572}
   - component: {fileID: 4521531004751445573}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Epingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4521531004751445574
 Transform:
   m_ObjectHideFlags: 0
@@ -448,6 +495,7 @@ Transform:
   - {fileID: 4521531004791719088}
   - {fileID: 4521531005805355619}
   - {fileID: 5548223187021584298}
+  - {fileID: 1821313143588995412}
   m_Father: {fileID: 4122215340869418141}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
@@ -527,7 +575,7 @@ GameObject:
   - component: {fileID: 4521531004791719093}
   - component: {fileID: 4521531004791719090}
   - component: {fileID: 4521531004791719091}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +672,7 @@ GameObject:
   - component: {fileID: 4521531005805355620}
   - component: {fileID: 4521531005805355621}
   - component: {fileID: 4521531005805355618}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +770,7 @@ GameObject:
   - component: {fileID: 4521531006165944339}
   - component: {fileID: 4521531006165944336}
   - component: {fileID: 4521531006165944337}
-  m_Layer: 14
+  m_Layer: 6
   m_Name: Algeria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
