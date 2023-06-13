@@ -13,11 +13,16 @@ public class PianoKey : MonoBehaviour
     private Transform _joint;
     private float _rotation;
 
+    [SerializeField]
+    private Joint joint;
+
     float timeToLerp = 1f;
 
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        joint = GetComponentInParent<Joint>();
+        GetComponent<Rigidbody>().freezeRotation = true;
         //_joint = gameObject.GetComponentInParent<Transform>();
 
     }
@@ -28,14 +33,7 @@ public class PianoKey : MonoBehaviour
         if (collision.gameObject.layer == _finger)
         {
             _audioSource.Play();
-
-            if(timeToLerp > 0f) 
-            {
-                timeToLerp -= _speed * Time.deltaTime;
-            }
-           
-            _rotation = Mathf.Lerp(_pressedPosition,_basePosition, timeToLerp);
-            _joint.transform.rotation = Quaternion.Euler(_rotation, _joint.transform.rotation.y, _joint.transform.rotation.z);
+            joint.RotationDown();       
         }
     }
 
@@ -44,14 +42,7 @@ public class PianoKey : MonoBehaviour
         //When the finger press out the key
         if (collision.gameObject.layer == _finger)
         {
-
-            if (timeToLerp < 1f)
-            {
-                timeToLerp += _speed * Time.deltaTime;
-            }
-
-            _rotation = Mathf.Lerp(_pressedPosition, _basePosition, timeToLerp);
-            _joint.transform.rotation = Quaternion.Euler(_rotation, _joint.transform.rotation.y, _joint.transform.rotation.z);
+            joint.RotationUP();
         }
     }
 }

@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float AnimBlendSpeed = 8.9f, UpperLimit = -40f, BottomLimit = 70f, LookSensitivity = 21.9f;
     [SerializeField] private Transform CameraRoot, Camera;
 
-    [HideInInspector]
     public bool _canMove = true;
 
     public PlayerCam _camera;
