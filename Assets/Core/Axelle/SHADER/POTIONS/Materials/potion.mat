@@ -40,7 +40,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0
-    - _FoamWidth: 0.04
+    - _FoamWidth: 0.013
     - _Foam_Smoothness: 0
     - _Frequency: 0
     - _QueueControl: 0
