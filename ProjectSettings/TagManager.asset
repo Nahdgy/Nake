@@ -54,6 +54,7 @@ TagManager:
   - Letter
   - Globe
   - Piano
+  - Clock
   layers:
   - Default
   - TransparentFX

@@ -38,6 +38,8 @@ public class PlayerCam : MonoBehaviour
     private GlobeNav _globeCode;
     [SerializeField]
     private PianoNav _pianoNav;
+    [SerializeField]
+    private ClockInteract _clockInteract;
 
 
     public bool _canSee = true;
@@ -76,7 +78,6 @@ public class PlayerCam : MonoBehaviour
             _canRay = false;
             _actionUI.SetActive(false);
         }
-
     }
     
     //Raycast innitialization
@@ -119,6 +120,19 @@ public class PlayerCam : MonoBehaviour
                     _pianoNav.Back();
                 }
 
+            }
+
+            //Intract Clock
+            if (_hit.transform.CompareTag("Clock"))
+            {
+                if (Input.GetButtonDown("Action"))
+                { 
+                    _clockInteract.Open(); 
+                }
+                if (Input.GetButtonDown("Back"))
+                {
+                    _clockInteract.Back();
+                }
             }
 
             //Pick letters for read

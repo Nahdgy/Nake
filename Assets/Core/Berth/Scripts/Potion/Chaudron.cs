@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chaudron : MonoBehaviour
 {
     [SerializeField] private bool FioleOne, FioleTwo, FioleThree, FioleFour;
-    Fioles fioles;
+    [SerializeField] GameObject cle;
 
     public void OnTriggerEnter(Collider collision)
     {
@@ -20,6 +20,9 @@ public class Chaudron : MonoBehaviour
             FioleTwo = true;
             Destroy(collision.gameObject);
         } else if (collision.gameObject.name == "Fiole2" &&  !FioleOne)
+        {
+            
+        }
     
         if (collision.gameObject.name == "Fiole3" && FioleTwo == true)
         {
@@ -38,7 +41,7 @@ public class Chaudron : MonoBehaviour
     {
         if (FioleOne == true &&  FioleTwo == true && FioleThree == true && FioleFour == true) 
         {
-            Debug.Log("congratz");
+           cle.SetActive(true);
         }
     }
 
