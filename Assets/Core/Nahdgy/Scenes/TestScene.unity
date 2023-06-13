@@ -3994,19 +3994,14 @@ PrefabInstance:
       objectReference: {fileID: 2487192517418994651}
     - target: {fileID: 6354520327293592251, guid: 4185a1c29c35a7a4d8063418387eb159,
         type: 3}
-      propertyPath: _objInView
-      value: 
-      objectReference: {fileID: 1293458970}
-    - target: {fileID: 6354520327293592251, guid: 4185a1c29c35a7a4d8063418387eb159,
-        type: 3}
       propertyPath: _playerCam
       value: 
       objectReference: {fileID: 1846247652}
     - target: {fileID: 6354520327293592251, guid: 4185a1c29c35a7a4d8063418387eb159,
         type: 3}
-      propertyPath: _basePosition
+      propertyPath: _cameraPlayer
       value: 
-      objectReference: {fileID: 227744505}
+      objectReference: {fileID: 1817715395}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4185a1c29c35a7a4d8063418387eb159, type: 3}
 --- !u!1 &1612394220
@@ -5170,23 +5165,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 487085996, guid: a9de5ea1b94bbb34eaa0de35f8d52592, type: 3}
-      propertyPath: m_Limits.max
+    - target: {fileID: 142743112665738335, guid: a9de5ea1b94bbb34eaa0de35f8d52592,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 487085996, guid: a9de5ea1b94bbb34eaa0de35f8d52592, type: 3}
-      propertyPath: m_Limits.min
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 619441178, guid: a9de5ea1b94bbb34eaa0de35f8d52592, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f4fd0c0f606340c4c86d771cb728f15f, type: 3}
     - target: {fileID: 2619069053196935657, guid: a9de5ea1b94bbb34eaa0de35f8d52592,
         type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 2487192517418994651}
+    - target: {fileID: 2619069053196935657, guid: a9de5ea1b94bbb34eaa0de35f8d52592,
+        type: 3}
+      propertyPath: _validSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 24883130b96b60244a396f4ffa67e138, type: 3}
     - target: {fileID: 2619069053196935657, guid: a9de5ea1b94bbb34eaa0de35f8d52592,
         type: 3}
       propertyPath: _playerCam
@@ -5206,6 +5199,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Piano
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759657352443942483, guid: a9de5ea1b94bbb34eaa0de35f8d52592,
+        type: 3}
+      propertyPath: m_Priority
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7484294544223918862, guid: a9de5ea1b94bbb34eaa0de35f8d52592,
         type: 3}
