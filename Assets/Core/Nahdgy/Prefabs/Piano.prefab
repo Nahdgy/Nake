@@ -352,7 +352,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -423,6 +423,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 1998848
+  _pianoNav: {fileID: 2619069053196935657}
 --- !u!1001 &3581934209227910766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -475,6 +476,11 @@ PrefabInstance:
       propertyPath: _finger
       value: 
       objectReference: {fileID: 770380202200233701}
+    - target: {fileID: 1580019383770337159, guid: a855e2d905576a144bbc042ac87356c8,
+        type: 3}
+      propertyPath: _validSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 24883130b96b60244a396f4ffa67e138, type: 3}
     - target: {fileID: 1580019383770337159, guid: a855e2d905576a144bbc042ac87356c8,
         type: 3}
       propertyPath: _cameraPiano
@@ -2032,6 +2038,18 @@ MonoBehaviour:
   _pressedPosition: -94
   _basePosition: -90
   _speed: 3
+--- !u!114 &2619069053196935657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1580019383770337159, guid: a855e2d905576a144bbc042ac87356c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3581934209227910766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d18a804f541454783b012d9fbb252d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2789791545563308326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1658101529097867080, guid: a855e2d905576a144bbc042ac87356c8,
@@ -3721,7 +3739,7 @@ PrefabInstance:
     - target: {fileID: 6025228410070987501, guid: 117a26062604a944e8935e4a44d8203f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6401367676902385751, guid: 117a26062604a944e8935e4a44d8203f,
         type: 3}

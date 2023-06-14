@@ -10,7 +10,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
 
     //Intaractable GameObjects
     [SerializeField]
-    private GameObject _door;
+    private GameObject _doorHinge;
     [SerializeField]
     private Light _light;
 
@@ -24,7 +24,11 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     private AudioSource _source;
     [SerializeField]
     private AudioClip _doorOpenSfx, _doorShutSfx, _swithLightSfx;
-    
+    [SerializeField]
+    private Animator _animator;
+    [SerializeField]
+    private string _rotationCase;
+
     [SerializeField]
     private PlayerCam _playerCam = new PlayerCam();
     [SerializeField]
@@ -60,6 +64,12 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         StartCoroutine(ClosingDoor());
         
     }
+
+    public void OpenCase()
+    {
+        _animator.Play(_rotationCase);
+        
+    }
     private IEnumerator ClosingDoor()
     {  
         float _lerpDuration = 5f;
@@ -69,7 +79,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         {
             _timer += Time.deltaTime;
             _rotationDoor = Mathf.Lerp(_baseAngle, _endAngle, _timer/_lerpDuration);
-            _door.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0); 
+            _doorHinge.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0); 
            yield return null;      
         }
         yield return new WaitForSeconds(_timerDoor);
@@ -78,7 +88,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         {
             _timer += Time.deltaTime;
             _rotationDoor = Mathf.Lerp(_endAngle, 0f, _timer / _lerpDuration);
-            _door.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0);
+            _doorHinge.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0);
             _playerCam._canOpen = false;
             yield return null;
         }
@@ -86,6 +96,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         _source.PlayOneShot(_doorShutSfx);
 
     }
+
     public void CheckList()
     {
         if (_itemNeed == 0) return;

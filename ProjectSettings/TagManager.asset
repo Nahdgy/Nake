@@ -54,6 +54,7 @@ TagManager:
   - Letter
   - Globe
   - Piano
+  - Case
   layers:
   - Default
   - TransparentFX

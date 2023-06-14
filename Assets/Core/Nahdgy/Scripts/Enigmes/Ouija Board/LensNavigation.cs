@@ -39,6 +39,7 @@ public class LensNavigation : MonoBehaviour,Icodable
     {
         ControllerInputs();
         Moving();  
+        CamInPlace();
     }
     void ControllerInputs()
     {

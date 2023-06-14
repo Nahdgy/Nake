@@ -10,7 +10,8 @@ public interface Iinteractable
     public void SwitchLight();
     public void OpenDoor();
     public void CheckList();
-    //public void CloseDoor();
+    
+    public void OpenCase();
     //public void Read();
 
 

@@ -38,6 +38,8 @@ public class PlayerCam : MonoBehaviour
     private GlobeNav _globeCode;
     [SerializeField]
     private PianoNav _pianoNav;
+    [SerializeField]
+    private SanityBar _sanityBar;
 
 
     public bool _canSee = true;
@@ -119,6 +121,17 @@ public class PlayerCam : MonoBehaviour
                     _pianoNav.Back();
                 }
 
+            }
+
+            //Pick item for the sanity bar    
+            {
+                if (_hit.transform.CompareTag("pills"))
+                {
+                    _sanityBar.t += 100;
+                    // SanityBar.slider.value = 100f;
+                    Debug.Log("recovered");
+                    //Destroy(pills.gameObject);
+                }
             }
 
             //Pick letters for read
@@ -213,8 +226,17 @@ public class PlayerCam : MonoBehaviour
                         }
                     }
 
+                //Open the case
+                if (_hit.transform.CompareTag("Case"))
+                {
+                    if (Input.GetButtonDown("Action"))
+                    {
+                        interactObj.OpenCase();
+                        _actionUI.SetActive(false);
+                    }
                 }
             }
+           }
         }
         //Open enigma's resolve objects
         private void EnigmaTargeted()

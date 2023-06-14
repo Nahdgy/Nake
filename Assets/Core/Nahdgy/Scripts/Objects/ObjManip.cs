@@ -56,4 +56,7 @@ public class ObjManip : MonoBehaviour, Iinteractable
     {}
     public void CheckList()
     {}    
+
+    public void OpenCase()
+    {}
 }

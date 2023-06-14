@@ -8,6 +8,7 @@ public class PianoNav : MonoBehaviour
 {
     private float _horizontalInput;
     public bool _canManip = false;
+    public bool _canGoDown = false;
     public bool key1 = false,key2 = false,key3 = false,key4 = false;
 
     [SerializeField]
@@ -87,7 +88,7 @@ public class PianoNav : MonoBehaviour
         float upPos = _up.position.y;
         float currentPosY;
 
-        if (buttonFingerIsPressed)
+        if (buttonFingerIsPressed && _canGoDown)
         {
             _canManip = false;
             if (timeToLerp > 0f)
