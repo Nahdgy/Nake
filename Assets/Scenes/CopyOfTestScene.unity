@@ -692,6 +692,10 @@ PrefabInstance:
       propertyPath: _actionUI
       value: 
       objectReference: {fileID: 512469000}
+    - target: {fileID: 1846247652, guid: ca4f8bd52f2bc0a468b646631d042f15, type: 3}
+      propertyPath: _clockInteract
+      value: 
+      objectReference: {fileID: 3469287836781726527}
     - target: {fileID: 1535674065345543760, guid: ca4f8bd52f2bc0a468b646631d042f15,
         type: 3}
       propertyPath: m_Name
@@ -1991,14 +1995,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 477863615, guid: 0df8fc693d3fa9f46afaf58562d1fe32, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231745687, guid: 0df8fc693d3fa9f46afaf58562d1fe32, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820520680, guid: 0df8fc693d3fa9f46afaf58562d1fe32, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1820520682, guid: 0df8fc693d3fa9f46afaf58562d1fe32, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500331528715073621, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1500331529585433201, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
         type: 3}
       propertyPath: m_Name
       value: ptn_de_clock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500331529585433201, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500331530244078051, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734825123938528134, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734825124763892861, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986569345568896942, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094303784567205566, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2094303784567205566, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
         type: 3}
@@ -2022,6 +2073,11 @@ PrefabInstance:
       objectReference: {fileID: 1545983135}
     - target: {fileID: 2179282732295010923, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
         type: 3}
+      propertyPath: _validSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: e217dcf013671684d9c4ede233f48ae6, type: 3}
+    - target: {fileID: 2179282732295010923, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
       propertyPath: _clockHand
       value: 
       objectReference: {fileID: 1818457013}
@@ -2040,6 +2096,11 @@ PrefabInstance:
       propertyPath: _cameraPlayer
       value: 
       objectReference: {fileID: 1509137406}
+    - target: {fileID: 2271913818701638434, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2277114141027221707, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
         type: 3}
       propertyPath: m_RootOrder
@@ -2274,3 +2335,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3469287836781726527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2179282732295010923, guid: 0df8fc693d3fa9f46afaf58562d1fe32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1734825124680959061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148857445924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963b5dab24cd528459f51df424e5049c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
