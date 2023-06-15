@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class Fioles : MonoBehaviour
 {
- 
     Vector3 OGPos;
 
     private void Start()
@@ -16,7 +15,7 @@ public class Fioles : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Chodron")
+        if (other.gameObject.tag != "Chaudron")
         {
             transform.position = OGPos;
         }

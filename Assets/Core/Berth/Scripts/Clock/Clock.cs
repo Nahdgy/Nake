@@ -44,9 +44,6 @@ public class Clock : MonoBehaviour
             {
                 Animation.speed = 0;
             }
-
         }
-
-       
     }
 }

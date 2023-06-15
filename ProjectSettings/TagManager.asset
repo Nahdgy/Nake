@@ -55,6 +55,7 @@ TagManager:
   - Globe
   - Piano
   - Clock
+  - Chaudron
   layers:
   - Default
   - TransparentFX

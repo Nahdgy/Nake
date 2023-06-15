@@ -19,10 +19,7 @@ public class Chaudron : MonoBehaviour
         { 
             FioleTwo = true;
             Destroy(collision.gameObject);
-        } else if (collision.gameObject.name == "Fiole2" &&  !FioleOne)
-        {
-            
-        }
+        } 
     
         if (collision.gameObject.name == "Fiole3" && FioleTwo == true)
         {

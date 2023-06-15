@@ -11,7 +11,7 @@ public class GrabObj : MonoBehaviour
     private bool _hasPlayer = false, _beingCarried = false, _touched = false;
 
     [SerializeField]
-    private GameObject _grabUI, _goUI;
+    private GameObject _grabUI;
 
     public void Update()
     {
@@ -19,6 +19,7 @@ public class GrabObj : MonoBehaviour
 
         if (_dist <= 1.9f)
         {
+            Debug.Log("player here");
             _hasPlayer = true;
             _grabUI.SetActive(true);
         }
@@ -38,7 +39,6 @@ public class GrabObj : MonoBehaviour
 
         if (_beingCarried)
         {
-            _goUI.SetActive(true);
             if (_touched)
             {
                 GetComponent<Rigidbody>().isKinematic = false;
@@ -49,7 +49,6 @@ public class GrabObj : MonoBehaviour
 
             else if (Input.GetAxis("RT") <= 0)
             {
-                _goUI.SetActive(false);
                 GetComponent<Rigidbody>().isKinematic = false;
                 transform.parent = null;
                 _beingCarried = false;
