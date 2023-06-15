@@ -136,9 +136,13 @@ public class PlayerCam : MonoBehaviour
             _objGrable = _hit.collider.gameObject;
             if (_objGrable.TryGetComponent<GrabObj>(out GrabObj _grabObj))
             {
-                if (_hit.transform.CompareTag("Carry"))
+                if (_hit.transform.CompareTag("ObjCarring"))
                 {
                     _grabObj._canCarry = true;
+                }
+                else
+                {
+                    _grabObj._canCarry = false;
                 }
             }
 

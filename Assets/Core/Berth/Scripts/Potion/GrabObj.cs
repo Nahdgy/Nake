@@ -30,7 +30,6 @@ public class GrabObj : MonoBehaviour
 
         if (_hasPlayer == true && Input.GetAxis("RT") > 0)
         {
-
             GetComponent<Rigidbody>().isKinematic = true;
             transform.parent = _playerCam;
             _beingCarried = true;
