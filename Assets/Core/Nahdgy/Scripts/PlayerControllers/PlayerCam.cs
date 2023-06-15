@@ -15,7 +15,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private Transform _objInView;
     [SerializeField]
-    private GameObject _obj, _actionUI, _lessUI;
+    private GameObject _obj, _actionUI, _lessUI, _pills;
     [SerializeField]
     private LayerMask _layerMask, _layerMaskEnigma;
 
@@ -23,7 +23,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
-    private AudioClip _sfxLock, _sfxZip;
+    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx;
 
 
     [SerializeField]
@@ -131,24 +131,28 @@ public class PlayerCam : MonoBehaviour
                 {
                     _canInteract = true;
                 }
-                if (Input.GetButtonDown("Action") && _clockInteract == true)
+                if (Input.GetButtonDown("Action") && _canInteract == true)
                 {
                     _clockInteract.Open();
                 }
-                if (Input.GetButtonDown("Back") && _clockInteract == true)
+                if (Input.GetButtonDown("Back") && _canInteract == false)
                 {
-                    _clockInteract.Back();
+                    _audioSource.PlayOneShot(_clockDeclineSfx);
                 }
             }
-
 
             //Pick item for the sanity bar    
             if (_hit.transform.CompareTag("pills"))
             {
-                _sanityBar.t += 100;
-                // SanityBar.slider.value = 100f;
-                Debug.Log("recovered");
-                //Destroy(pills.gameObject);
+                Debug.Log("PillsHit");
+                _pills = _hit.collider.gameObject;
+                if (Input.GetButtonDown("Action"))
+                {
+                    _sanityBar.t += 100;
+                    Debug.Log("recovered");
+                    Destroy(_pills.gameObject);
+                }
+                
             }
 
 

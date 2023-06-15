@@ -13,6 +13,8 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     [SerializeField]
     private GameObject _doorHinge;
     [SerializeField]
+    public GameObject _letterA;
+    [SerializeField]
     private Light _light;
 
     [Header("Parameters")]
@@ -41,6 +43,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     {
         TurnLight();
         _canSwitch = !_canSwitch;
+        
     }
     private void TurnLight()
     {
@@ -54,11 +57,13 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         {
             _light.intensity = 100f; 
             _source.PlayOneShot(_swithLightSfx);
+            _letterA.SetActive(false);
         }
         if (_canSwitch == false)
         {
             _light.intensity = 0f;
             _source.PlayOneShot(_swithLightSfx);
+            _letterA.SetActive(true);
         }
     } 
     public void OpenCase()
@@ -84,7 +89,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         {
             _timer += Time.deltaTime;
             _rotationDoor = Mathf.Lerp(_baseAngle, _endAngle, _timer/_lerpDuration);
-            _doorHinge.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0); 
+            _doorHinge.transform.rotation = Quaternion.Euler(0, _rotationDoor, -90); 
             yield return null;      
         }
         yield return new WaitForSeconds(_timerDoor);
@@ -93,7 +98,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         {
             _timer += Time.deltaTime;
             _rotationDoor = Mathf.Lerp(_endAngle, 0f, _timer / _lerpDuration);
-            _doorHinge.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0);
+            _doorHinge.transform.rotation = Quaternion.Euler(0, _rotationDoor, -90);
             _playerCam._canOpen = false;
             yield return null;
         }

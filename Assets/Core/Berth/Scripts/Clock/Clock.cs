@@ -34,11 +34,11 @@ public class Clock : MonoBehaviour
     {
         if (_clockInteract._canManip == true)
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetAxis("RT") > 0)
             {
                 Animation.speed = 1;
             }
-            else if (Input.GetKeyUp(KeyCode.T))
+            else if (Input.GetAxis("RT") <= 0)
             {
                 Animation.speed = 0;
             }
