@@ -85,9 +85,9 @@ public class PlayerCam : MonoBehaviour
     private void ObjectTargeted()
     {
         RaycastHit _hit;
-
-        if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask) && _canRay == true)
-        {
+        
+        if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask)&& _canRay == true)
+        {Debug.DrawLine(transform.position, transform.forward, Color.green, _distRange);
             //Pick up items
             if (_hit.transform.CompareTag("Item"))
             {
@@ -145,6 +145,11 @@ public class PlayerCam : MonoBehaviour
                     _grabObj._canCarry = false;
                 }
             }
+            else
+            {
+                _objGrable = null;
+            }
+
 
             //Pick letters for read
             _letterMail = _hit.collider.gameObject;

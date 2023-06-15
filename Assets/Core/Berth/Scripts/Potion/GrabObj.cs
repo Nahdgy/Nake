@@ -18,7 +18,6 @@ public class GrabObj : MonoBehaviour
 
         if (_canCarry == true)
         {
-            Debug.Log("player here");
             _hasPlayer = true;
             _grabUI.SetActive(true);
         }
@@ -50,6 +49,7 @@ public class GrabObj : MonoBehaviour
                 GetComponent<Rigidbody>().isKinematic = false;
                 transform.parent = null;
                 _beingCarried = false;
+                _canCarry = false;
             }
         }
     }
