@@ -49,6 +49,7 @@ public class ObjManip : MonoBehaviour, Iinteractable
     public void Back()
     {
         _canManip = false;
+        ReturnBase();
     }
     public void SwitchLight()
     {}
@@ -59,4 +60,7 @@ public class ObjManip : MonoBehaviour, Iinteractable
 
     public void OpenCase()
     {}
+
+    public void ViewTab()
+    { }
 }

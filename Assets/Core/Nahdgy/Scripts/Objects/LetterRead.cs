@@ -34,15 +34,4 @@ public class LetterRead : MonoBehaviour
         _audioSource.PlayOneShot(_papperSfx);
         _textUI.SetActive(false);
     }
-
-    private void ReadAnimation()
-    {
-        for (int i = 0; i < _textAnim.Length; i++)
-        {
-
-
-        }
-    }
-
-
 }

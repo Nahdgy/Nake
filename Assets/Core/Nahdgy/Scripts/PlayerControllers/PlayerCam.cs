@@ -31,7 +31,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private PlayerController _player;
     [SerializeField]
-    private GameObject _letterMail;
+    private GameObject _letterMail,_objGrable;
     [SerializeField]
     private GameManager _gameManager;
     [SerializeField]
@@ -40,6 +40,7 @@ public class PlayerCam : MonoBehaviour
     private PianoNav _pianoNav;
     [SerializeField]
     private SanityBar _sanityBar;
+   
 
 
     public bool _canSee = true;
@@ -104,13 +105,13 @@ public class PlayerCam : MonoBehaviour
                 {
                     _globeCode.Open();
                 }
-                if (Input.GetButtonDown("Back")) 
-                { 
+                if (Input.GetButtonDown("Back"))
+                {
                     _globeCode.Back();
                 }
             }
             //Interact Piano
-            if(_hit.transform.CompareTag("Piano"))
+            if (_hit.transform.CompareTag("Piano"))
             {
                 if (Input.GetButtonDown("Action"))
                 {
@@ -120,24 +121,32 @@ public class PlayerCam : MonoBehaviour
                 {
                     _pianoNav.Back();
                 }
-
             }
 
             //Pick item for the sanity bar    
+            if (_hit.transform.CompareTag("pills"))
             {
-                if (_hit.transform.CompareTag("pills"))
+                _sanityBar.t += 100;
+                // SanityBar.slider.value = 100f;
+                Debug.Log("recovered");
+                //Destroy(pills.gameObject);
+            }
+
+
+            //Carring Spetials Object 
+            _objGrable = _hit.collider.gameObject;
+            if (_objGrable.TryGetComponent<GrabObj>(out GrabObj _grabObj))
+            {
+                if (_hit.transform.CompareTag("Carry"))
                 {
-                    _sanityBar.t += 100;
-                    // SanityBar.slider.value = 100f;
-                    Debug.Log("recovered");
-                    //Destroy(pills.gameObject);
+                    _grabObj._canCarry = true;
                 }
             }
 
             //Pick letters for read
             _letterMail = _hit.collider.gameObject;
-            if(_letterMail.TryGetComponent<LetterRead>(out LetterRead _mailCode))
-            { 
+            if (_letterMail.TryGetComponent<LetterRead>(out LetterRead _mailCode))
+            {
                 if (_hit.transform.CompareTag("Letter"))
                 {
                     if (Input.GetButtonDown("Action"))
@@ -148,9 +157,7 @@ public class PlayerCam : MonoBehaviour
                         _player._canMove = false;
                         _mailCode.Read();
                         _gameManager.Focus();
-
                     }
-
 
                     if (Input.GetButtonDown("Back"))
                     {
@@ -171,60 +178,59 @@ public class PlayerCam : MonoBehaviour
             _obj = _hit.collider.gameObject;
             if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
             {
-               //Object can be manipulate 360°
-               if (_hit.transform.CompareTag("Object"))
-               {
-                 if (Input.GetButtonDown("Action"))
-                 {
-                    _actionUI.SetActive(false);
-                    _lessUI.SetActive(true);
-                    _canSee = false;
-                    _obj.transform.position = _objInView.transform.position;
-                    _player._canMove = false; 
-                    interactObj.Pick();
-                    _gameManager.Focus();
-                 }
-                 if (Input.GetButtonDown("Back"))
-                 {
-                     _actionUI.SetActive(false);
-                     _lessUI.SetActive(false);
-                     _canSee = true;
-                     _player._canMove = true;
-                     interactObj.ReturnBase();
-                     interactObj.Back();
-                     _gameManager.UnFocus();
-                 }
-               }
-                    //Light switcher action
-                    if (_hit.transform.CompareTag("Light"))
+                //Object can be manipulate 360°
+                if (_hit.transform.CompareTag("Object"))
+                {
+                    if (Input.GetButtonDown("Action"))
                     {
-
-                        if (Input.GetButtonDown("Action"))
-                        {
-                            interactObj.SwitchLight();
-                            _actionUI.SetActive(false);
-                        }
+                        _actionUI.SetActive(false);
+                        _lessUI.SetActive(true);
+                        _canSee = false;
+                        _obj.transform.position = _objInView.transform.position;
+                        _player._canMove = false;
+                        interactObj.Pick();
+                        _gameManager.Focus();
                     }
-                    //Open the door when the key is selected
-                    if (_hit.transform.CompareTag("Door"))
+                    if (Input.GetButtonDown("Back"))
                     {
-                        interactObj.CheckList();
-                        ObjInteract objInteract = _hit.collider.gameObject.GetComponent<ObjInteract>();
-
-                        if (objInteract._isInHand == true)
-                        {
-                            _canOpen = true;
-                        }
-                        if (Input.GetButtonDown("Action") && _canOpen == true)
-                        {
-                            interactObj.OpenDoor();
-                            _actionUI.SetActive(false);
-                        }
-                        if (Input.GetButtonDown("Action") && _canOpen == false)
-                        {
-                            _audioSource.PlayOneShot(_sfxLock);
-                        }
+                        _actionUI.SetActive(false);
+                        _lessUI.SetActive(false);
+                        _canSee = true;
+                        _player._canMove = true;
+                        interactObj.Back();
+                        _gameManager.UnFocus();
                     }
+                }
+                //Light switcher action
+                if (_hit.transform.CompareTag("Light"))
+                {
+
+                    if (Input.GetButtonDown("Action"))
+                    {
+                        interactObj.SwitchLight();
+                        _actionUI.SetActive(false);
+                    }
+                }
+                //Open the door when the key is selected
+                if (_hit.transform.CompareTag("Door"))
+                {
+                    interactObj.CheckList();
+                    ObjInteract objInteract = _hit.collider.gameObject.GetComponent<ObjInteract>();
+
+                    if (objInteract._isInHand == true)
+                    {
+                        _canOpen = true;
+                    }
+                    if (Input.GetButtonDown("Action") && _canOpen == true)
+                    {
+                        interactObj.OpenDoor();
+                        _actionUI.SetActive(false);
+                    }
+                    if (Input.GetButtonDown("Action") && _canOpen == false)
+                    {
+                        _audioSource.PlayOneShot(_sfxLock);
+                    }
+                }
 
                 //Open the case
                 if (_hit.transform.CompareTag("Case"))
@@ -236,8 +242,9 @@ public class PlayerCam : MonoBehaviour
                     }
                 }
             }
-           }
         }
+  
+    }
         //Open enigma's resolve objects
         private void EnigmaTargeted()
         {
@@ -257,7 +264,7 @@ public class PlayerCam : MonoBehaviour
             }
 
         }
-    }
+}
 
 
     

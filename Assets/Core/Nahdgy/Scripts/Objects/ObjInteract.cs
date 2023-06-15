@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class ObjInteract : MonoBehaviour, Iinteractable
 {
-    
+    //[HideInInspector]
     public bool _isInHand = false;
+    //[HideInInspector]
     public bool _canSwitch;
 
-    //Intaractable GameObjects
+    [Header("Intaractable GameObjects")]
     [SerializeField]
     private GameObject _doorHinge;
     [SerializeField]
     private Light _light;
 
+    [Header("Parameters")]
     [SerializeField]
     private float _timerDoor, _rotationDoor, _baseAngle, _endAngle;
     [SerializeField]
     private int _itemNeed;
 
-    //Sfx
+    [Header("Sfx")]
     [SerializeField]
     private AudioSource _source;
     [SerializeField]
@@ -29,6 +31,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     [SerializeField]
     private string _rotationCase;
 
+    [Header("CodeCaller")]
     [SerializeField]
     private PlayerCam _playerCam = new PlayerCam();
     [SerializeField]
@@ -57,19 +60,21 @@ public class ObjInteract : MonoBehaviour, Iinteractable
             _light.intensity = 0f;
             _source.PlayOneShot(_swithLightSfx);
         }
-    }
-    public void OpenDoor()
-    {
-        _source.PlayOneShot(_doorOpenSfx);
-        StartCoroutine(ClosingDoor());
-        
-    }
-
+    } 
     public void OpenCase()
     {
         _animator.Play(_rotationCase);
         
     }
+    public void ViewTab()
+    {
+
+    }
+    public void OpenDoor()
+    {
+        _source.PlayOneShot(_doorOpenSfx);
+        StartCoroutine(ClosingDoor());      
+    }  
     private IEnumerator ClosingDoor()
     {  
         float _lerpDuration = 5f;
@@ -80,7 +85,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
             _timer += Time.deltaTime;
             _rotationDoor = Mathf.Lerp(_baseAngle, _endAngle, _timer/_lerpDuration);
             _doorHinge.transform.rotation = Quaternion.Euler(0, _rotationDoor, 0); 
-           yield return null;      
+            yield return null;      
         }
         yield return new WaitForSeconds(_timerDoor);
         _timer = 0f;
@@ -94,9 +99,7 @@ public class ObjInteract : MonoBehaviour, Iinteractable
         }
         yield return new WaitForSeconds(0.1f);
         _source.PlayOneShot(_doorShutSfx);
-
     }
-
     public void CheckList()
     {
         if (_itemNeed == 0) return;
@@ -114,8 +117,6 @@ public class ObjInteract : MonoBehaviour, Iinteractable
     public void Pick()
     { }
     public void Back()
-    { }
-    public void ReturnBase()
     { }
 }
 

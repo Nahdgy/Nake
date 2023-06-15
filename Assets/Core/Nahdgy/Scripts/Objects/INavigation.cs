@@ -32,9 +32,9 @@ public class INavigation : MonoBehaviour
     [SerializeField]
     private LensNavigation _ouijaCode;
     [SerializeField]
-    private ObjManip _manipCode;
+    private ObjManip[] _manipCode;
     [SerializeField]
-    private LetterRead _letterCode;
+    private LetterRead[] _letterCode;
     [SerializeField]
     private PianoNav _pianoCode;
     [SerializeField]
@@ -59,10 +59,8 @@ public class INavigation : MonoBehaviour
             _isOpen = true;  
             _globeCode.Back();
             _ouijaCode.Back();
-            _manipCode.Back(); //do a get component for all the letter
-            _manipCode.ReturnBase();
-            
-            _letterCode.BackInPlace(); //do a get component for all the letter
+            //_manipCode.Back();
+            //_letterCode.BackInPlace(); //do a get component for all the letter
             _pianoCode.Back();
         }
         else if (Input.GetButtonDown("Back") && _isOpen == true)
@@ -74,8 +72,6 @@ public class INavigation : MonoBehaviour
             _playerCam._canSee = true;
             _playerCam._canRay = true;
             _isOpen = false;
-            
-
         }
     }
     public IEnumerator ClickTimer()
