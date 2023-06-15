@@ -9,6 +9,8 @@ public class Clock : MonoBehaviour
     private Six six;
     [SerializeField]
     private Three three;
+
+    [SerializeField] private ClockInteract _clockInteract;
     
     void Start()
     {
@@ -24,7 +26,7 @@ public class Clock : MonoBehaviour
 
     private void Validation()
     {
-        if(three.IsOkSmall && six.IsOkTall && Input.GetKey(KeyCode.K)) 
+        if (three.IsOkSmall && six.IsOkTall && Input.GetKey(KeyCode.K)) 
         {
             Debug.Log("Good");
         }
@@ -32,13 +34,16 @@ public class Clock : MonoBehaviour
 
     void ClockControl()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (_clockInteract._canManip)
         {
-            Animation.speed = 1;
-        }
-        else if (Input.GetKeyUp(KeyCode.T))
-        {
-            Animation.speed = 0;
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                Animation.speed = 1;
+            }
+            else if (Input.GetKeyUp(KeyCode.T))
+            {
+                Animation.speed = 0;
+            }
         }
     }
 }

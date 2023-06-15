@@ -18,6 +18,7 @@ public class GrabObj : MonoBehaviour
 
         if (_canCarry == true)
         {
+            Debug.Log("player here");
             _hasPlayer = true;
             _grabUI.SetActive(true);
         }

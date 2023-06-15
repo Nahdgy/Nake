@@ -57,7 +57,6 @@ public class PianoNav : MonoBehaviour
         _canManip = true;
         _player._canMove = false;
         _playerCam._canSee = false;
-       
     }
     public void Back()
     {

@@ -54,7 +54,8 @@ TagManager:
   - Letter
   - Globe
   - Piano
-  - Case
+  - Clock
+  - Chaudron
   layers:
   - Default
   - TransparentFX
