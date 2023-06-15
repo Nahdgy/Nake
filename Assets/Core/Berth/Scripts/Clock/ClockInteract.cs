@@ -8,21 +8,18 @@ using Cinemachine;
 public class ClockInteract : MonoBehaviour
 {
 
-    [SerializeField]
-    private CinemachineVirtualCamera _cameraPlayer, _clockCam;
-    [SerializeField]
-    private PlayerCam _playerCam;
-    [SerializeField]
-    private AudioSource _audioSource;
-    [SerializeField]
-    private AudioClip _validSfx;
-    [SerializeField] private PlayerController _player;
-
-    [SerializeField] private Transform _camera, _place;
-
-    [SerializeField] private Transform _clockHand;
+    [SerializeField]private CinemachineVirtualCamera _cameraPlayer, _clockCam;
+    [SerializeField]private PlayerCam _playerCam;
+    [SerializeField]private AudioSource _audioSource;
+    [SerializeField]private AudioClip _validSfx;
+    [SerializeField]private PlayerController _player;
+    [SerializeField]private Transform _camera, _place;
+    [SerializeField]private Transform _clockHand;
+    [SerializeField]private int _itemNeed;
+    [SerializeField]private Innventory _itemSelect;
 
     public bool _canManip;
+    public bool _isInHand;
 
 
     private void CamInPlace()
@@ -48,5 +45,19 @@ public class ClockInteract : MonoBehaviour
         _canManip = false;
         _player._canMove = true;
         _playerCam._canSee = true;
+    }
+    public void CheckList()
+    {
+        if (_itemNeed == 0) return;
+
+        if (_itemSelect._objId == _itemNeed)
+        {
+            Debug.Log("L'objet est dans la main");
+            _isInHand = true;
+        }
+        else if (_itemSelect._objId != _itemNeed)
+        {
+            _isInHand = false;
+        }
     }
 }

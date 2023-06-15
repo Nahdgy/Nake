@@ -5,10 +5,8 @@ using UnityEngine;
 public class Clock : MonoBehaviour
 {
     [SerializeField] Animator Animation;
-    [SerializeField]
-    private Six six;
-    [SerializeField]
-    private Three three;
+    [SerializeField] private Six six;
+    [SerializeField] private Three three;
 
     [SerializeField] private ClockInteract _clockInteract;
     
@@ -34,7 +32,7 @@ public class Clock : MonoBehaviour
 
     void ClockControl()
     {
-        if (_clockInteract._canManip)
+        if (_clockInteract._canManip == true)
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
