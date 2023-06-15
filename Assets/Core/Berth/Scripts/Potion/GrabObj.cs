@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class GrabObj : MonoBehaviour
 {
-    public Transform _player;
     public Transform _playerCam;
 
     [SerializeField]
     private bool _hasPlayer = false, _beingCarried = false, _touched = false;
+    public bool _canCarry = false;
 
     [SerializeField]
     private GameObject _grabUI;
 
     public void Update()
     {
-        float _dist = Vector2.Distance(gameObject.transform.position, _player.position);
 
-        if (_dist <= 1.9f)
+        if (_canCarry == true)
         {
             Debug.Log("player here");
             _hasPlayer = true;
@@ -31,7 +30,6 @@ public class GrabObj : MonoBehaviour
 
         if (_hasPlayer == true && Input.GetAxis("RT") > 0)
         {
-
             GetComponent<Rigidbody>().isKinematic = true;
             transform.parent = _playerCam;
             _beingCarried = true;
