@@ -40,13 +40,14 @@ public class PlayerCam : MonoBehaviour
     private PianoNav _pianoNav;
     [SerializeField]
     private SanityBar _sanityBar;
-   
+    [SerializeField]
+    private ClockInteract _clockInteract;   
 
 
     public bool _canSee = true;
     public bool _canOpen = false;
     public bool _canRay = false;
-
+    public bool _canInteract = false;
 
     private void Update()
     {
@@ -121,6 +122,25 @@ public class PlayerCam : MonoBehaviour
                     _pianoNav.Back();
                 }
             }
+
+            //Interact Clock
+            if (_hit.transform.CompareTag("Clock"))
+            {
+                _clockInteract.CheckList();
+                if (_clockInteract._isInHand == true)
+                {
+                    _canInteract = true;
+                }
+                if (Input.GetButtonDown("Action") && _clockInteract == true)
+                {
+                    _clockInteract.Open();
+                }
+                if (Input.GetButtonDown("Back") && _clockInteract == true)
+                {
+                    _clockInteract.Back();
+                }
+            }
+
 
             //Pick item for the sanity bar    
             if (_hit.transform.CompareTag("pills"))
