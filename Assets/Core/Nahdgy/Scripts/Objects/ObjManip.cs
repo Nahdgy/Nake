@@ -32,7 +32,7 @@ public class ObjManip : MonoBehaviour, Iinteractable
         if (_canManip)
         {
             Debug.Log("IsMoving");
-            _obj.rotation = Quaternion.Euler(_verticalInput * _multiplySpeed + _obj.rotation.eulerAngles.x, _horizontalInput * _multiplySpeed + _obj.rotation.eulerAngles.y, 0f);
+            _obj.rotation = Quaternion.Euler(_verticalInput * _multiplySpeed + _obj.rotation.eulerAngles.x, _horizontalInput * _multiplySpeed + _obj.rotation.eulerAngles.y, _horizontalInput * _multiplySpeed + _obj.rotation.eulerAngles.z);
         }
     }
     public void ReturnBase()
