@@ -79,7 +79,6 @@ public class PlayerCam : MonoBehaviour
             _canRay = false;
             _actionUI.SetActive(false);
         }
-
     }
     
     //Raycast innitialization
