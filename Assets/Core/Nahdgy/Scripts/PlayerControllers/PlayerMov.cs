@@ -54,7 +54,7 @@ public class PlayerMov : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider pills)
-//Pick item for the sanity bar    
+    //Pick item for the sanity bar    
     {
          if (pills.gameObject.tag == "pills")
          {

@@ -12,7 +12,7 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private Image fill;
     [SerializeField] private int health; 
     public PlayerMov PlayerMov;
-    public float t = 100f;
+    public float t = 10f;
     private bool gameOver;
 
     // Start is called before the first frame update

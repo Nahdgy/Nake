@@ -15,7 +15,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private Transform _objInView;
     [SerializeField]
-    private GameObject _obj, _actionUI, _lessUI;
+    private GameObject _obj, _actionUI, _lessUI, _pills;
     [SerializeField]
     private LayerMask _layerMask, _layerMaskEnigma;
 
@@ -23,7 +23,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
-    private AudioClip _sfxLock, _sfxZip;
+    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx;
 
 
     [SerializeField]
@@ -31,19 +31,23 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private PlayerController _player;
     [SerializeField]
-    private GameObject _letterMail;
+    private GameObject _letterMail,_objGrable;
     [SerializeField]
     private GameManager _gameManager;
     [SerializeField]
     private GlobeNav _globeCode;
     [SerializeField]
     private PianoNav _pianoNav;
+    [SerializeField]
+    private SanityBar _sanityBar;
+    [SerializeField]
+    private ClockInteract _clockInteract;   
 
 
     public bool _canSee = true;
     public bool _canOpen = false;
     public bool _canRay = false;
-
+    public bool _canInteract = false;
 
     private void Update()
     {
@@ -76,16 +80,15 @@ public class PlayerCam : MonoBehaviour
             _canRay = false;
             _actionUI.SetActive(false);
         }
-
     }
     
     //Raycast innitialization
     private void ObjectTargeted()
     {
         RaycastHit _hit;
-
-        if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask) && _canRay == true)
-        {
+        
+        if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask)&& _canRay == true)
+        {Debug.DrawLine(transform.position, transform.forward, Color.green, _distRange);
             //Pick up items
             if (_hit.transform.CompareTag("Item"))
             {
@@ -102,13 +105,13 @@ public class PlayerCam : MonoBehaviour
                 {
                     _globeCode.Open();
                 }
-                if (Input.GetButtonDown("Back")) 
-                { 
+                if (Input.GetButtonDown("Back"))
+                {
                     _globeCode.Back();
                 }
             }
             //Interact Piano
-            if(_hit.transform.CompareTag("Piano"))
+            if (_hit.transform.CompareTag("Piano"))
             {
                 if (Input.GetButtonDown("Action"))
                 {
@@ -118,13 +121,64 @@ public class PlayerCam : MonoBehaviour
                 {
                     _pianoNav.Back();
                 }
-
             }
+
+            //Interact Clock
+            if (_hit.transform.CompareTag("Clock"))
+            {
+                _clockInteract.CheckList();
+                if (_clockInteract._isInHand == true)
+                {
+                    _canInteract = true;
+                }
+                if (Input.GetButtonDown("Action") && _canInteract == true)
+                {
+                    _clockInteract.Open();
+                }
+                if (Input.GetButtonDown("Back") && _canInteract == false)
+                {
+                    _audioSource.PlayOneShot(_clockDeclineSfx);
+                }
+            }
+
+            //Pick item for the sanity bar    
+            if (_hit.transform.CompareTag("pills"))
+            {
+                Debug.Log("PillsHit");
+                _pills = _hit.collider.gameObject;
+                if (Input.GetButtonDown("Action"))
+                {
+                    _sanityBar.t += 100;
+                    Debug.Log("recovered");
+                    Destroy(_pills.gameObject);
+                }
+                
+            }
+
+
+            //Carring Spetials Object 
+            _objGrable = _hit.collider.gameObject;
+            if (_objGrable.TryGetComponent<GrabObj>(out GrabObj _grabObj))
+            {
+                if (_hit.transform.CompareTag("ObjCarring"))
+                {
+                    _grabObj._canCarry = true;
+                }
+                else
+                {
+                    _grabObj._canCarry = false;
+                }
+            }
+            else
+            {
+                _objGrable = null;
+            }
+
 
             //Pick letters for read
             _letterMail = _hit.collider.gameObject;
-            if(_letterMail.TryGetComponent<LetterRead>(out LetterRead _mailCode))
-            { 
+            if (_letterMail.TryGetComponent<LetterRead>(out LetterRead _mailCode))
+            {
                 if (_hit.transform.CompareTag("Letter"))
                 {
                     if (Input.GetButtonDown("Action"))
@@ -135,9 +189,7 @@ public class PlayerCam : MonoBehaviour
                         _player._canMove = false;
                         _mailCode.Read();
                         _gameManager.Focus();
-
                     }
-
 
                     if (Input.GetButtonDown("Back"))
                     {
@@ -158,64 +210,73 @@ public class PlayerCam : MonoBehaviour
             _obj = _hit.collider.gameObject;
             if (_obj.TryGetComponent<Iinteractable>(out Iinteractable interactObj))
             {
-               //Object can be manipulate 360°
-               if (_hit.transform.CompareTag("Object"))
-               {
-                 if (Input.GetButtonDown("Action"))
-                 {
-                    _actionUI.SetActive(false);
-                    _lessUI.SetActive(true);
-                    _canSee = false;
-                    _obj.transform.position = _objInView.transform.position;
-                    _player._canMove = false; 
-                    interactObj.Pick();
-                    _gameManager.Focus();
-                 }
-                 if (Input.GetButtonDown("Back"))
-                 {
-                     _actionUI.SetActive(false);
-                     _lessUI.SetActive(false);
-                     _canSee = true;
-                     _player._canMove = true;
-                     interactObj.ReturnBase();
-                     interactObj.Back();
-                     _gameManager.UnFocus();
-                 }
-               }
-                    //Light switcher action
-                    if (_hit.transform.CompareTag("Light"))
+                //Object can be manipulate 360°
+                if (_hit.transform.CompareTag("Object"))
+                {
+                    if (Input.GetButtonDown("Action"))
                     {
-
-                        if (Input.GetButtonDown("Action"))
-                        {
-                            interactObj.SwitchLight();
-                            _actionUI.SetActive(false);
-                        }
+                        _actionUI.SetActive(false);
+                        _lessUI.SetActive(true);
+                        _canSee = false;
+                        _obj.transform.position = _objInView.transform.position;
+                        _player._canMove = false;
+                        interactObj.Pick();
+                        _gameManager.Focus();
                     }
-                    //Open the door when the key is selected
-                    if (_hit.transform.CompareTag("Door"))
+                    if (Input.GetButtonDown("Back"))
                     {
-                        interactObj.CheckList();
-                        ObjInteract objInteract = _hit.collider.gameObject.GetComponent<ObjInteract>();
-
-                        if (objInteract._isInHand == true)
-                        {
-                            _canOpen = true;
-                        }
-                        if (Input.GetButtonDown("Action") && _canOpen == true)
-                        {
-                            interactObj.OpenDoor();
-                            _actionUI.SetActive(false);
-                        }
-                        if (Input.GetButtonDown("Action") && _canOpen == false)
-                        {
-                            _audioSource.PlayOneShot(_sfxLock);
-                        }
+                        _actionUI.SetActive(false);
+                        _lessUI.SetActive(false);
+                        _canSee = true;
+                        _player._canMove = true;
+                        interactObj.Back();
+                        _gameManager.UnFocus();
                     }
+                }
+                //Light switcher action
+                if (_hit.transform.CompareTag("Light"))
+                {
 
+                    if (Input.GetButtonDown("Action"))
+                    {
+                        interactObj.SwitchLight();
+                        _actionUI.SetActive(false);
+                    }
+                }
+                //Open the door when the key is selected
+                if (_hit.transform.CompareTag("Door"))
+                {
+                    interactObj.CheckList();
+                    ObjInteract objInteract = _hit.collider.gameObject.GetComponent<ObjInteract>();
+
+                    if (objInteract._isInHand == true)
+                    {
+                        _canOpen = true;
+                    }
+                    if (Input.GetButtonDown("Action") && _canOpen == true)
+                    {
+                        interactObj.OpenDoor();
+                        _actionUI.SetActive(false);
+                    }
+                    if (Input.GetButtonDown("Action") && _canOpen == false)
+                    {
+                        _audioSource.PlayOneShot(_sfxLock);
+                    }
+                }
+
+                //Open the case
+                if (_hit.transform.CompareTag("Case"))
+                {
+                    if (Input.GetButtonDown("Action"))
+                    {
+                        interactObj.OpenCase();
+                        _actionUI.SetActive(false);
+                    }
                 }
             }
         }
+  
+    }
         //Open enigma's resolve objects
         private void EnigmaTargeted()
         {
@@ -235,7 +296,7 @@ public class PlayerCam : MonoBehaviour
             }
 
         }
-    }
+}
 
 
     

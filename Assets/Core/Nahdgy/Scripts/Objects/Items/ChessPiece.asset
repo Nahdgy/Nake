@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChessPiece
   m_EditorClassIdentifier: 
   _name: ChessPiece
-  _visual: {fileID: 21300000, guid: 2bfae11fe90f01d4497e1af99c01fa45, type: 3}
+  _visual: {fileID: 21300000, guid: 9ad335932072a6c4db821ea93e63c9b7, type: 3}
   _prefab: {fileID: 5406882760774538077, guid: 1741929a29687774bba3f3556a960375, type: 3}
   _id: 2
   _maxStack: 10
