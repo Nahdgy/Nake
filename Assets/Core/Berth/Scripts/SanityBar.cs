@@ -10,9 +10,10 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private Gradient gradient;
     [SerializeField] private Image fill;
-    [SerializeField] private int health; 
+    [SerializeField] private int health;
     public PlayerMov PlayerMov;
-    public float t = 10f;
+    [SerializeField] private float t = 100f;
+    private float maxHealth = 120;
     private bool gameOver;
 
     // Start is called before the first frame update
