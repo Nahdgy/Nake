@@ -16,7 +16,7 @@ public class MenuScreen : MonoBehaviour
         Timer();
         Debug.Log("fade");
         GameObject.Find("Play").GetComponent<Button>().enabled= false;
-        SceneManager.LoadScene("Copy2");
+        SceneManager.LoadScene("Final");
     }
 
     public void Timer()

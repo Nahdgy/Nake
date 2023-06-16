@@ -19,6 +19,11 @@ public class Fioles : MonoBehaviour
         {
             transform.position = OGPos;
         }
+
+        if (other.gameObject.layer == 3)
+        { 
+            transform.position = OGPos;
+        }
     }
 
 }
