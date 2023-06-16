@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395718928}
   m_LocalRotation: {x: 0.50000006, y: 0.49999994, z: -0.49999994, w: 0.50000006}
-  m_LocalPosition: {x: -8.5, y: 1.4, z: 5.6}
-  m_LocalScale: {x: 58.70054, y: 39.094624, z: 65.87342}
+  m_LocalPosition: {x: -0.8, y: 1.4, z: 5.6}
+  m_LocalScale: {x: 21.343515, y: 27.602308, z: 23.951574}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4122215340869418141}
@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8811623, y: 1, z: 0.60569125}
-  m_Center: {x: 0.059418794, y: 0, z: 0.19715436}
+  m_Size: {x: 0.54566383, y: 1, z: 0.58990544}
+  m_Center: {x: 0.23802167, y: -0.0000000041458295, z: 0.1892624}
 --- !u!1 &221109731853686108
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _italyHere: 0
   _canManip: 0
+  _canOpen: 0
   _cameraPlayer: {fileID: 0}
   _cameraGlobe: {fileID: 3936106771762636020}
   _obj: {fileID: 6255796207232925738}
@@ -152,10 +153,10 @@ MonoBehaviour:
   _ping: {fileID: 4521531004751445574}
   _multiplySpeed: 0.04
   _multiplySpeedRot: 1
-  _pingHeight: 0.25
+  _pingHeight: -0.7
   _distRange: 3
-  _min: 4
-  _max: 4.5
+  _min: 6
+  _max: 8
   _countryLayer:
     serializedVersion: 2
     m_Bits: 16384
@@ -201,14 +202,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746108888689970000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -1.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4521531004751445574}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!1 &1575369493873148978
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,8 +234,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575369493873148978}
-  m_LocalRotation: {x: -0.4657619, y: 0.5311927, z: 0.46673647, w: 0.5320313}
-  m_LocalPosition: {x: 1781.3481, y: -45746.49, z: -60467.066}
+  m_LocalRotation: {x: -0.690861, y: 0.6653143, z: -0.2395107, w: -0.15067391}
+  m_LocalPosition: {x: 910.93677, y: -14136.135, z: 36719.074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -402,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 3638589294842455591}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -2.01, y: 1.29, z: -8.69}
-  m_LocalScale: {x: 0.050002266, y: 0.050002266, z: 0.050002266}
+  m_LocalScale: {x: 0.1454666, y: 0.1454666, z: 0.1454666}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6255796207232925738}
@@ -439,7 +440,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 05b83e62e73699544ab4fa4f11cccbef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -479,7 +480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4521531004751445574
 Transform:
   m_ObjectHideFlags: 0
@@ -487,7 +488,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4521531004751445570}
-  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalRotation: {x: -0.21561608, y: -0.9725809, z: 0.08508984, w: -0.01886397}
   m_LocalPosition: {x: 0, y: -6.91, z: 0}
   m_LocalScale: {x: 0.35263395, y: 0.35263395, z: 0.35263392}
   m_ConstrainProportionsScale: 0
@@ -498,7 +499,7 @@ Transform:
   - {fileID: 1821313143588995412}
   m_Father: {fileID: 4122215340869418141}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+  m_LocalEulerAnglesHint: {x: -190, y: 0, z: -155}
 --- !u!33 &4521531004751445575
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -770,7 +771,7 @@ GameObject:
   - component: {fileID: 4521531006165944339}
   - component: {fileID: 4521531006165944336}
   - component: {fileID: 4521531006165944337}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: Algeria
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -41,7 +41,9 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private SanityBar _sanityBar;
     [SerializeField]
-    private ClockInteract _clockInteract;   
+    private ClockInteract _clockInteract;
+    [SerializeField]
+    private ArtInspect _paint;
 
 
     public bool _canSee = true;
@@ -88,7 +90,7 @@ public class PlayerCam : MonoBehaviour
         RaycastHit _hit;
         
         if (Physics.Raycast(transform.position, transform.forward, out _hit, _distRange, _layerMask)&& _canRay == true)
-        {Debug.DrawLine(transform.position, transform.forward, Color.green, _distRange);
+        {
             //Pick up items
             if (_hit.transform.CompareTag("Item"))
             {
@@ -96,6 +98,18 @@ public class PlayerCam : MonoBehaviour
                 {
                     _audioSource.PlayOneShot(_sfxZip);
                     _pickUp.DoPickUp(_hit.transform.gameObject.GetComponent<Item>());
+                }
+            }
+            //Interact Painting
+            if (_hit.transform.CompareTag("Painting"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _paint.Open();
+                }
+                if (Input.GetButton("Back"))
+                {
+                    _paint.Back();
                 }
             }
             //Interact Globe

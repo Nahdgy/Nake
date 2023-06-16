@@ -14,6 +14,9 @@ public class GlobeNav : MonoBehaviour
     public bool _italyHere = false;
     public bool _canManip = false;
 
+    public bool _canOpen = false;
+
+  
     [SerializeField]
     private CinemachineVirtualCamera _cameraPlayer, _cameraGlobe;
     [SerializeField]
@@ -43,6 +46,7 @@ public class GlobeNav : MonoBehaviour
         Turn();
         PingNav();   
         CamInPlace();
+        Debug.DrawLine(_ping.transform.position, Vector3.forward * -1, Color.green);
 
     }
 
@@ -98,7 +102,8 @@ public class GlobeNav : MonoBehaviour
     {
         if (_canManip == true)
         {
-            RaycastHit _hit;
+            RaycastHit _hit; 
+            
             if (Physics.Raycast(_ping.transform.position, Vector3.forward * -1, out _hit, _distRange, _countryLayer))
             {
                 _italyHere = true;
@@ -116,6 +121,7 @@ public class GlobeNav : MonoBehaviour
     private IEnumerator Validation()
     {
         float timer = 0.3f;
+        _canOpen = true;
         _audioSource.PlayOneShot(_validSfx);
         yield return new WaitForSeconds(timer);
         Back();
