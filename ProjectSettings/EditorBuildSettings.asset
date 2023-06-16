@@ -8,16 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 4fd06ec42173e654a8259d1fea58410f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CopyOfTestScene.unity
     guid: ea25645c97ae6ce44986a4efea5f1b90
-  - enabled: 1
+  - enabled: 0
     path: Assets/Core/Nahdgy/Scenes/TestScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 247dac6de4152da42bedcc0542ebc44b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Copy2.unity
     guid: 47ebf2b22adacf64a95e29b3dfb576e7
+  - enabled: 1
+    path: Assets/Core/Nahdgy/Scenes/Final.unity
+    guid: 771ef31fd90504c48b2afb3024048a6b
   m_configObjects: {}
