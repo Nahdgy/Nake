@@ -234,7 +234,7 @@ Transform:
   m_GameObject: {fileID: 2758692137810056079}
   m_LocalRotation: {x: -0.11384798, y: -0.20149207, z: 0.028811751, w: 0.97242457}
   m_LocalPosition: {x: -0.621, y: 2.086, z: -3.207}
-  m_LocalScale: {x: 1.2975, y: 1.2975, z: 1.2975}
+  m_LocalScale: {x: 1.2974999, y: 1.2975, z: 1.2975001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1088656599535233499}
@@ -303,6 +303,7 @@ MonoBehaviour:
   _touched: 0
   _canCarry: 0
   _grabUI: {fileID: 0}
+  _trigger: {fileID: 6769272768229777230}
 --- !u!1 &6597506280483971619
 GameObject:
   m_ObjectHideFlags: 0

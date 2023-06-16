@@ -431,3 +431,4 @@ MonoBehaviour:
   _touched: 0
   _canCarry: 0
   _grabUI: {fileID: 0}
+  _trigger: {fileID: 4119158198206383398}

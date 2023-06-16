@@ -65,7 +65,7 @@ public class INavigation : MonoBehaviour
         }
         else if (Input.GetButtonDown("Back") && _isOpen == true)
         {
-            _gameManager.Focus();
+            _gameManager.UnFocus();
             _source.PlayOneShot(_closeSfx);
             _inventoryUi.SetActive(false);
             _playerMov._canMove = true;
@@ -82,5 +82,6 @@ public class INavigation : MonoBehaviour
         _playerMov._canMove = true;
         _playerCam._canSee = true;
         _isOpen = false;
+        _gameManager.UnFocus();
     }
 }

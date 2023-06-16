@@ -11,7 +11,7 @@ public class GrabObj : MonoBehaviour
     public bool _canCarry = false;
 
     [SerializeField]
-    private GameObject _grabUI;
+    private GameObject _grabUI, _trigger;
 
     public void Update()
     {
@@ -29,6 +29,7 @@ public class GrabObj : MonoBehaviour
 
         if (_hasPlayer == true && Input.GetAxis("RT") > 0)
         {
+            _trigger.SetActive(false);
             GetComponent<Rigidbody>().isKinematic = true;
             transform.parent = _playerCam;
             _beingCarried = true;
@@ -46,6 +47,7 @@ public class GrabObj : MonoBehaviour
 
             else if (Input.GetAxis("RT") <= 0)
             {
+                _trigger.SetActive(true);
                 GetComponent<Rigidbody>().isKinematic = false;
                 transform.parent = null;
                 _beingCarried = false;
