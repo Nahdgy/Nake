@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: ChessPiece
   _visual: {fileID: 21300000, guid: 9ad335932072a6c4db821ea93e63c9b7, type: 3}
-  _prefab: {fileID: 5406882760774538077, guid: 1741929a29687774bba3f3556a960375, type: 3}
-  _id: 2
+  _prefab: {fileID: 4049504933095639131, guid: a957b94231367464ca93fe74ba41cdb5, type: 3}
+  _id: 6
   _maxStack: 10
   _stackable: 1
   _itemType: 6

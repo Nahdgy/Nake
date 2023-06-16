@@ -9,7 +9,9 @@ public class Clock : MonoBehaviour
     [SerializeField] private Three three;
 
     [SerializeField] private ClockInteract _clockInteract;
-    
+
+    public bool _canOpen = false;
+
     void Start()
     {
         Animation = GetComponent<Animator>();
@@ -24,9 +26,9 @@ public class Clock : MonoBehaviour
 
     private void Validation()
     {
-        if (three.IsOkSmall && six.IsOkTall && Input.GetKey(KeyCode.K)) 
+        if (three.IsOkSmall && six.IsOkTall && Input.GetButton("Action")) 
         {
-            Debug.Log("Good");
+           _canOpen = true;
         }
     }
 

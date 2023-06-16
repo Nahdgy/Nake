@@ -33,7 +33,9 @@ public class Code : MonoBehaviour
     private Words _word = new Words();
     [SerializeField]
     private LensNavigation _lensScript;
-     
+    [SerializeField]
+    GameObject _triggerInteract;
+
     void Start()
     {
         _enigme = GameObject.FindGameObjectWithTag("Enigme");
@@ -46,6 +48,7 @@ public class Code : MonoBehaviour
 
     private IEnumerator FindingCode()
     {
+        _triggerInteract.SetActive(true);
         yield return new WaitForSeconds(_timing);
         _lensScript.Back();
     }

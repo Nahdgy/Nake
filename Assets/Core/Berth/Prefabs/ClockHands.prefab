@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 659268345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.70832, y: 0.70832, z: 0.70832}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1294881700481893587}
@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.470767, y: 1.2051365, z: 1.2047563}
-  m_Center: {x: -0.23538351, y: 0.10256827, z: 0.10237813}
+  m_Size: {x: 0.6380878, y: 1.1362339, z: 0.9263669}
+  m_Center: {x: 0.18095447, y: 0.06811731, z: 0.2872842}
 --- !u!1 &450405330968653884
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 450405330968653884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.263596, y: 4.487, z: 1.7668214}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5114, y: 2.5114, z: 2.5114}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8147407259349073464}
@@ -96,7 +96,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1741319877908217506
 BoxCollider:
@@ -109,8 +109,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.27846193, y: 0.24850035, z: 0.05952239}
-  m_Center: {x: 0.093761206, y: 0.011829138, z: 0.0009063482}
+  m_Size: {x: 0.27846193, y: 0.1933683, z: 0.024610478}
+  m_Center: {x: 0.0937612, y: -0.0022829557, z: 0.0020455853}
 --- !u!114 &1741319877908217508
 MonoBehaviour:
   m_ObjectHideFlags: 0

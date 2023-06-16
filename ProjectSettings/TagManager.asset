@@ -57,6 +57,8 @@ TagManager:
   - Clock
   - Chaudron
   - ObjCarring
+  - Case
+  - Painting
   layers:
   - Default
   - TransparentFX

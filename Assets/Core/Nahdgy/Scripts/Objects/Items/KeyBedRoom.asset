@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb6e7a5c90b70f42aea4272a261a556, type: 3}
   m_Name: KeyBedRoom
   m_EditorClassIdentifier: 
-  _name: 
-  _visual: {fileID: 0}
+  _name: KeyBedRoom
+  _visual: {fileID: 21300000, guid: cbd294a8ab4ad7742a7ebd9c7cd47dd5, type: 3}
   _prefab: {fileID: 0}
-  _id: 0
+  _id: 2
   _maxStack: 10
   _stackable: 1
   _itemType: 0
