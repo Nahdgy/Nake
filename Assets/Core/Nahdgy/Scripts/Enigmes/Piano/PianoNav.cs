@@ -72,7 +72,7 @@ public class PianoNav : MonoBehaviour
         PressFinger();
         if (_canManip)
         {        
-            _finger.transform.position = new Vector3(_horizontalInput * _multiplySpeed + Mathf.Clamp(_finger.transform.position.x, _min, _max), _finger.transform.position.y, _obj.transform.position.z);
+            _finger.transform.position = new Vector3(-_horizontalInput * _multiplySpeed + Mathf.Clamp(_finger.transform.position.x, _min, _max), _finger.transform.position.y, _obj.transform.position.z);
         }
         if (key4 == true)
         {
