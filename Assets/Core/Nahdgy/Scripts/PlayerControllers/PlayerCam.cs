@@ -15,7 +15,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private Transform _objInView;
     [SerializeField]
-    private GameObject _obj, _actionUI, _lessUI, _pills;
+    private GameObject _obj, _actionUI, _lessUI, _pills, _grabUI;
     [SerializeField]
     private LayerMask _layerMask, _layerMaskEnigma;
 
@@ -50,6 +50,7 @@ public class PlayerCam : MonoBehaviour
     public bool _canOpen = false;
     public bool _canRay = false;
     public bool _canInteract = false;
+    private bool _uiOn = false;
 
     private void Update()
     {
@@ -67,11 +68,7 @@ public class PlayerCam : MonoBehaviour
         if (other.gameObject.layer == _layer)
         {
             _canRay = true;
-            _actionUI.SetActive(true);
-        }
-        else
-        {
-            _actionUI.SetActive(false);
+            _uiOn = true;
         }
     }
     //Desactivation of the raycast out of the box trigger
@@ -80,7 +77,7 @@ public class PlayerCam : MonoBehaviour
         if (other.gameObject.layer == _layer)
         {
             _canRay = false;
-            _actionUI.SetActive(false);
+            _uiOn = false;
         }
     }
     
@@ -94,35 +91,71 @@ public class PlayerCam : MonoBehaviour
             //Pick up items
             if (_hit.transform.CompareTag("Item"))
             {
+                if(_uiOn == true)
+                {
+                    _actionUI.SetActive(true);
+                }
+      
                 if (Input.GetButtonDown("Action"))
                 {
+                    _uiOn = false;
                     _audioSource.PlayOneShot(_sfxZip);
                     _pickUp.DoPickUp(_hit.transform.gameObject.GetComponent<Item>());
                 }
             }
+            else
+            {
+                if (_uiOn == false)
+                {
+                    _actionUI.SetActive(false);
+                }
+
+            }
+
             //Interact Painting
             _paint = _hit.collider.gameObject;
             if (_paint.TryGetComponent<ArtInspect>(out ArtInspect _painting))
             {
-                
+                if (_uiOn == true)
+                {
+                    _actionUI.SetActive(true);
+                }
+                else if (_uiOn == false)
+                {
+                    _actionUI.SetActive(false);
+                }
+
                 if (Input.GetButtonDown("Action"))
                 {
+                    _uiOn = false;
                     _painting.Open();
                 }
                 if (Input.GetButton("Back"))
                 {
+                    _uiOn = true;
                     _painting.Back();
                 }
             }
             //Interact Globe
             if (_hit.transform.CompareTag("Globe"))
             {
+                if (_uiOn == true)
+                {
+                    _actionUI.SetActive(true);
+                }
+                else if (_uiOn == false)
+                {
+                    _actionUI.SetActive(false);
+                }
+
                 if (Input.GetButtonDown("Action"))
                 {
+                    _uiOn = false;
                     _globeCode.Open();
                 }
                 if (Input.GetButtonDown("Back"))
                 {
+                    _uiOn = true;
                     _globeCode.Back();
                 }
             }

@@ -29,6 +29,7 @@ public class Clock : MonoBehaviour
         if (three.IsOkSmall && six.IsOkTall && Input.GetButton("Action")) 
         {
            _canOpen = true;
+           _clockInteract.Back();
         }
     }
 
