@@ -5,8 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
-//using static UnityEditor.Progress;
-
 
 public class Innventory : MonoBehaviour
 {
