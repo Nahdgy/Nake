@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 public class INavigation : MonoBehaviour
 {   
     [SerializeField]
@@ -38,6 +39,8 @@ public class INavigation : MonoBehaviour
     private PianoNav _pianoCode;
     [SerializeField]
     private GameManager _gameManager;
+    [SerializeField]
+    private Button _firstSelectedButton;
 
 
 
@@ -49,6 +52,7 @@ public class INavigation : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory") && _isOpen == false)
         {
+            _firstSelectedButton.Select();
             _gameManager.Focus();
             _source.PlayOneShot(_openSfx);
             _inventoryUi.SetActive(true);

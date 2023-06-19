@@ -7,9 +7,7 @@ using UnityEngine.UI;
 public class LetterRead : MonoBehaviour
 {
     [SerializeField]
-    private Transform _objInView, _basePosition;
-    [SerializeField]
-    private GameObject _mail,_textUI;
+    private GameObject _mail,_textUI, _otherCanvas;
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
@@ -24,14 +22,18 @@ public class LetterRead : MonoBehaviour
 
 
     public void Read()
-    {
+    { 
+        Time.timeScale = 0f;
+        _otherCanvas.SetActive(false);
         _audioSource.PlayOneShot(_papperSfx);
-        _textUI.SetActive(true);
+        _textUI.SetActive(true);    
         _text.text = _traduction.text;
     }
     public void BackInPlace()
     {
-        _audioSource.PlayOneShot(_papperSfx);
+        Time.timeScale = 1f; 
+        _otherCanvas.SetActive(true);
+        _audioSource.PlayOneShot(_papperSfx); 
         _textUI.SetActive(false);
     }
 }

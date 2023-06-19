@@ -19,7 +19,7 @@ public class Joint : MonoBehaviour
         }
 
         _rotation = Mathf.Lerp(_basePosition, _pressedPosition, timeToLerp);
-        transform.rotation = Quaternion.Euler(_rotation, 0f, 90f);
+        transform.rotation = Quaternion.Euler(_rotation, 0f, -90f);
     }
 
     public void RotationUP()
@@ -30,6 +30,6 @@ public class Joint : MonoBehaviour
         }
 
         _rotation = Mathf.Lerp(_pressedPosition, _basePosition, timeToLerp);
-        transform.rotation = Quaternion.Euler(_rotation, 0f, 90f);
+        transform.rotation = Quaternion.Euler(_rotation, 0f, -90f);
     }
 }
