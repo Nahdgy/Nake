@@ -43,7 +43,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private ClockInteract _clockInteract;
     [SerializeField]
-    private ArtInspect _paint;
+    private GameObject _paint;
 
 
     public bool _canSee = true;
@@ -101,15 +101,17 @@ public class PlayerCam : MonoBehaviour
                 }
             }
             //Interact Painting
-            if (_hit.transform.CompareTag("Painting"))
+            _paint = _hit.collider.gameObject;
+            if (_paint.TryGetComponent<ArtInspect>(out ArtInspect _painting))
             {
+                
                 if (Input.GetButtonDown("Action"))
                 {
-                    _paint.Open();
+                    _painting.Open();
                 }
                 if (Input.GetButton("Back"))
                 {
-                    _paint.Back();
+                    _painting.Back();
                 }
             }
             //Interact Globe

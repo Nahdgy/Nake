@@ -11,12 +11,14 @@ public class GlobeNav : MonoBehaviour
 
 
     private float _horizontalInput, _verticalInput,_inclineAngleX = -65f, _inclineAngleY = 0f;
-    public bool _italyHere = false;
+    public bool _algeriaHere = false;
     public bool _canManip = false;
 
     public bool _canOpen = false;
 
-  
+
+    [SerializeField]
+    private GameObject _sniper;
     [SerializeField]
     private CinemachineVirtualCamera _cameraPlayer, _cameraGlobe;
     [SerializeField]
@@ -46,7 +48,7 @@ public class GlobeNav : MonoBehaviour
         Turn();
         PingNav();   
         CamInPlace();
-        Debug.DrawLine(_ping.transform.position, Vector3.forward * -1, Color.green);
+        Debug.DrawLine(_sniper.transform.position, _sniper.transform.forward, Color.green);
 
     }
 
@@ -104,17 +106,17 @@ public class GlobeNav : MonoBehaviour
         {
             RaycastHit _hit; 
             
-            if (Physics.Raycast(_ping.transform.position, Vector3.forward * -1, out _hit, _distRange, _countryLayer))
+            if (Physics.Raycast(_sniper.transform.position, _sniper.transform.forward, out _hit, _distRange, _countryLayer))
             {
-                _italyHere = true;
-                if (Input.GetButtonDown("Action") && _italyHere == true)
+                _algeriaHere = true;
+                if (Input.GetButtonDown("Action") && _algeriaHere == true)
                 {
                     StartCoroutine(Validation());
                 }
             }
             else
             {
-                _italyHere = false;
+                _algeriaHere = false;
             }
         }
     } 

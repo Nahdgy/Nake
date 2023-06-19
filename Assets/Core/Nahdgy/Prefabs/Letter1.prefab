@@ -258,10 +258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d40cb9b4af38840a6c18e1527e26d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objInView: {fileID: 0}
-  _basePosition: {fileID: 0}
   _mail: {fileID: 4725409727907569193}
   _textUI: {fileID: 0}
+  _otherCanvas: {fileID: 0}
   _audioSource: {fileID: 0}
   _papperSfx: {fileID: 0}
   _text: {fileID: 7167795737364562145}

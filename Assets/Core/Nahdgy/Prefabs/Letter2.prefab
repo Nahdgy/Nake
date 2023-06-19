@@ -200,7 +200,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42966ee63598afa4e8ea32a8fee36fba, type: 2}
+  - {fileID: 2100000, guid: a86c9a9452b275d4cbe8155d63fa816d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -247,16 +247,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d40cb9b4af38840a6c18e1527e26d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objInView: {fileID: 0}
-  _basePosition: {fileID: 0}
   _mail: {fileID: 2809552782494520534}
   _textUI: {fileID: 0}
+  _otherCanvas: {fileID: 0}
   _audioSource: {fileID: 0}
   _papperSfx: {fileID: 0}
   _text: {fileID: 292925831372360222}
   _traduction: {fileID: 0}
   _textAnim: []
-  _letterOnViewX: -45
+  _letterOnViewX: -90
   _letterOnViewY: 90
 --- !u!1 &7153859210668505437
 GameObject:
