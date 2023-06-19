@@ -14,11 +14,20 @@ public class UIAnimation : MonoBehaviour
     private int m_IndexSprite;
     Coroutine m_CorotineAnim;
     public bool IsDone = true;
-
+    [SerializeField]
+    private GameObject _LStick;
     public void DoTheAnimation()
     { 
+        _LStick.SetActive(true);
         IsDone = false;
         StartCoroutine(PlayAnimUI());
+    }
+
+    public void StopTheAnimation()
+    {
+        _LStick.SetActive(false);
+        IsDone = true;
+        StopCoroutine(PlayAnimUI());
     }
 
     IEnumerator PlayAnimUI()
