@@ -37,6 +37,8 @@ public class GlobeNav : MonoBehaviour
     private PlayerCam _playerCam;
     [SerializeField]
     private Transform _camera, _place;
+    [SerializeField]
+    private UIAnimation _UIanimation;
 
     private void Start()
     {
@@ -65,6 +67,7 @@ public class GlobeNav : MonoBehaviour
         _canManip = true; 
         _player._canMove = false;
         _playerCam._canSee = false;
+        _UIanimation.DoTheAnimation();
         Detection();
     }
     public void Back()
@@ -74,6 +77,7 @@ public class GlobeNav : MonoBehaviour
         _canManip = false;
         _player._canMove = true;
         _playerCam._canSee = true;  
+        _UIanimation.StopTheAnimation();
         _ping.gameObject.SetActive(false);
     }
     private void CamInPlace()
