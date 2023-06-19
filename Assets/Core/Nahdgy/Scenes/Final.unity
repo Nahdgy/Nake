@@ -19716,6 +19716,7 @@ MonoBehaviour:
   PauseMenuUI: {fileID: 544370018}
   OtherCanvas: {fileID: 1016232113}
   firstSelectedButton: {fileID: 872519453}
+  pulse: {fileID: 0}
   menu:
     m_Name: Menu
     m_Type: 1

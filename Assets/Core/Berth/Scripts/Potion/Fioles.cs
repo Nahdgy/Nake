@@ -25,5 +25,4 @@ public class Fioles : MonoBehaviour
             transform.position = OGPos;
         }
     }
-
 }
