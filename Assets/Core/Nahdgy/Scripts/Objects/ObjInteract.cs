@@ -111,7 +111,6 @@ public class ObjInteract : MonoBehaviour, Iinteractable
 
         if (_itemSelect._objId == _itemNeed)
         {
-            Debug.Log("L'objet est dans la main");
             _isInHand = true;
         }
         else if (_itemSelect._objId != _itemNeed)
