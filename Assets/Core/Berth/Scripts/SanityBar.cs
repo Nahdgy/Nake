@@ -11,11 +11,10 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private Gradient gradient;
     [SerializeField] private Image fill;
     [SerializeField] private int health; 
-    public float t = 10f;
+    public float t = 120f;
     private bool gameOver;
-    public bool pauseOn;
+   // public bool pauseOn;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameOver= false;
@@ -23,15 +22,12 @@ public class SanityBar : MonoBehaviour
         slider.value = t;
     }
 
-    // Update is called once per frame
-
     private void Update()
     {
         Timer();
     }
     public void Timer()
     {
-    
       float time = t - Time.time;
         
             if (time <= 0)
@@ -44,5 +40,14 @@ public class SanityBar : MonoBehaviour
             {
                 slider.value = time;
             }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level ==  0)
+        {
+            slider.value = 120;
+            slider.maxValue = 120;
+        }
     }
 }
