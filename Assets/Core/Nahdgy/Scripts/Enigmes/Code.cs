@@ -20,6 +20,10 @@ public class Code : MonoBehaviour
     [SerializeField]
     private AudioClip _sfxRight, _sfxUnlock,_sfxWrong;
     [SerializeField]
+    private Animator _animator;
+    [SerializeField]
+    private string _animName;
+    [SerializeField]
     private List<AudioClip> _sfxTab = new List<AudioClip>();
     [SerializeField]
     private GameObject _enigme; 
@@ -29,7 +33,9 @@ public class Code : MonoBehaviour
     private Words _word = new Words();
     [SerializeField]
     private LensNavigation _lensScript;
-     
+    [SerializeField]
+    GameObject _triggerInteract;
+
     void Start()
     {
         _enigme = GameObject.FindGameObjectWithTag("Enigme");
@@ -42,6 +48,7 @@ public class Code : MonoBehaviour
 
     private IEnumerator FindingCode()
     {
+        _triggerInteract.SetActive(true);
         yield return new WaitForSeconds(_timing);
         _lensScript.Back();
     }
@@ -85,6 +92,7 @@ public class Code : MonoBehaviour
             if(_txt.text == _word.GetSetCurCode)
             {
                 _audioSource.PlayOneShot(_sfxUnlock);
+                _animator.Play(_animName);
                 _unlock = true;
                 StartCoroutine(FindingCode());
             }

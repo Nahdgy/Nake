@@ -257,6 +257,8 @@ MonoBehaviour:
   _sfxRight: {fileID: 8300000, guid: 620e26ca0005e974d8b36524b99c84c9, type: 3}
   _sfxUnlock: {fileID: 8300000, guid: f08f0f2dccee9c94298b3e09f65f9a2f, type: 3}
   _sfxWrong: {fileID: 0}
+  _animator: {fileID: 0}
+  _animName: TableauOpen
   _sfxTab:
   - {fileID: 8300000, guid: e4bc918d551e02b458fee51e6a9a8c66, type: 3}
   - {fileID: 8300000, guid: 54f8d31d6ee7db840812ccee14a4605b, type: 3}

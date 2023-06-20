@@ -1,8 +1,9 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class LensNavigation : MonoBehaviour,Icodable
 {
@@ -12,14 +13,17 @@ public class LensNavigation : MonoBehaviour,Icodable
     private float _horizontalInput, _verticalInput;
     [SerializeField]
     private GameObject _lens,_codeUI,_collider;
+   
     [SerializeField]
-    private Transform _obj, _basePosition,_objInView;
+    private Transform _obj, _camera, _place;
 
     [SerializeField]
     private float _multiplySpeed, _lensHeight, _distRange;
     [SerializeField]
     private LayerMask _layerMask;
 
+    [SerializeField]
+    private CinemachineVirtualCamera _cameraPlayer, _cameraOuija;
     [SerializeField]
     private Code _code;
     [SerializeField]
@@ -34,8 +38,8 @@ public class LensNavigation : MonoBehaviour,Icodable
     private void Update()
     {
         ControllerInputs();
-        Moving();
-        ReturnBase();   
+        Moving();  
+        CamInPlace();
     }
     void ControllerInputs()
     {
@@ -74,10 +78,16 @@ public class LensNavigation : MonoBehaviour,Icodable
             }
         }
     }
+    private void CamInPlace()
+    {
+        _camera.position = _place.position;
+        _camera.rotation = _place.rotation;
+    }
     public void Open()
     {
+        _cameraPlayer.Priority = 0;
+        _cameraOuija.Priority = 10;
         _canMoving = true;
-        _obj.transform.position = _objInView.position;
         _codeUI.SetActive(true);
         _collider.SetActive(true);
         _player._canMove = false;
@@ -85,21 +95,13 @@ public class LensNavigation : MonoBehaviour,Icodable
     }
     public void Back()
     {
+        _cameraPlayer.Priority = 10;
+        _cameraOuija.Priority = 0;
         _canMoving = false;
         _codeUI.SetActive(false);
         _collider.SetActive(false);
         _player._canMove = true;
         _playerCam._canSee = true;
 
-    }
-
-    public void ReturnBase()
-    {
-        if (_canMoving == false)
-        {
-            _obj.position = _basePosition.position;
-            _obj.rotation = Quaternion.Euler(_basePosition.rotation.x, _basePosition.rotation.y, _basePosition.rotation.z);
-        }
-        
     }
 }

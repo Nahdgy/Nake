@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb6e7a5c90b70f42aea4272a261a556, type: 3}
+  m_Name: HandClock
+  m_EditorClassIdentifier: 
+  _name: HandClock
+  _visual: {fileID: 21300000, guid: 92863395e2a356e4a95f584117e893bd, type: 3}
+  _prefab: {fileID: 450405330968653884, guid: 9e53477828da01547944f32038a2593a, type: 3}
+  _id: 4
+  _maxStack: 0
+  _stackable: 1
+  _itemType: 5

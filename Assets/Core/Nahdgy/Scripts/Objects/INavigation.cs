@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
 
 
 public class INavigation : MonoBehaviour
@@ -32,9 +32,9 @@ public class INavigation : MonoBehaviour
     [SerializeField]
     private LensNavigation _ouijaCode;
     [SerializeField]
-    private ObjManip _manipCode;
+    private ObjManip[] _manipCode;
     [SerializeField]
-    private LetterRead _letterCode;
+    private LetterRead[] _letterCode;
     [SerializeField]
     private PianoNav _pianoCode;
     [SerializeField]
@@ -50,29 +50,28 @@ public class INavigation : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory") && _isOpen == false)
         {
+            _gameManager.Focus();
             _source.PlayOneShot(_openSfx);
             _inventoryUi.SetActive(true);
             _playerMov._canMove = false;
             _playerCam._canSee = false;
             _playerCam._canRay = false;
-            _isOpen = true;
+            _isOpen = true;  
             _globeCode.Back();
             _ouijaCode.Back();
-            _manipCode.Back(); //do a get component for all the letter
-            _manipCode.ReturnBase();
-            _gameManager.UnFocus();
-            _letterCode.BackInPlace(); //do a get component for all the letter
+            //_manipCode.Back();
+            //_letterCode.BackInPlace(); //do a get component for all the letter
             _pianoCode.Back();
         }
         else if (Input.GetButtonDown("Back") && _isOpen == true)
         {
+            _gameManager.UnFocus();
             _source.PlayOneShot(_closeSfx);
             _inventoryUi.SetActive(false);
             _playerMov._canMove = true;
             _playerCam._canSee = true;
             _playerCam._canRay = true;
             _isOpen = false;
-
         }
     }
     public IEnumerator ClickTimer()
@@ -83,5 +82,6 @@ public class INavigation : MonoBehaviour
         _playerMov._canMove = true;
         _playerCam._canSee = true;
         _isOpen = false;
+        _gameManager.UnFocus();
     }
 }

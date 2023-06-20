@@ -54,6 +54,11 @@ TagManager:
   - Letter
   - Globe
   - Piano
+  - Clock
+  - Chaudron
+  - ObjCarring
+  - Case
+  - Painting
   layers:
   - Default
   - TransparentFX
