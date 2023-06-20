@@ -8,7 +8,8 @@ public class PianoNav : MonoBehaviour
 {
     private float _horizontalInput;
     public bool _canManip = false;
-    private bool key1,key2,key3,key4;
+    public bool _canGoDown = false;
+    public bool key1 = false,key2 = false,key3 = false,key4 = false;
 
     [SerializeField]
     private CinemachineVirtualCamera _cameraPlayer, _cameraPiano;
@@ -25,9 +26,12 @@ public class PianoNav : MonoBehaviour
     [SerializeField]
     private Transform _obj, _finger, _down, _up;
     [SerializeField]
-    private float _multiplySpeed, _min, _max,_timer, _speed, _force;
+    private float _multiplySpeed, _min, _max,_timer, _speed;
     [SerializeField]
-    private Rigidbody _fingerRb;
+    private int _randomKey = 15;
+    [SerializeField]
+    private UIAnimation _UIanimation;
+    
     bool buttonFingerIsPressed;
 
     float timeToLerp = 1f;
@@ -55,7 +59,7 @@ public class PianoNav : MonoBehaviour
         _canManip = true;
         _player._canMove = false;
         _playerCam._canSee = false;
-        //Detection();
+        _UIanimation.DoTheAnimation();
     }
     public void Back()
     {
@@ -65,13 +69,14 @@ public class PianoNav : MonoBehaviour
         _canManip = false;
         _player._canMove = true;
         _playerCam._canSee = true;
+        _UIanimation.StopTheAnimation();
     }
     private void FingerNav()
     {
         PressFinger();
         if (_canManip)
-        {
-            _finger.transform.position = new Vector3(_horizontalInput * _multiplySpeed + Mathf.Clamp(_finger.transform.position.x, _min, _max), _finger.transform.position.y, _obj.transform.position.z);
+        {        
+            _finger.transform.position = new Vector3(-_horizontalInput * _multiplySpeed + Mathf.Clamp(_finger.transform.position.x, _min, _max), _finger.transform.position.y, _obj.transform.position.z);
         }
         if (key4 == true)
         {
@@ -86,7 +91,7 @@ public class PianoNav : MonoBehaviour
         float upPos = _up.position.y;
         float currentPosY;
 
-        if (buttonFingerIsPressed)
+        if (buttonFingerIsPressed && _canGoDown)
         {
             _canManip = false;
             if (timeToLerp > 0f)
@@ -110,42 +115,39 @@ public class PianoNav : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 17)
+        if(other.gameObject.name == "Touche1")
         {
             key1 = true;
         }
-        else
-        {
-            key1 = false;
-        }
-        if (other.gameObject.layer == 18 && key1 == true)
+        
+        if (other.gameObject.name == "Touche2" && key1 == true)
         {
             key2 = true;
         }
-        else
-        {
-            key2 = false;
-        }
-        if (other.gameObject.layer == 19 && key2 == true)
+       
+        if (other.gameObject.name == "Touche3" && key2 == true)
         {
             key3 = true;
         }
-        else
-        {
-            key3 = false;
-        }
-        if (other.gameObject.layer == 20 && key3 == true)
+       
+        if (other.gameObject.name == "Touche4" && key3 == true)
         {
             key4 = true;
         }
-        else
+
+        if(other.gameObject.layer == _randomKey)
         {
+            key1 = false;
+            key2 = false;
+            key3 = false;
             key4 = false;
         }
+        
     }
 
     private IEnumerator Melody()
     {
+        Debug.Log("YouGreat");
         _canManip = false;
         _audioSource.PlayOneShot(_validSfx);
         yield return new WaitForSeconds(_timer);

@@ -5,11 +5,15 @@ using UnityEngine;
 public class Clock : MonoBehaviour
 {
     [SerializeField] Animator Animation;
-    [SerializeField]
-    private Six six;
-    [SerializeField]
-    private Three three;
-    
+    [SerializeField] private Six six;
+    [SerializeField] private Three three;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _validSfx;
+
+    [SerializeField] private ClockInteract _clockInteract;
+
+    public bool _canOpen = false;
+
     void Start()
     {
         Animation = GetComponent<Animator>();
@@ -24,21 +28,26 @@ public class Clock : MonoBehaviour
 
     private void Validation()
     {
-        if(three.IsOkSmall && six.IsOkTall && Input.GetKey(KeyCode.K)) 
+        if (three.IsOkSmall && six.IsOkTall && Input.GetButton("Action")) 
         {
-            Debug.Log("Good");
+           _canOpen = true;
+            _audioSource.PlayOneShot(_validSfx);
+           _clockInteract.Back();
         }
     }
 
     void ClockControl()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (_clockInteract._canManip == true)
         {
-            Animation.speed = 1;
-        }
-        else if (Input.GetKeyUp(KeyCode.T))
-        {
-            Animation.speed = 0;
+            if (Input.GetAxis("RT") > 0)
+            {
+                Animation.speed = 1;
+            }
+            else if (Input.GetAxis("RT") <= 0)
+            {
+                Animation.speed = 0;
+            }
         }
     }
 }

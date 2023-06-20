@@ -10,21 +10,13 @@ public class MenuScreen : MonoBehaviour
     private float timer = 5f;
     public bool canInterract = true;
 
-    private void Start()
-    {
-        inIt();
-    }
-
-    public void inIt()
-    {
-        
-    }
     public void Fade()
     {
         canInterract= false;
         Timer();
         Debug.Log("fade");
         GameObject.Find("Play").GetComponent<Button>().enabled= false;
+        SceneManager.LoadScene("Final");
     }
 
     public void Timer()

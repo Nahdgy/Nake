@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.Animations;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private bool isPaused;
-
     [SerializeField] public GameObject PauseMenuUI, OtherCanvas;
     [SerializeField] private Button firstSelectedButton;
 
@@ -69,6 +69,7 @@ public class PauseMenu : MonoBehaviour
         AudioListener.pause = false;
         PauseMenuUI.SetActive(false);
         isPaused = false;
+        OtherCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
     }
 }

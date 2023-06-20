@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 1769613230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.785635, y: 8.785635, z: 8.785635}
+  m_LocalScale: {x: 1.6503252, y: 1.6503252, z: 1.6503252}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 210429490351002995}
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 804}
+  m_AnchoredPosition: {x: 0, y: 182}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1769613233
@@ -68,9 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ______
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 03016953b3f44ba4cb161e17f9c22820, type: 2}
-  m_sharedMaterial: {fileID: -2489807400578575086, guid: 03016953b3f44ba4cb161e17f9c22820,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -157,7 +156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &210429490351002995
 RectTransform:
   m_ObjectHideFlags: 0
@@ -212,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -257,6 +256,8 @@ MonoBehaviour:
   _sfxRight: {fileID: 8300000, guid: 620e26ca0005e974d8b36524b99c84c9, type: 3}
   _sfxUnlock: {fileID: 8300000, guid: f08f0f2dccee9c94298b3e09f65f9a2f, type: 3}
   _sfxWrong: {fileID: 0}
+  _animator: {fileID: 0}
+  _animName: TableauOpen
   _sfxTab:
   - {fileID: 8300000, guid: e4bc918d551e02b458fee51e6a9a8c66, type: 3}
   - {fileID: 8300000, guid: 54f8d31d6ee7db840812ccee14a4605b, type: 3}
@@ -270,6 +271,7 @@ MonoBehaviour:
   _txt: {fileID: 1769613232}
   _word: {fileID: 4987601862808791844}
   _lensScript: {fileID: 0}
+  _triggerInteract: {fileID: 0}
 --- !u!114 &4987601862808791844
 MonoBehaviour:
   m_ObjectHideFlags: 0

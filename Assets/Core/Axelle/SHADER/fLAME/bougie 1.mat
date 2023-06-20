@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: bougie 1
+  m_Shader: {fileID: -6465566751694194690, guid: 5d5c3a41d560c6c43a35656a498027e9,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _FireShape:
+        m_Texture: {fileID: 2800000, guid: 3b9f500344e6631409481a23f629ce2d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Maintexture:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_d5064b491de34d4bb54315203e08544a_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 95adf7cc52ea3134cbec67ec9cc7106a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _FadePower: 0.93
+    - _FireSpeed: -1.79
+    - _distortion: 0.02
+    - _distortionAmount: 0.29
+    - _fADESCLAE: 3.44
+    m_Colors:
+    - _Color: {r: 4.541205, g: 0.7132784, b: 0, a: 0}
+    - _FadeContrl: {r: 0, g: 0, b: 0, a: 0}
+    - _Flamedirection: {r: 0.06, g: -0.55, b: 0, a: 0}
+  m_BuildTextureStacks: []

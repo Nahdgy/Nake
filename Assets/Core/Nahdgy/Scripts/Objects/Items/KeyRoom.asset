@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: KeyRoom
   m_EditorClassIdentifier: 
   _name: KeyDeskRoom
-  _visual: {fileID: 21300000, guid: fab428a889716dd40b31e4dd7a8af20c, type: 3}
-  _prefab: {fileID: 5409939973119488421, guid: 5f753c3d855ecc54c8c56d844e67b5b4, type: 3}
+  _visual: {fileID: 21300000, guid: bf4d77a5a35030b438f399c28f08e880, type: 3}
+  _prefab: {fileID: 3470445608508753682, guid: 9751c4248e9a33d489f6209883c4108b, type: 3}
   _id: 1
   _maxStack: 10
   _stackable: 1

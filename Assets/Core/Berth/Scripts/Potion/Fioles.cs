@@ -6,23 +6,23 @@ using UnityEngine.UIElements;
 
 public class Fioles : MonoBehaviour
 {
-    
-    [SerializeField] 
     Vector3 OGPos;
-   
 
     private void Start()
     {
         OGPos = gameObject.transform.position;
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Chodron")
+        if (other.gameObject.tag != "Chaudron")
         {
             transform.position = OGPos;
         }
-    }
 
+        if (other.gameObject.layer == 3)
+        { 
+            transform.position = OGPos;
+        }
+    }
 }

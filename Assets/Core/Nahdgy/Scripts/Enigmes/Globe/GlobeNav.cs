@@ -4,16 +4,21 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class GlobeNav : MonoBehaviour
 {
 
 
     private float _horizontalInput, _verticalInput,_inclineAngleX = -65f, _inclineAngleY = 0f;
-    public bool _italyHere = false;
+    public bool _algeriaHere = false;
     public bool _canManip = false;
 
+    public bool _canOpen = false;
+
+
+    [SerializeField]
+    private GameObject _sniper;
     [SerializeField]
     private CinemachineVirtualCamera _cameraPlayer, _cameraGlobe;
     [SerializeField]
@@ -32,6 +37,8 @@ public class GlobeNav : MonoBehaviour
     private PlayerCam _playerCam;
     [SerializeField]
     private Transform _camera, _place;
+    [SerializeField]
+    private UIAnimation _UIanimation;
 
     private void Start()
     {
@@ -43,6 +50,7 @@ public class GlobeNav : MonoBehaviour
         Turn();
         PingNav();   
         CamInPlace();
+        Debug.DrawLine(_sniper.transform.position, _sniper.transform.forward, Color.green);
 
     }
 
@@ -59,6 +67,7 @@ public class GlobeNav : MonoBehaviour
         _canManip = true; 
         _player._canMove = false;
         _playerCam._canSee = false;
+        _UIanimation.DoTheAnimation();
         Detection();
     }
     public void Back()
@@ -68,6 +77,7 @@ public class GlobeNav : MonoBehaviour
         _canManip = false;
         _player._canMove = true;
         _playerCam._canSee = true;  
+        _UIanimation.StopTheAnimation();
         _ping.gameObject.SetActive(false);
     }
     private void CamInPlace()
@@ -98,24 +108,26 @@ public class GlobeNav : MonoBehaviour
     {
         if (_canManip == true)
         {
-            RaycastHit _hit;
-            if (Physics.Raycast(_ping.transform.position, Vector3.forward * -1, out _hit, _distRange, _countryLayer))
+            RaycastHit _hit; 
+            
+            if (Physics.Raycast(_sniper.transform.position, _sniper.transform.forward, out _hit, _distRange, _countryLayer))
             {
-                _italyHere = true;
-                if (Input.GetButtonDown("Action") && _italyHere == true)
+                _algeriaHere = true;
+                if (Input.GetButtonDown("Action") && _algeriaHere == true)
                 {
                     StartCoroutine(Validation());
                 }
             }
             else
             {
-                _italyHere = false;
+                _algeriaHere = false;
             }
         }
     } 
     private IEnumerator Validation()
     {
         float timer = 0.3f;
+        _canOpen = true;
         _audioSource.PlayOneShot(_validSfx);
         yield return new WaitForSeconds(timer);
         Back();

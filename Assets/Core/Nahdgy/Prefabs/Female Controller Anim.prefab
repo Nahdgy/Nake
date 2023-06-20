@@ -112,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846247647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.2303576e-11, y: -0.000001891051, z: 0.00000024880637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,6 +250,7 @@ MonoBehaviour:
   _obj: {fileID: 0}
   _actionUI: {fileID: 0}
   _lessUI: {fileID: 0}
+  _pills: {fileID: 0}
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -259,15 +260,21 @@ MonoBehaviour:
   _audioSource: {fileID: 2209849293917870541}
   _sfxLock: {fileID: 8300000, guid: 334e4877a81fdef42bc045f944c1ca68, type: 3}
   _sfxZip: {fileID: 8300000, guid: 8ec21dc562fcb74428e3fd606ad497be, type: 3}
+  _clockDeclineSfx: {fileID: 0}
   _pickUp: {fileID: 2487192517418994650}
   _player: {fileID: 6834754607421297274}
   _letterMail: {fileID: 0}
+  _objGrable: {fileID: 0}
   _gameManager: {fileID: 0}
   _globeCode: {fileID: 0}
   _pianoNav: {fileID: 0}
+  _sanityBar: {fileID: 0}
+  _clockInteract: {fileID: 0}
+  _paint: {fileID: 0}
   _canSee: 1
   _canOpen: 0
   _canRay: 0
+  _canInteract: 0
 --- !u!114 &1846247659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -933,7 +940,7 @@ Transform:
   m_GameObject: {fileID: 1535674065345543760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.94, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7700987887922067257}
