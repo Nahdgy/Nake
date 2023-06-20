@@ -15,15 +15,12 @@ public class SanityBar : MonoBehaviour
     private bool gameOver;
     public bool pauseOn;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameOver= false;
         slider.maxValue = t;
         slider.value = t;
     }
-
-    // Update is called once per frame
 
     private void Update()
     {
