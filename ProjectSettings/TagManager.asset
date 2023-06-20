@@ -59,6 +59,7 @@ TagManager:
   - ObjCarring
   - Case
   - Painting
+  - Mat
   layers:
   - Default
   - TransparentFX
@@ -81,8 +82,8 @@ TagManager:
   - Note2
   - Note3
   - Note4
-  - 
-  - 
+  - BoxCamera
+  - Mat
   - 
   - 
   - 

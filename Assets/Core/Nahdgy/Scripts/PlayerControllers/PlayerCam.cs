@@ -23,7 +23,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
-    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx;
+    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx, _chessDeclineSfx;
 
 
     [SerializeField]
@@ -38,6 +38,8 @@ public class PlayerCam : MonoBehaviour
     private GlobeNav _globeCode;
     [SerializeField]
     private PianoNav _pianoNav;
+    [SerializeField] 
+    private Chess _chess;
     [SerializeField]
     private SanityBar _sanityBar;
     [SerializeField]
@@ -194,6 +196,42 @@ public class PlayerCam : MonoBehaviour
                 }
             }
 
+            //Interact ChessPiece
+            if(_hit.transform.CompareTag("Mat"))
+            {
+                if (_uiOn == true)
+                {
+                    _actionUI.SetActive(true);
+                }
+                _chess.CheckList();
+                if (_chess._isInHand == true)
+                {
+                    _canInteract = true;
+                }
+                if (Input.GetButtonDown("Action") && _canInteract == true)
+                {
+                    _uiOn = false;
+                    _chess.Open();
+                }
+                if (Input.GetButtonDown("Action") && _canInteract == false)
+                {
+                    _uiOn = false;
+                    _audioSource.PlayOneShot(_chessDeclineSfx);
+                }
+                if (Input.GetButtonDown("Back") && _canInteract == false)
+                {
+                    _clockInteract.Back();
+                    _uiOn = true;
+                }
+            }
+            else
+            {
+                if (_uiOn == false)
+                {
+                    _actionUI.SetActive(false);
+                }
+            }
+
             //Interact Clock
             if (_hit.transform.CompareTag("Clock"))
             {
@@ -211,10 +249,16 @@ public class PlayerCam : MonoBehaviour
                     _uiOn = false;
                     _clockInteract.Open();
                 }
-                if (Input.GetButtonDown("Back") && _canInteract == false)
+                if (Input.GetButtonDown("Action") && _canInteract == false)
                 {
-                    _uiOn = true;
+                    _uiOn = false;
                     _audioSource.PlayOneShot(_clockDeclineSfx);
+                }
+
+                if (Input.GetButtonDown("Back") && _canInteract == true)
+                {
+                    _clockInteract.Back();
+                    _uiOn = true;
                 }
             }
             else
