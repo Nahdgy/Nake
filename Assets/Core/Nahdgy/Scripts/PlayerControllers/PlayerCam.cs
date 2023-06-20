@@ -255,7 +255,7 @@ public class PlayerCam : MonoBehaviour
                     _audioSource.PlayOneShot(_clockDeclineSfx);
                 }
 
-                if (Input.GetButtonDown("Back") && _canInteract == true)
+                if (Input.GetButtonDown("Back"))
                 {
                     _clockInteract.Back();
                     _uiOn = true;

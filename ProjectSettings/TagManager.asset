@@ -60,6 +60,7 @@ TagManager:
   - Case
   - Painting
   - Mat
+  - BoxSkull
   layers:
   - Default
   - TransparentFX
@@ -84,7 +85,7 @@ TagManager:
   - Note4
   - BoxCamera
   - Mat
-  - 
+  - BoxSkull
   - 
   - 
   - 
