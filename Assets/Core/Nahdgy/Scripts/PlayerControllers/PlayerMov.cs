@@ -58,8 +58,8 @@ public class PlayerMov : MonoBehaviour
     {
          if (pills.gameObject.tag == "pills")
          {
-                SanityBar.t += 100;
-                // SanityBar.slider.value = 100f;
+                SanityBar.t += float.MaxValue;
+                //SanityBar.slider.maxValue = 100f;
                 Debug.Log("recovered");
                 Destroy(pills.gameObject);
          }
