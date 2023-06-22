@@ -17,6 +17,7 @@ public class Innventory : MonoBehaviour
     [SerializeField]
     private Sprite _emptySlotVisual;
 
+    private int _maxStack = 4;
     public int _objId;
 
 
@@ -31,26 +32,16 @@ public class Innventory : MonoBehaviour
 
     public void AddItem(ItemData item)
     {
-        
-        /*_content.Add(item);
-        ItemInInventory[] itemInInventory = content.Where(elem => elem.itemData == item).ToArray();
-
-        for (int i = 0; i < _content.Count; i++)
-        {
-            //_navSlot._item = _content[i];
-            _inventorySlotsParents.GetChild(i).GetChild(0).GetComponent<Image>().sprite = _content[i]._visual;
-        }
-        */
         ItemInInventory[] itemInInventory = _content.Where(elem => elem.itemData == item).ToArray();
 
         bool itemAdded = false;
 
-        if (itemInInventory.Length > 0 && item._stackable == true)
+        if (itemInInventory.Length > 0)
         {
 
             for (int i = 0; i < itemInInventory.Length; i++)
             {
-                if (itemInInventory[i].count < item._maxStack)
+                if (itemInInventory[i].count < _maxStack)
                 {
                     itemAdded = true;
                     itemInInventory[i].count++;
@@ -99,10 +90,6 @@ public class Innventory : MonoBehaviour
         }
     }
 
-    public void ReadALetter()
-    {
-
-    }
     public void SelectedObject(ItemData item)
     {
         _itemCurrentlySelected = item;
@@ -118,27 +105,18 @@ public class Innventory : MonoBehaviour
             case ItemType.KeyBedRoomEnter: 
                 _objId = 2; 
                 break;
-            case ItemType.KeyBedRoomLeave: 
-                _objId = 3;
-                break;
             case ItemType.KeyKitchen: 
-                _objId = 4; 
+                _objId = 3; 
                 break;
             case ItemType.KeyHall: 
-                _objId = 5;
+                _objId = 4;
                 break; 
             case ItemType.ChessPiece: 
-                _objId = 6; 
+                _objId = 5; 
                 break;
             case ItemType.ClockHand: 
-                _objId = 7;
+                _objId = 6;
                 break; 
-            case ItemType.SkullHead:
-                _objId = 8;
-                break;
-            case ItemType.Letter:
-                ReadALetter();
-                break;
         }
         _inHandSlot.GetChild(0).GetComponent<Image>().sprite = item._visual;
 

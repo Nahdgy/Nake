@@ -15,7 +15,4 @@ MonoBehaviour:
   _name: HandClock
   _visual: {fileID: 21300000, guid: 92863395e2a356e4a95f584117e893bd, type: 3}
   _prefab: {fileID: 450405330968653884, guid: 9e53477828da01547944f32038a2593a, type: 3}
-  _id: 4
-  _maxStack: 0
-  _stackable: 1
-  _itemType: 5
+  _itemType: 4
