@@ -21,9 +21,9 @@ public class PlayerCam : MonoBehaviour
 
   
     [SerializeField]
-    private AudioSource _audioSource;
+    private AudioSource _audioSource,_radio,_gramophone;
     [SerializeField]
-    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx, _chessDeclineSfx;
+    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx, _chessDeclineSfx, _radioAudio, _musicAudio;
 
 
     [SerializeField]
@@ -44,6 +44,8 @@ public class PlayerCam : MonoBehaviour
     private SanityBar _sanityBar;
     [SerializeField]
     private ClockInteract _clockInteract;
+    [SerializeField] 
+    private LensNavigation _lens;
     [SerializeField]
     private GameObject _paint;
 
@@ -232,7 +234,23 @@ public class PlayerCam : MonoBehaviour
                     _actionUI.SetActive(false);
                 }
             }
+            //Interact Radio
+            if(_hit.transform.CompareTag("Radio"))
+            {
+                if(Input.GetButtonDown("Action"))
+                {
+                    _radio.Play();
+                }
+            }
+            //Interact GramoPhone
+            if(_hit.transform.CompareTag("GramPhone"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _gramophone.Play();
+                }
 
+            }
             //Interact Clock
             if (_hit.transform.CompareTag("Clock"))
             {
@@ -482,12 +500,12 @@ public class PlayerCam : MonoBehaviour
                     _actionUI.SetActive(true);
                 }
                 _obj = _hit.collider.gameObject;
-                if (_obj.TryGetComponent<Icodable>(out Icodable interactObj))
+                if (_hit.transform.CompareTag("Enigme"))
                 {
                     if (Input.GetButtonDown("Action"))
                     {
                         _uiOn = false;
-                        interactObj.Open();
+                        _lens.Open();
                         _actionUI.SetActive(false);
                     }
                 }

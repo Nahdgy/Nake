@@ -5,7 +5,8 @@ using UnityEngine;
 public class Chaudron : MonoBehaviour
 {
     [SerializeField] private bool FioleOne, FioleTwo, FioleThree, FioleFour;
-    [SerializeField] GameObject fou;
+    [SerializeField] GameObject fou, wall;
+    [SerializeField] Transform newPosition;
 
     public void OnTriggerEnter(Collider collision)
     {
@@ -38,7 +39,9 @@ public class Chaudron : MonoBehaviour
     {
         if (FioleOne == true &&  FioleTwo == true && FioleThree == true && FioleFour == true) 
         {
+            if (fou == null) return;
            fou.SetActive(true);
+           wall.transform.position = new Vector3 (newPosition.position.x,newPosition.position.y,newPosition.position.z);
         }
     }
 

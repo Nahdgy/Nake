@@ -24,6 +24,7 @@ public class Tirroir : MonoBehaviour
     {
         if(_clock._canOpen == true &&  _globe._canOpen == true)
         {
+            if (_triggerInteract == null) return;
             _triggerInteract.SetActive(true);
             _animator.Play(_animName);
         }
