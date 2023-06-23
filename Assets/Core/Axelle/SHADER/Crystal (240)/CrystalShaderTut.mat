@@ -40,7 +40,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BottomLine: 0.535
-    - _Metallic: 0.545
+    - _Metallic: 0.515
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.604
