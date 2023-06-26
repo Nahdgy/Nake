@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18383577, g: 0.2290904, b: 0.30377206, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1742,17 +1742,17 @@ PrefabInstance:
     - target: {fileID: 4360596861158582053, guid: a62ae628e1432ab4fafedfc3fd720eba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.017
+      value: 21.032
       objectReference: {fileID: 0}
     - target: {fileID: 4360596861158582053, guid: a62ae628e1432ab4fafedfc3fd720eba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.122
+      value: 23.136
       objectReference: {fileID: 0}
     - target: {fileID: 4360596861158582053, guid: a62ae628e1432ab4fafedfc3fd720eba,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40.57
+      value: -40.499
       objectReference: {fileID: 0}
     - target: {fileID: 4360596861158582053, guid: a62ae628e1432ab4fafedfc3fd720eba,
         type: 3}
@@ -8361,6 +8361,8 @@ MonoBehaviour:
   FioleThree: 0
   FioleFour: 0
   fou: {fileID: 0}
+  wall: {fileID: 0}
+  newPosition: {fileID: 0}
 --- !u!1001 &215643012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19024,6 +19026,8 @@ MonoBehaviour:
   FioleThree: 0
   FioleFour: 0
   fou: {fileID: 0}
+  wall: {fileID: 0}
+  newPosition: {fileID: 0}
 --- !u!1001 &934057961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44297,6 +44301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966223475835620919, guid: eae0bd5879c6b2749ae10a954feb9b08,
+        type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6243829862142269708, guid: eae0bd5879c6b2749ae10a954feb9b08,
         type: 3}
