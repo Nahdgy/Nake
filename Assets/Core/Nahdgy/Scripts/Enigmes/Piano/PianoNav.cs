@@ -29,6 +29,8 @@ public class PianoNav : MonoBehaviour
     private float _multiplySpeed, _min, _max,_timer, _speed;
     [SerializeField]
     private int _randomKey = 15;
+    [SerializeField]
+    private UIAnimation _UIanimation;
     
     bool buttonFingerIsPressed;
 
@@ -57,6 +59,7 @@ public class PianoNav : MonoBehaviour
         _canManip = true;
         _player._canMove = false;
         _playerCam._canSee = false;
+        _UIanimation.DoTheAnimation();
     }
     public void Back()
     {
@@ -66,13 +69,14 @@ public class PianoNav : MonoBehaviour
         _canManip = false;
         _player._canMove = true;
         _playerCam._canSee = true;
+        _UIanimation.StopTheAnimation();
     }
     private void FingerNav()
     {
         PressFinger();
         if (_canManip)
         {        
-            _finger.transform.position = new Vector3(_horizontalInput * _multiplySpeed + Mathf.Clamp(_finger.transform.position.x, _min, _max), _finger.transform.position.y, _obj.transform.position.z);
+            _finger.transform.position = new Vector3(-_horizontalInput * _multiplySpeed + Mathf.Clamp(_finger.transform.position.x, _min, _max), _finger.transform.position.y, _obj.transform.position.z);
         }
         if (key4 == true)
         {

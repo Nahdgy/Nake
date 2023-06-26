@@ -176,12 +176,13 @@ MonoBehaviour:
   _isInHand: 0
   _canSwitch: 0
   _doorHinge: {fileID: 6571695968747676927}
+  _letterA: {fileID: 0}
   _light: {fileID: 0}
   _timerDoor: 4
   _rotationDoor: 0
   _baseAngle: 0
   _endAngle: -90
-  _itemNeed: 0
+  _itemNeed: 1
   _source: {fileID: 0}
   _doorOpenSfx: {fileID: 8300000, guid: 6c3d095163b652443b03fc51151e8fbe, type: 3}
   _doorShutSfx: {fileID: 8300000, guid: f030886b14f4e7e4188a87ae2da5ef5b, type: 3}

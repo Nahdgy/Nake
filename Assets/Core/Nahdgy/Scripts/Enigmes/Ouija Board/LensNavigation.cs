@@ -34,6 +34,8 @@ public class LensNavigation : MonoBehaviour,Icodable
     private PlayerCam _playerCam;
     [SerializeField]
     private bool _canMoving = false;
+    [SerializeField]
+    private UIAnimation _UIanimation;
 
     private void Update()
     {
@@ -92,6 +94,7 @@ public class LensNavigation : MonoBehaviour,Icodable
         _collider.SetActive(true);
         _player._canMove = false;
         _playerCam._canSee = false;
+        _UIanimation.DoTheAnimation();
     }
     public void Back()
     {
@@ -102,6 +105,7 @@ public class LensNavigation : MonoBehaviour,Icodable
         _collider.SetActive(false);
         _player._canMove = true;
         _playerCam._canSee = true;
+        _UIanimation.StopTheAnimation();
 
     }
 }

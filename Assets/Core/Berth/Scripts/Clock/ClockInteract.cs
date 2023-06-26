@@ -9,8 +9,6 @@ public class ClockInteract : MonoBehaviour
 
     [SerializeField]private CinemachineVirtualCamera _cameraPlayer, _clockCam;
     [SerializeField]private PlayerCam _playerCam;
-    [SerializeField]private AudioSource _audioSource;
-    [SerializeField]private AudioClip _validSfx;
     [SerializeField]private PlayerController _player;
     [SerializeField]private Transform _camera, _place;
     [SerializeField]private Transform _clockHand;

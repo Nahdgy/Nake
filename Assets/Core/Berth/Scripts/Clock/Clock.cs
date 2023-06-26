@@ -7,6 +7,8 @@ public class Clock : MonoBehaviour
     [SerializeField] Animator Animation;
     [SerializeField] private Six six;
     [SerializeField] private Three three;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _validSfx;
 
     [SerializeField] private ClockInteract _clockInteract;
 
@@ -29,6 +31,8 @@ public class Clock : MonoBehaviour
         if (three.IsOkSmall && six.IsOkTall && Input.GetButton("Action")) 
         {
            _canOpen = true;
+            _audioSource.PlayOneShot(_validSfx);
+           _clockInteract.Back();
         }
     }
 

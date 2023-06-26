@@ -296,13 +296,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3488251398917313818, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488251398917313818, guid: df7551c4c6fc49b4bb9f299420826e7f,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3488251398917313820, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}
       propertyPath: m_Size.x
-      value: 1.4332396
+      value: 1.4332385
       objectReference: {fileID: 0}
     - target: {fileID: 3488251398917313820, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}
@@ -312,22 +317,22 @@ PrefabInstance:
     - target: {fileID: 3488251398917313820, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.7197832
+      value: 2.7979164
       objectReference: {fileID: 0}
     - target: {fileID: 3488251398917313820, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}
       propertyPath: m_Center.x
-      value: 0.21662277
+      value: 0.21662275
       objectReference: {fileID: 0}
     - target: {fileID: 3488251398917313820, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.000000042902528
+      value: 0.000000107164354
       objectReference: {fileID: 0}
     - target: {fileID: 3488251398917313820, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.35989252
+      value: 0.8989598
       objectReference: {fileID: 0}
     - target: {fileID: 5477314193749062819, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}
@@ -338,6 +343,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: KEY2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135575726496768445, guid: df7551c4c6fc49b4bb9f299420826e7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135575726496768445, guid: df7551c4c6fc49b4bb9f299420826e7f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 8911655716516870919, guid: df7551c4c6fc49b4bb9f299420826e7f,
         type: 3}

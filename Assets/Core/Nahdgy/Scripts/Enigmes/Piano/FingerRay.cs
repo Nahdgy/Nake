@@ -20,9 +20,10 @@ public class FingerRay : MonoBehaviour
     }
     private void Target()
     {
+       
         RaycastHit _hit;
         if(Physics.Raycast(transform.position, transform.up * -1, out _hit, _distRange, _layerMask))
-        {
+        { 
             _pianoNav._canGoDown = true;
             _touche = _hit.collider.gameObject;
             _touche.GetComponent<Renderer>().material.color = Color.green;

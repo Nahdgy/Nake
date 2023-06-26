@@ -29,6 +29,7 @@ public class GrabObj : MonoBehaviour
 
         if (_hasPlayer == true && Input.GetAxis("RT") > 0)
         {
+            _grabUI.SetActive(false);
             _trigger.SetActive(false);
             GetComponent<Rigidbody>().isKinematic = true;
             transform.parent = _playerCam;
@@ -47,6 +48,7 @@ public class GrabObj : MonoBehaviour
 
             else if (Input.GetAxis("RT") <= 0)
             {
+                _grabUI.SetActive(false);
                 _trigger.SetActive(true);
                 GetComponent<Rigidbody>().isKinematic = false;
                 transform.parent = null;

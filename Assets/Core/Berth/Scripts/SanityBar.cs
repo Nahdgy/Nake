@@ -11,9 +11,9 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private Gradient gradient;
     [SerializeField] private Image fill;
     [SerializeField] private int health; 
-    public PlayerMov PlayerMov;
     public float t = 10f;
     private bool gameOver;
+    public bool pauseOn;
 
     // Start is called before the first frame update
     void Start()
@@ -31,17 +31,18 @@ public class SanityBar : MonoBehaviour
     }
     public void Timer()
     {
-        float time = t - Time.time;
+    
+      float time = t - Time.time;
+        
+            if (time <= 0)
+            {
+                gameOver = true;
+                SceneManager.LoadScene ("GameOver");
+            }
 
-        if (time <= 0)
-        {
-            gameOver = true;
-            SceneManager.LoadScene ("GameOver");
-        }
-
-        if(gameOver == false)
-        {
-            slider.value = time;
-        } 
+            if(gameOver == false)
+            {
+                slider.value = time;
+            }
     }
 }
