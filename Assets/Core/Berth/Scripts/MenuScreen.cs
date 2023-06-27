@@ -11,7 +11,6 @@ public class MenuScreen : MonoBehaviour
     public void Fade()
     {
         canInterract= false;
-        GameObject.Find("Play").GetComponent<Button>().enabled= false;
         SceneManager.LoadScene("Final");
     }
 

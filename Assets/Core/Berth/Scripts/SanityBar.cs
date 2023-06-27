@@ -13,9 +13,13 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private GameObject dizzy;
     public float t = 120f;
-    public float maxT = 120f;
     private bool gameOver;
-   // public bool pauseOn;
+    // public bool pauseOn;
+
+    private void Awake()
+    {
+        t = 120f;
+    }
 
     void Start()
     {
