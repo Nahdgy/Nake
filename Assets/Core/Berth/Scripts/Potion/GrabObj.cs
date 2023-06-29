@@ -21,7 +21,7 @@ public class GrabObj : MonoBehaviour
             _hasPlayer = true;
             _grabUI.SetActive(true);
         }
-        else
+        if (_canCarry == false)
         {
             _hasPlayer = false;
             _grabUI.SetActive(false);
