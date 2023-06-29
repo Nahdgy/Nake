@@ -12,6 +12,7 @@ public class MenuScreen : MonoBehaviour
     {
         canInterract= false;
         SceneManager.LoadScene("BeginingCutscene");
+
     }
 
     public void FadeToLevel(int levelIndex)

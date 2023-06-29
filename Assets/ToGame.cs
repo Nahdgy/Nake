@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ToGame : StateMachineBehaviour
 {
+
+    SanityBar sanity;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -26,6 +28,7 @@ public class ToGame : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         SceneManager.LoadScene("Final");
+        sanity.t = 120f;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
