@@ -28,7 +28,8 @@ public class ToGame : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         SceneManager.LoadScene("Final");
-        sanity.t = 120f;
+        //sanity.t = 120f;
+        //sanity.startCounting = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
