@@ -304,20 +304,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _audioSource: {fileID: 2209849293917870541}
+  _radio: {fileID: 0}
+  _gramophone: {fileID: 0}
   _sfxLock: {fileID: 8300000, guid: 334e4877a81fdef42bc045f944c1ca68, type: 3}
   _sfxZip: {fileID: 8300000, guid: 8ec21dc562fcb74428e3fd606ad497be, type: 3}
   _clockDeclineSfx: {fileID: 0}
   _chessDeclineSfx: {fileID: 0}
+  _pillSfx: {fileID: 0}
   _pickUp: {fileID: 2487192517418994650}
   _player: {fileID: 6834754607421297274}
   _letterMail: {fileID: 0}
   _objGrable: {fileID: 0}
+  _sanityUI: {fileID: 0}
+  _tutoSanity: {fileID: 0}
   _gameManager: {fileID: 0}
   _globeCode: {fileID: 0}
   _pianoNav: {fileID: 0}
   _chess: {fileID: 0}
   _sanityBar: {fileID: 0}
   _clockInteract: {fileID: 0}
+  _lens: {fileID: 0}
+  _radioCode: {fileID: 0}
   _paint: {fileID: 0}
   _canSee: 1
   _canOpen: 0
@@ -1609,7 +1616,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2851372752154900401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.609, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6259, z: 0.1631}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

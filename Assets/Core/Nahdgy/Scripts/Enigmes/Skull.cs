@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Skull : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _head;
     private Animator _animatorSkull, _animatorDoor;
     [SerializeField]
     private string _animSkull, _animDoor;

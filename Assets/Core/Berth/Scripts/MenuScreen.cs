@@ -4,20 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuScreen : MonoBehaviour
 {
-   [SerializeField] public Animator animator;
-   [SerializeField] public string levelToLoad;
     public bool canInterract = true;
 
     public void Fade()
     {
-        canInterract= false;
+        canInterract = false;
         SceneManager.LoadScene("BeginingCutscene");
-
-    }
-
-    public void FadeToLevel(int levelIndex)
-    {
-        animator.SetTrigger("FadeOut");
     }
 
     public void Quit()

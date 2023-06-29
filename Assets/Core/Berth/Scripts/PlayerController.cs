@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
 
     private float xRot;
 
+    private bool inInventory = false;
+    public bool InInventory { get { return inInventory; } set { inInventory = value; } }
+
     void Start()
     {
         hasAnimator = GetComponent<Animator>();
@@ -51,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if(_canMove == true)
+        if(_canMove && !inInventory)
         { 
             if (!hasAnimator) return;
 
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!hasAnimator) return;
 
-        if(_camera._canSee == true)
+        if(_camera._canSee == true && !inInventory)
         { 
             var JoystickX = inputManager.Look.x;
             var JoystickY = inputManager.Look.y;

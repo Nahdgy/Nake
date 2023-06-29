@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6372353409158906810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5873763484964633091}
+  - component: {fileID: 7727069308832813833}
+  m_Layer: 7
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5873763484964633091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372353409158906810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7833635405815066473}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7727069308832813833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372353409158906810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4207678, y: 1.7248482, z: 0.6288779}
+  m_Center: {x: 0.92852336, y: 0.7237852, z: -0.3852708}
 --- !u!1 &7493278710346806739
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,7 +77,8 @@ Transform:
   m_LocalPosition: {x: 13.848954, y: 1.27, z: 2.37}
   m_LocalScale: {x: -1.0308223, y: -1.0355332, z: -1.0355332}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5873763484964633091}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.041, y: -180, z: -90.003}
@@ -129,17 +175,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isInHand: 0
   _canSwitch: 0
-  _doorHinge: {fileID: 0}
+  _doorHinge: {fileID: 7493278710346806739}
   _letterA: {fileID: 0}
   _light: {fileID: 0}
-  _timerDoor: 0
+  _timerDoor: 4
   _rotationDoor: 0
-  _baseAngle: 0
-  _endAngle: 0
+  _baseAngle: -180
+  _endAngle: -270
   _itemNeed: 3
   _source: {fileID: 0}
-  _doorOpenSfx: {fileID: 0}
-  _doorShutSfx: {fileID: 0}
+  _doorOpenSfx: {fileID: 8300000, guid: 6c3d095163b652443b03fc51151e8fbe, type: 3}
+  _doorShutSfx: {fileID: 8300000, guid: f030886b14f4e7e4188a87ae2da5ef5b, type: 3}
   _swithLightSfx: {fileID: 0}
   _animator: {fileID: 0}
   _rotationCase: 
