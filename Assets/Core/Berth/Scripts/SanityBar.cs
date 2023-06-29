@@ -10,12 +10,18 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private Gradient gradient;
     [SerializeField] private Image fill;
-    [SerializeField] private int health; 
-    public float t = 10f;
+    [SerializeField] private int health;
+    [SerializeField] private GameObject dizzy;
+    public float t;
     private bool gameOver;
-    public bool pauseOn;
+    PlayerCam cam;
+    // public bool pauseOn;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        t = 120f;
+    }
+
     void Start()
     {
         gameOver= false;
@@ -23,15 +29,13 @@ public class SanityBar : MonoBehaviour
         slider.value = t;
     }
 
-    // Update is called once per frame
-
     private void Update()
     {
         Timer();
+        GettingDizzy();
     }
     public void Timer()
     {
-    
       float time = t - Time.time;
         
             if (time <= 0)
@@ -44,5 +48,25 @@ public class SanityBar : MonoBehaviour
             {
                 slider.value = time;
             }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level ==  0)
+        {
+            slider.value = 120;
+            slider.maxValue = 120;
+        }
+    }
+
+    void GettingDizzy()
+    {
+        if (slider.value <= 55) 
+        {
+            dizzy.SetActive(true);
+        } else
+        {
+            dizzy.SetActive (false);
+        }
     }
 }

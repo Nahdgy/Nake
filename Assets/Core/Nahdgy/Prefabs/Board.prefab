@@ -1770,6 +1770,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   _playerCam: {fileID: 0}
   _canMoving: 0
+  _UIanimation: {fileID: 0}
 --- !u!54 &6354520327293592252
 Rigidbody:
   m_ObjectHideFlags: 0

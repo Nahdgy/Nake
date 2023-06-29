@@ -86,7 +86,7 @@ public class LensNavigation : MonoBehaviour,Icodable
         _camera.rotation = _place.rotation;
     }
     public void Open()
-    {
+    {     
         _cameraPlayer.Priority = 0;
         _cameraOuija.Priority = 10;
         _canMoving = true;
@@ -94,7 +94,8 @@ public class LensNavigation : MonoBehaviour,Icodable
         _collider.SetActive(true);
         _player._canMove = false;
         _playerCam._canSee = false;
-        _UIanimation.DoTheAnimation();
+        _UIanimation.DoTheAnimation(); 
+        Debug.Log("Ouija Open");
     }
     public void Back()
     {

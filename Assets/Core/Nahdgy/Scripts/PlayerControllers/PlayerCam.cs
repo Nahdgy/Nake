@@ -21,9 +21,9 @@ public class PlayerCam : MonoBehaviour
 
   
     [SerializeField]
-    private AudioSource _audioSource;
+    private AudioSource _audioSource,_radio,_gramophone;
     [SerializeField]
-    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx;
+    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx, _chessDeclineSfx, _radioAudio, _musicAudio;
 
 
     [SerializeField]
@@ -38,13 +38,18 @@ public class PlayerCam : MonoBehaviour
     private GlobeNav _globeCode;
     [SerializeField]
     private PianoNav _pianoNav;
+    [SerializeField] 
+    private Chess _chess;
     [SerializeField]
     private SanityBar _sanityBar;
     [SerializeField]
     private ClockInteract _clockInteract;
+    [SerializeField] 
+    private LensNavigation _lens;
     [SerializeField]
     private GameObject _paint;
 
+    [SerializeField] private AudioSource pill;
 
     public bool _canSee = true;
     public bool _canOpen = false;
@@ -194,6 +199,58 @@ public class PlayerCam : MonoBehaviour
                 }
             }
 
+            //Interact ChessPiece
+            if(_hit.transform.CompareTag("Mat"))
+            {
+                if (_uiOn == true)
+                {
+                    _actionUI.SetActive(true);
+                }
+                _chess.CheckList();
+                if (_chess._isInHand == true)
+                {
+                    _canInteract = true;
+                }
+                if (Input.GetButtonDown("Action") && _canInteract == true)
+                {
+                    _uiOn = false;
+                    _chess.Open();
+                }
+                if (Input.GetButtonDown("Action") && _canInteract == false)
+                {
+                    _uiOn = false;
+                    _audioSource.PlayOneShot(_chessDeclineSfx);
+                }
+                if (Input.GetButtonDown("Back") && _canInteract == false)
+                {
+                    _clockInteract.Back();
+                    _uiOn = true;
+                }
+            }
+            else
+            {
+                if (_uiOn == false)
+                {
+                    _actionUI.SetActive(false);
+                }
+            }
+            //Interact Radio
+            if(_hit.transform.CompareTag("Radio"))
+            {
+                if(Input.GetButtonDown("Action"))
+                {
+                    _radio.Play();
+                }
+            }
+            //Interact GramoPhone
+            if(_hit.transform.CompareTag("GramPhone"))
+            {
+                if (Input.GetButtonDown("Action"))
+                {
+                    _gramophone.Play();
+                }
+
+            }
             //Interact Clock
             if (_hit.transform.CompareTag("Clock"))
             {
@@ -211,10 +268,16 @@ public class PlayerCam : MonoBehaviour
                     _uiOn = false;
                     _clockInteract.Open();
                 }
-                if (Input.GetButtonDown("Back") && _canInteract == false)
+                if (Input.GetButtonDown("Action") && _canInteract == false)
                 {
-                    _uiOn = true;
+                    _uiOn = false;
                     _audioSource.PlayOneShot(_clockDeclineSfx);
+                }
+
+                if (Input.GetButtonDown("Back"))
+                {
+                    _clockInteract.Back();
+                    _uiOn = true;
                 }
             }
             else
@@ -237,6 +300,7 @@ public class PlayerCam : MonoBehaviour
                 {
                     _uiOn = false;
                     _sanityBar.t += 100;
+                    pill.Play();
                     Debug.Log("recovered");
                     Destroy(_pills.gameObject);
                 }
@@ -436,12 +500,12 @@ public class PlayerCam : MonoBehaviour
                     _actionUI.SetActive(true);
                 }
                 _obj = _hit.collider.gameObject;
-                if (_obj.TryGetComponent<Icodable>(out Icodable interactObj))
+                if (_hit.transform.CompareTag("Enigme"))
                 {
                     if (Input.GetButtonDown("Action"))
                     {
                         _uiOn = false;
-                        interactObj.Open();
+                        _lens.Open();
                         _actionUI.SetActive(false);
                     }
                 }
