@@ -49,6 +49,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private GameObject _paint;
 
+    [SerializeField] private AudioSource pill;
 
     public bool _canSee = true;
     public bool _canOpen = false;
@@ -299,6 +300,7 @@ public class PlayerCam : MonoBehaviour
                 {
                     _uiOn = false;
                     _sanityBar.t += 100;
+                    pill.Play();
                     Debug.Log("recovered");
                     Destroy(_pills.gameObject);
                 }
