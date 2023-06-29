@@ -24,7 +24,7 @@ public class INavigation : MonoBehaviour
     [SerializeField]
     private PlayerController _playerMov;
     [SerializeField]
-    private Innventory _innventoryCode;
+    private Innventory _innventoryCode = new Innventory();
     
 
     [SerializeField]
@@ -53,17 +53,16 @@ public class INavigation : MonoBehaviour
         if (Input.GetButtonDown("Inventory") && _isOpen == false)
         {
             _firstSelectedButton.Select();
+            _playerMov._canMove = false;
+            _playerMov.InInventory = true;
+            _playerCam._canSee = false;
+            _playerCam._canRay = false;
             _gameManager.Focus();
             _source.PlayOneShot(_openSfx);
             _inventoryUi.SetActive(true);
-            _playerMov._canMove = false;
-            _playerCam._canSee = false;
-            _playerCam._canRay = false;
             _isOpen = true;  
             _globeCode.Back();
             _ouijaCode.Back();
-            //_manipCode.Back();
-            //_letterCode.BackInPlace(); //do a get component for all the letter
             _pianoCode.Back();
         }
         else if (Input.GetButtonDown("Back") && _isOpen == true)
@@ -72,6 +71,7 @@ public class INavigation : MonoBehaviour
             _source.PlayOneShot(_closeSfx);
             _inventoryUi.SetActive(false);
             _playerMov._canMove = true;
+            _playerMov.InInventory = false;
             _playerCam._canSee = true;
             _playerCam._canRay = true;
             _isOpen = false;
@@ -83,6 +83,7 @@ public class INavigation : MonoBehaviour
         yield return new WaitForSeconds(_timerClick);
         _inventoryUi.SetActive(false);
         _playerMov._canMove = true;
+        _playerMov.InInventory = false;
         _playerCam._canSee = true;
         _isOpen = false;
         _gameManager.UnFocus();

@@ -41,12 +41,13 @@ public class GrabObj : MonoBehaviour
             if (_touched)
             {
                 GetComponent<Rigidbody>().isKinematic = false;
+                _grabUI.SetActive(false);
                 transform.parent = null;
                 _beingCarried = false;
                 _touched = false;
             }
 
-            else if (Input.GetAxis("RT") <= 0)
+            if (Input.GetAxis("RT") <= 0)
             {
                 _grabUI.SetActive(false);
                 _trigger.SetActive(true);

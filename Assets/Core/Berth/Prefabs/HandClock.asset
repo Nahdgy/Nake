@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HandClock
   m_EditorClassIdentifier: 
   _name: HandClock
-  _visual: {fileID: 21300000, guid: 92863395e2a356e4a95f584117e893bd, type: 3}
+  _visual: {fileID: 21300000, guid: 2eb4dbd53f320ce40b52ee2b3df2f28f, type: 3}
   _prefab: {fileID: 450405330968653884, guid: 9e53477828da01547944f32038a2593a, type: 3}
   _itemType: 4

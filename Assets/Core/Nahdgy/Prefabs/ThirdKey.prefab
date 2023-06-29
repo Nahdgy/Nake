@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 3749133657781107101}
   - component: {fileID: 7083096827468722622}
   - component: {fileID: 4668745576078286144}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: ThirdKey
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 3388788581331851336}
   m_LocalRotation: {x: -0.29918617, y: -0.6350806, z: 0.2526885, w: 0.6658144}
   m_LocalPosition: {x: 17.54, y: 2.87, z: -15.46}
-  m_LocalScale: {x: 0.014040211, y: 0.014040212, z: 0.014040213}
+  m_LocalScale: {x: 0.010937746, y: 0.010937747, z: 0.010937748}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2577761662880712010}

@@ -20,7 +20,7 @@ public class SanityBar : MonoBehaviour
     void Start()
     {
        gameOver = false;
-        slider.value = 120f;
+       slider.value = 120f;
     }
 
     private void Update()

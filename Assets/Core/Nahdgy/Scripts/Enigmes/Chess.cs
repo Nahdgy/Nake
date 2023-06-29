@@ -68,6 +68,7 @@ public class Chess : MonoBehaviour
         _canMoving = true;
         _collider.SetActive(true);
         _player._canMove = false;
+        _player.InInventory = true;
         _playerCam._canSee = false;
         _UIanimation.DoTheAnimation();
     }
@@ -78,6 +79,7 @@ public class Chess : MonoBehaviour
         _canMoving = false;
         _collider.SetActive(false);
         _player._canMove = true;
+        _player.InInventory = false;
         _playerCam._canSee = true;
         _UIanimation.StopTheAnimation();
     }
@@ -101,7 +103,7 @@ public class Chess : MonoBehaviour
                 if (Input.GetButtonDown("Action"))
                 {
                    _keyLivingRoom.SetActive(true);
-                    _chessPiece.transform.position = _chessEnd.position;
+                   _chessPiece.transform.position = _chessEnd.position;
                    Back();
 
                 }

@@ -23,7 +23,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource,_radio,_gramophone;
     [SerializeField]
-    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx, _chessDeclineSfx, _radioAudio, _musicAudio, _pillSfx;
+    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx, _chessDeclineSfx, _pillSfx;
 
 
     [SerializeField]
@@ -31,7 +31,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private PlayerController _player;
     [SerializeField]
-    private GameObject _letterMail,_objGrable;
+    private GameObject _letterMail,_objGrable, _sanityUI, _tutoSanity;
     [SerializeField]
     private GameManager _gameManager;
     [SerializeField]
@@ -46,6 +46,8 @@ public class PlayerCam : MonoBehaviour
     private ClockInteract _clockInteract;
     [SerializeField] 
     private LensNavigation _lens;
+    [SerializeField]
+    private Radio _radioCode;
     [SerializeField]
     private GameObject _paint;
 
@@ -241,6 +243,8 @@ public class PlayerCam : MonoBehaviour
                 if(Input.GetButtonDown("Action"))
                 {
                     _radio.Play();
+                    _radioCode.Open();
+                    StartCoroutine(_radioCode.AudioLast());
                 }
             }
             //Interact GramoPhone
@@ -476,6 +480,19 @@ public class PlayerCam : MonoBehaviour
                         _uiOn = false;
                         interactObj.OpenCase();
                         _actionUI.SetActive(false);
+                        _lessUI.SetActive(true);
+                        _tutoSanity.SetActive(true);
+                        _player.InInventory = true;
+                        StartCoroutine(BackWarning());
+                    }
+                    if (Input.GetButtonDown("Back"))
+                    {
+                        Debug.Log("goback");
+                        _sanityUI.SetActive(true);
+                        _sanityBar.startCounting = true;
+                        _lessUI.SetActive(false);
+                        _tutoSanity.SetActive(false);
+                        _player.InInventory = false;
                     }
                 }
                 else
@@ -521,6 +538,18 @@ public class PlayerCam : MonoBehaviour
             }
 
         }
+    private IEnumerator BackWarning()
+    {
+        float time = 6f;
+        yield return new WaitForSeconds(time);
+        Debug.Log("goback");
+        _sanityUI.SetActive(true);
+        _sanityBar.startCounting = true;
+        _lessUI.SetActive(false);
+        _tutoSanity.SetActive(false);
+        _player.InInventory = false;
+
+    }
 }
 
 

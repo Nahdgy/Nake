@@ -31,6 +31,8 @@ public class PianoNav : MonoBehaviour
     private int _randomKey = 15;
     [SerializeField]
     private UIAnimation _UIanimation;
+    [SerializeField]
+    private GameObject _chessTable;
     
     bool buttonFingerIsPressed;
 
@@ -149,6 +151,7 @@ public class PianoNav : MonoBehaviour
     {
         Debug.Log("YouGreat");
         _canManip = false;
+        _chessTable.SetActive(true);
         _audioSource.PlayOneShot(_validSfx);
         yield return new WaitForSeconds(_timer);
         Back();
