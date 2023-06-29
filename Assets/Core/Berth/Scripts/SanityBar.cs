@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class SanityBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-    [SerializeField] private Gradient gradient;
     [SerializeField] private Image fill;
     [SerializeField] private int health;
     [SerializeField] private GameObject dizzy;
