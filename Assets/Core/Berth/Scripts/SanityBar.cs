@@ -12,7 +12,7 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private Image fill;
     [SerializeField] private int health;
     [SerializeField] private GameObject dizzy;
-    public float t = 120f;
+    public float t;
     private bool gameOver;
     // public bool pauseOn;
 
