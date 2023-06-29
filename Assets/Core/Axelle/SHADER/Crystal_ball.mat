@@ -48,12 +48,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FresnelPower: 6
-    - _NoiseScale: 157.9
+    - _FresnelPower: 17.8
+    - _NoiseScale: 156.61
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ScrollSpeed: 0.01
+    - _ScrollSpeed: 0.5
     m_Colors:
-    - _InnerColor: {r: 0.3679245, g: 0.20617655, b: 0.35661778, a: 0}
-    - _OuterColor: {r: 52.561558, g: 0, b: 1.9263397, a: 0}
+    - _InnerColor: {r: 0.5, g: 0.28018868, b: 0.48391625, a: 0}
+    - _OuterColor: {r: 45.01716, g: 0, b: 1.649844, a: 0}
   m_BuildTextureStacks: []
