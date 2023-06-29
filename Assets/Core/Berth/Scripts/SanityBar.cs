@@ -14,6 +14,7 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private GameObject dizzy;
     public float t;
     private bool gameOver;
+    PlayerCam cam;
     // public bool pauseOn;
 
     private void Awake()
@@ -63,6 +64,9 @@ public class SanityBar : MonoBehaviour
         if (slider.value <= 55) 
         {
             dizzy.SetActive(true);
+        } else
+        {
+            dizzy.SetActive (false);
         }
     }
 }
