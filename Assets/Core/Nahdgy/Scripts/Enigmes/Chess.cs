@@ -64,6 +64,7 @@ public class Chess : MonoBehaviour
     {
         _cameraPlayer.Priority = 0;
         _cameraChess.Priority = 10;
+        _chessPiece.SetActive(true);
         _canMoving = true;
         _collider.SetActive(true);
         _player._canMove = false;
@@ -96,6 +97,7 @@ public class Chess : MonoBehaviour
             RaycastHit _hit;
             if (Physics.Raycast(_chessPiece.transform.position, Vector3.down, out _hit, _distRange, _layerMask))
             {
+                Debug.Log("EtMat");
                 if (Input.GetButtonDown("Action"))
                 {
                    _keyLivingRoom.SetActive(true);

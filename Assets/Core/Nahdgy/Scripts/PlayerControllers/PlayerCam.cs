@@ -23,7 +23,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource,_radio,_gramophone;
     [SerializeField]
-    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx, _chessDeclineSfx, _radioAudio, _musicAudio;
+    private AudioClip _sfxLock, _sfxZip, _clockDeclineSfx, _chessDeclineSfx, _radioAudio, _musicAudio, _pillSfx;
 
 
     [SerializeField]
@@ -49,7 +49,6 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private GameObject _paint;
 
-    [SerializeField] private AudioSource pill;
 
     public bool _canSee = true;
     public bool _canOpen = false;
@@ -214,6 +213,7 @@ public class PlayerCam : MonoBehaviour
                 if (Input.GetButtonDown("Action") && _canInteract == true)
                 {
                     _uiOn = false;
+                    _lessUI.SetActive(true);
                     _chess.Open();
                 }
                 if (Input.GetButtonDown("Action") && _canInteract == false)
@@ -221,9 +221,10 @@ public class PlayerCam : MonoBehaviour
                     _uiOn = false;
                     _audioSource.PlayOneShot(_chessDeclineSfx);
                 }
-                if (Input.GetButtonDown("Back") && _canInteract == false)
+                if (Input.GetButtonDown("Back") && _canInteract == true)
                 {
                     _clockInteract.Back();
+                    _lessUI.SetActive(false);
                     _uiOn = true;
                 }
             }
@@ -300,7 +301,7 @@ public class PlayerCam : MonoBehaviour
                 {
                     _uiOn = false;
                     _sanityBar.t += 100;
-                    pill.Play();
+                    _audioSource.PlayOneShot(_pillSfx);
                     Debug.Log("recovered");
                     Destroy(_pills.gameObject);
                 }

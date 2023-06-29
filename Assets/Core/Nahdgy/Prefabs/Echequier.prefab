@@ -282,7 +282,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3730168796687149367}
-  m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0, w: 0}
+  m_LocalRotation: {x: -1, y: 0, z: -0, w: 0}
   m_LocalPosition: {x: 0.005, y: 0.002, z: 0.581}
   m_LocalScale: {x: 0.65840185, y: 0.65840226, z: 0.6584019}
   m_ConstrainProportionsScale: 0
@@ -290,7 +290,7 @@ Transform:
   - {fileID: 3730168795559943187}
   m_Father: {fileID: 3769092586645779103}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -180}
 --- !u!114 &3730168796687149365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,7 +535,7 @@ MonoBehaviour:
   _place: {fileID: 4574474319848864077}
   _chessEnd: {fileID: 1248277055}
   _multiplySpeed: 0.003
-  _pieceHeight: 2
+  _pieceHeight: 0.1
   _distRange: 3
   _layerMask:
     serializedVersion: 2
