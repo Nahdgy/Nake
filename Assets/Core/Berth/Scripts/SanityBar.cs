@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,21 +13,14 @@ public class SanityBar : MonoBehaviour
     [SerializeField] private Image fill;
     [SerializeField] private int health;
     [SerializeField] private GameObject dizzy;
-    public float t;
+    public float t = 120f;
     private bool gameOver;
-    PlayerCam cam;
-    // public bool pauseOn;
-
-    private void Awake()
-    {
-        t = 120f;
-    }
+    public bool startCounting = false;
 
     void Start()
     {
-        gameOver= false;
-        slider.maxValue = t;
-        slider.value = t;
+       gameOver = false;
+        slider.value = 120f;
     }
 
     private void Update()
@@ -36,26 +30,30 @@ public class SanityBar : MonoBehaviour
     }
     public void Timer()
     {
-      float time = t - Time.time;
-        
+        if (startCounting == true)
+        {
+            float time = t - Time.time;
+
             if (time <= 0)
             {
                 gameOver = true;
-                SceneManager.LoadScene ("GameOver");
+                SceneManager.LoadScene("GameOver");
+                t = 120f;
+                startCounting = false;
             }
 
-            if(gameOver == false)
+            if (gameOver == false)
             {
                 slider.value = time;
             }
+        }
     }
 
-    private void OnLevelWasLoaded(int level)
+   private void OnLevelWasLoaded(int level)
     {
-        if (level ==  0)
+        if (level ==  1)
         {
-            slider.value = 120;
-            slider.maxValue = 120;
+            startCounting = true;   
         }
     }
 
@@ -69,4 +67,5 @@ public class SanityBar : MonoBehaviour
             dizzy.SetActive (false);
         }
     }
+
 }
