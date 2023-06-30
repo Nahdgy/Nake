@@ -2,7 +2,6 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Chess : MonoBehaviour
 {
@@ -19,6 +18,10 @@ public class Chess : MonoBehaviour
     [SerializeField]
     private GameObject _chessPiece;
 
+    [SerializeField]
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _validSfx;
     
     [SerializeField]
     private GameObject _collider;
@@ -74,6 +77,8 @@ public class Chess : MonoBehaviour
     }
     public void Back()
     {
+        _playerCam._actionUI.SetActive(false);
+        _playerCam._lessUI.SetActive(false);
         _cameraPlayer.Priority = 10;
         _cameraChess.Priority = 0;
         _canMoving = false;
@@ -104,6 +109,7 @@ public class Chess : MonoBehaviour
                 {
                    _keyLivingRoom.SetActive(true);
                    _chessPiece.transform.position = _chessEnd.position;
+                   _audioSource.PlayOneShot(_validSfx);
                    Back();
 
                 }

@@ -37,6 +37,12 @@ public class LensNavigation : MonoBehaviour,Icodable
     [SerializeField]
     private UIAnimation _UIanimation;
 
+    private Vector3 _ogPos;
+
+    private void Awake()
+    {
+        _ogPos = _lens.transform.position;
+    }
     private void Update()
     {
         ControllerInputs();
@@ -94,11 +100,15 @@ public class LensNavigation : MonoBehaviour,Icodable
         _collider.SetActive(true);
         _player._canMove = false;
         _playerCam._canSee = false;
-        _UIanimation.DoTheAnimation(); 
+        _playerCam._canRay = false;
+        _player.InInventory = true;
+        _UIanimation.DoTheAnimation();
+        _lens.transform.position = _ogPos;
         Debug.Log("Ouija Open");
     }
     public void Back()
     {
+        Debug.Log("BackAlso");
         _cameraPlayer.Priority = 10;
         _cameraOuija.Priority = 0;
         _canMoving = false;
@@ -106,6 +116,7 @@ public class LensNavigation : MonoBehaviour,Icodable
         _collider.SetActive(false);
         _player._canMove = true;
         _playerCam._canSee = true;
+        _player.InInventory = false;
         _UIanimation.StopTheAnimation();
 
     }

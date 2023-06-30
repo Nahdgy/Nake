@@ -16,11 +16,14 @@ public class UIAnimation : MonoBehaviour
     public bool IsDone = true;
     [SerializeField]
     private GameObject _LStick;
+
     public void DoTheAnimation()
     { 
-        _LStick.SetActive(true);
-        IsDone = false;
+  
+            _LStick.SetActive(true);
+            IsDone = false;
         StartCoroutine(PlayAnimUI());
+        
     }
 
     public void StopTheAnimation()

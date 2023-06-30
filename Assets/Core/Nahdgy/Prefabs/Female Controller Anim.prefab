@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.41699874, y: 0.74895316, z: 1}
+  m_Center: {x: 0.040784054, y: -0.007557455, z: 0}
 --- !u!1 &1293458969
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 1846247654}
   - component: {fileID: 1846247652}
   - component: {fileID: 1846247659}
+  - component: {fileID: 937195770}
   m_Layer: 10
   m_Name: Camera
   m_TagString: Untagged
@@ -310,7 +311,7 @@ MonoBehaviour:
   _sfxZip: {fileID: 8300000, guid: 8ec21dc562fcb74428e3fd606ad497be, type: 3}
   _clockDeclineSfx: {fileID: 0}
   _chessDeclineSfx: {fileID: 0}
-  _pillSfx: {fileID: 0}
+  _pillSfx: {fileID: 8300000, guid: 356ad471412589f49b7595e763715b39, type: 3}
   _pickUp: {fileID: 2487192517418994650}
   _player: {fileID: 6834754607421297274}
   _letterMail: {fileID: 0}
@@ -326,6 +327,7 @@ MonoBehaviour:
   _lens: {fileID: 0}
   _radioCode: {fileID: 0}
   _paint: {fileID: 0}
+  _sanityIsActive: 0
   _canSee: 1
   _canOpen: 0
   _canRay: 0
@@ -364,6 +366,19 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &937195770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846247647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977e84a774db7248a838050ff4d1c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraPosition: {fileID: 7887113959855139439}
 --- !u!1 &49318976545398228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,9 +1061,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &2918595785907745420
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1138,11 +1153,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f32415de18aafb345ac21d126cb0f3df, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

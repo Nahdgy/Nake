@@ -10,16 +10,23 @@ public class ObjManip : MonoBehaviour, Iinteractable
     public bool _canManip = false;
    
     [SerializeField]
-    private Transform _obj, _basePosition;
+    private Transform _obj;
     [SerializeField]
     private float _multiplySpeed;
 
-    void Update()
+    Vector3 OGPos;
+
+
+    private void Start()
+    {
+        OGPos = gameObject.transform.position;
+    }
+
+    private void Update()
     {
         ControllerInputs();
         Arround();
     }
-
     private void ControllerInputs()
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -37,8 +44,7 @@ public class ObjManip : MonoBehaviour, Iinteractable
     }
     public void ReturnBase()
     {
-        _obj.position = _basePosition.position;
-        _obj.rotation = Quaternion.Euler(_basePosition.rotation.x, _basePosition.rotation.y, _basePosition.rotation.z);
+        _obj.position = OGPos;
     }
 
     public void Pick()

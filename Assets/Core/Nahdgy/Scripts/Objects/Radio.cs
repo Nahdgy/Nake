@@ -2,12 +2,16 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Radio : MonoBehaviour
 {
     [SerializeField]
     private float _timer;
+
+    [SerializeField]
+    private AudioSource _source;
+    [SerializeField]
+    private AudioClip _interesting;
 
     [SerializeField]
     private GameObject _tradUI, _otherCanvas;
@@ -41,6 +45,8 @@ public class Radio : MonoBehaviour
         _tradUI.SetActive(true);
         _player._canMove = false;
         _playerCam._canSee = false;
+        _player.InInventory = true;
+        StartCoroutine(AudioLast());
     }
     public void Back()
     {
@@ -51,11 +57,13 @@ public class Radio : MonoBehaviour
         _tradUI.SetActive(false);
         _player._canMove = true;
         _playerCam._canSee = true;
+        _player.InInventory = false;
     }
 
     public IEnumerator AudioLast()
     {
         yield return new WaitForSeconds(_timer);
+        _source.PlayOneShot(_interesting);
         Back();
     }
 }

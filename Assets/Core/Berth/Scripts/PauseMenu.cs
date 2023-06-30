@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.Animations;
-
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private bool isPaused;
