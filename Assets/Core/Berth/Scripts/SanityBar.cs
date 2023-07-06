@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +8,6 @@ using UnityEngine.UI;
 public class SanityBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-    [SerializeField] private Gradient gradient;
     [SerializeField] private Image fill;
     [SerializeField] private int health;
     [SerializeField] private GameObject dizzy;

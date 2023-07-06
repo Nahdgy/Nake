@@ -15,7 +15,9 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private Transform _objInView;
     [SerializeField]
-    private GameObject _obj, _actionUI, _lessUI, _pills, _grabUI;
+    private GameObject _obj,_pills, _grabUI;
+
+    public GameObject _actionUI, _lessUI;
     [SerializeField]
     private LayerMask _layerMask, _layerMaskEnigma;
 
@@ -51,7 +53,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField]
     private GameObject _paint;
 
-
+    public bool _sanityIsActive;
     public bool _canSee = true;
     public bool _canOpen = false;
     public bool _canRay = false;
@@ -242,9 +244,15 @@ public class PlayerCam : MonoBehaviour
             {
                 if(Input.GetButtonDown("Action"))
                 {
+                    _actionUI.SetActive(false);
                     _radio.Play();
                     _radioCode.Open();
-                    StartCoroutine(_radioCode.AudioLast());
+                    _lessUI.SetActive(true);
+                }
+                if (Input.GetButtonDown("Back"))
+                {
+                    _radioCode.Back();
+                    _lessUI.SetActive(false);
                 }
             }
             //Interact GramoPhone
@@ -358,6 +366,15 @@ public class PlayerCam : MonoBehaviour
                     }
 
                     if (Input.GetButtonDown("Back"))
+                    {
+                        _uiOn = true;
+                        _lessUI.SetActive(false);
+                        _canSee = true;
+                        _player._canMove = true;
+                        _mailCode.BackInPlaceWOSanity();
+                        _gameManager.UnFocus();
+                    }
+                    if (Input.GetButtonDown("Back") && _sanityIsActive)
                     {
                         _uiOn = true;
                         _lessUI.SetActive(false);
@@ -480,19 +497,9 @@ public class PlayerCam : MonoBehaviour
                         _uiOn = false;
                         interactObj.OpenCase();
                         _actionUI.SetActive(false);
-                        _lessUI.SetActive(true);
                         _tutoSanity.SetActive(true);
                         _player.InInventory = true;
                         StartCoroutine(BackWarning());
-                    }
-                    if (Input.GetButtonDown("Back"))
-                    {
-                        Debug.Log("goback");
-                        _sanityUI.SetActive(true);
-                        _sanityBar.startCounting = true;
-                        _lessUI.SetActive(false);
-                        _tutoSanity.SetActive(false);
-                        _player.InInventory = false;
                     }
                 }
                 else
@@ -540,7 +547,7 @@ public class PlayerCam : MonoBehaviour
         }
     private IEnumerator BackWarning()
     {
-        float time = 6f;
+        float time = 8f;
         yield return new WaitForSeconds(time);
         Debug.Log("goback");
         _sanityUI.SetActive(true);
@@ -548,6 +555,7 @@ public class PlayerCam : MonoBehaviour
         _lessUI.SetActive(false);
         _tutoSanity.SetActive(false);
         _player.InInventory = false;
+        _sanityIsActive = true;
 
     }
 }

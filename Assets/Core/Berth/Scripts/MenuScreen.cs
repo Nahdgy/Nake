@@ -17,4 +17,5 @@ public class MenuScreen : MonoBehaviour
         Debug.Log("left");
         Application.Quit();
     }
+
 }

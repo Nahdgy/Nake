@@ -36,7 +36,7 @@ public class Code : MonoBehaviour
     [SerializeField]
     GameObject _triggerInteract;
 
-    void Start()
+    void Awake()
     {
         _enigme = GameObject.FindGameObjectWithTag("Enigme");
         if (_enigme.TryGetComponent<Icodable>(out Icodable response))

@@ -31,9 +31,15 @@ public class LetterRead : MonoBehaviour
     }
     public void BackInPlace()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         _otherCanvas.SetActive(true);
-        _audioSource.PlayOneShot(_papperSfx); 
+        _audioSource.PlayOneShot(_papperSfx);
+        _textUI.SetActive(false);
+    }
+    public void BackInPlaceWOSanity()
+    {
+        Time.timeScale = 1f;
+        _audioSource.PlayOneShot(_papperSfx);
         _textUI.SetActive(false);
     }
 }

@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         hasAnimator = GetComponent<Animator>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        inputManager= GetComponent<InputManager>();
+        inputManager = GetComponent<InputManager>();
 
         xVel = Animator.StringToHash("X_Velocity");
         yVel = Animator.StringToHash("Y_Velocity");
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        LimitVelocity();
     }
 
     private void LateUpdate()
@@ -54,23 +55,23 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if(_canMove && !inInventory)
-        { 
+        if (_canMove && !inInventory)
+        {
             if (!hasAnimator) return;
 
-        float targetSpeed = speed;
+            float targetSpeed = speed;
             if (inputManager.Move == Vector2.zero) targetSpeed = 0.1f;
 
-        currentVelocity.x = Mathf.Lerp(currentVelocity.x, inputManager.Move.x * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
-        currentVelocity.y = Mathf.Lerp(currentVelocity.y, inputManager.Move.y * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
+            currentVelocity.x = Mathf.Lerp(currentVelocity.x, inputManager.Move.x * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
+            currentVelocity.y = Mathf.Lerp(currentVelocity.y, inputManager.Move.y * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
 
-        var xVelDiff = currentVelocity.x - rb.velocity.x;
-        var zVelDiff = currentVelocity.y - rb.velocity.z;
+            var xVelDiff = currentVelocity.x - rb.velocity.x;
+            var zVelDiff = currentVelocity.y - rb.velocity.z;
 
-        rb.AddForce(transform.TransformVector(new Vector3(xVelDiff, 0, zVelDiff)), ForceMode.VelocityChange);
+            rb.AddForce(transform.TransformVector(new Vector3(xVelDiff, 0, zVelDiff)), ForceMode.VelocityChange);
 
-        animator.SetFloat(xVel, currentVelocity.x);
-        animator.SetFloat (yVel, currentVelocity.y);  
+            animator.SetFloat(xVel, currentVelocity.x);
+            animator.SetFloat(yVel, currentVelocity.y);
         }
     }
 
@@ -78,13 +79,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!hasAnimator) return;
 
-        if(_camera._canSee == true && !inInventory)
-        { 
+        if (_camera._canSee == true && !inInventory)
+        {
             var JoystickX = inputManager.Look.x;
             var JoystickY = inputManager.Look.y;
             Camera.position = CameraRoot.position;
 
-            xRot -= JoystickY *LookSensitivity * Time.deltaTime;
+            xRot -= JoystickY * LookSensitivity * Time.deltaTime;
             xRot = Mathf.Clamp(xRot, UpperLimit, BottomLimit);
 
             Camera.localRotation = Quaternion.Euler(xRot, 0, 0);
@@ -92,4 +93,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void LimitVelocity()
+    {
+        Vector3 _vel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if (_vel.magnitude > speed)
+        {
+            Vector3 _limitVel = _vel.normalized * speed;
+            rb.velocity = new Vector3(_limitVel.x, rb.velocity.y, _limitVel.z);
+        }
+    }
 }
