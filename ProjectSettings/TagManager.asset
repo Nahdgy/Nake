@@ -3,7 +3,66 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Object
+  - Light
+  - Default
+  - Door
+  - A
+  - B
+  - C
+  - D
+  - E
+  - F
+  - G
+  - Enigme
+  - H
+  - I
+  - J
+  - K
+  - L
+  - M
+  - N
+  - O
+  - P
+  - Q
+  - R
+  - S
+  - T
+  - U
+  - V
+  - W
+  - X
+  - Y
+  - Z
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 0
+  - QuitCode
+  - pills
+  - OUIJA
+  - Item
+  - Quinze
+  - Trente
+  - Letter
+  - Globe
+  - Piano
+  - Clock
+  - Chaudron
+  - ObjCarring
+  - Case
+  - Painting
+  - Mat
+  - BoxSkull
+  - GramPhone
+  - Radio
   layers:
   - Default
   - TransparentFX
@@ -11,26 +70,26 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Object
+  - TriggerInteract
+  - Camera
+  - Enigma
+  - Player
+  - Collider
+  - Item
+  - PostPrecessing
+  - Algeria
+  - Touche
+  - Finger
+  - Note1
+  - Note2
+  - Note3
+  - Note4
+  - BoxCamera
+  - Mat
+  - BoxSkull
+  - Tape
+  - TriggerEnd
   - 
   - 
   - 

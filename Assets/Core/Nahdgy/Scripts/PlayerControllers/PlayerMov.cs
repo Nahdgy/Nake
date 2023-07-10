@@ -16,15 +16,23 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]
     private LayerMask _whatIsGround;
 
-
     private Vector3 _moveDirection, _velocity = Vector3.zero;
 
-
     [SerializeField]
+    Animator _anim;
+
+   
+    [SerializeField]
+    private PlayerCam _playerCam = new PlayerCam();
+
+   
     private Rigidbody _rb;
 
     [SerializeField]
     private Transform _oriantation;
+
+    [SerializeField]
+    private SanityBar SanityBar;
    
     private void Start()
     {
@@ -41,12 +49,31 @@ public class PlayerMov : MonoBehaviour
         ControllerInputs();
         LimitVelocity();
         GroundCheck();
+        //WalkAnimation();
+       
+    }
+
+    private void OnTriggerEnter(Collider pills)
+    //Pick item for the sanity bar    
+    {
+         if (pills.gameObject.tag == "pills")
+         {
+                SanityBar.t += float.MaxValue;
+                //SanityBar.slider.maxValue = 100f;
+                Debug.Log("recovered");
+                Destroy(pills.gameObject);
+         }
+    }
+    private void WalkAnimation()
+//Aniamtion of Player steps by his velocity
+    {
+        float _palyerVelocity = Mathf.Abs(_rb.velocity.x);
+        _anim.SetFloat("Speed", Mathf.Clamp(_palyerVelocity,0,1));
     }
     void ControllerInputs()
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
-
     }
     void GroundCheck()
     {
@@ -60,6 +87,7 @@ public class PlayerMov : MonoBehaviour
             if (_isGrounded)
             {
                 _rb.AddForce(_moveDirection.normalized * _moveSpeed, ForceMode.Force);
+               
             }
             else if (!_isGrounded) _rb.AddForce(_moveDirection.normalized * _moveSpeed * _moveMultiplier, ForceMode.Force);
         }
@@ -73,6 +101,4 @@ public class PlayerMov : MonoBehaviour
             _rb.velocity = new Vector3(_limitVel.x, _rb.velocity.y, _limitVel.z);
         }
     }
-   
-
 }

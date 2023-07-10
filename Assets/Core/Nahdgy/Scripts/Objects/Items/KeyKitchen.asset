@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb6e7a5c90b70f42aea4272a261a556, type: 3}
+  m_Name: KeyKitchen
+  m_EditorClassIdentifier: 
+  _name: KeyKitchen
+  _visual: {fileID: 21300000, guid: e3b31ae5d5b07db469b8b094bdeaaa71, type: 3}
+  _prefab: {fileID: 3388788581331851336, guid: de8a02ef59390494796c6b02d35f8ec3, type: 3}
+  _itemType: 2

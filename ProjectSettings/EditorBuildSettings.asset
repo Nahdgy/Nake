@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Core/Nahdgy/Scenes/TestScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4fd06ec42173e654a8259d1fea58410f
+  - enabled: 1
+    path: Assets/Core/Nahdgy/Scenes/Final.unity
+    guid: 771ef31fd90504c48b2afb3024048a6b
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 247dac6de4152da42bedcc0542ebc44b
+  - enabled: 1
+    path: Assets/Scenes/Good Ending.unity
+    guid: 672210961a500044d8c211630e257e70
+  - enabled: 1
+    path: Assets/Scenes/BeginingCutscene.unity
+    guid: 8b0b5fe1ff088a247a57ca288b70e2bc
   m_configObjects: {}
